@@ -11,7 +11,6 @@ public class GameData : MonoBehaviour
         public static int affectionLevel;
     }
     
-    
     /////////////
     /// Instance
     /// 
@@ -29,6 +28,8 @@ public class GameData : MonoBehaviour
     public float masterVolume;
     public float meowVolume;
     public float attentionSeekVolume;
+
+    public List<Sprite> emoteSprites;
 
     [SerializeField] private SceneLoader sceneLoader;
 

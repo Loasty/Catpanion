@@ -1120,6 +1120,11 @@ MonoBehaviour:
   masterVolume: 0
   meowVolume: 0
   attentionSeekVolume: 0
+  emoteSprites:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 0f550dcd48f7f0349ad5a0b7016bc3fe, type: 3}
+  - {fileID: 21300000, guid: d2ed6e8f8aaeedf4c95ae73677ea62e4, type: 3}
+  - {fileID: 21300000, guid: 6dcd6814ddcf2cd49ac0db377d196abf, type: 3}
   sceneLoader: {fileID: 1473212795}
 --- !u!4 &1150176266
 Transform:
