@@ -175,7 +175,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GGJ24_Sprites_SOLID_0
+      name: SOLID_PAWUP
       rect:
         serializedVersion: 2
         x: 66
@@ -196,7 +196,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_SOLID_2
+      name: SOLID_PAWDOWN
       rect:
         serializedVersion: 2
         x: 1065
@@ -217,7 +217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_SOLID_3
+      name: SOLID_WalkRight1
       rect:
         serializedVersion: 2
         x: 2351
@@ -238,7 +238,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_SOLID_4
+      name: SOLID_WalkRight2
       rect:
         serializedVersion: 2
         x: 4293
@@ -259,7 +259,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_SOLID_6
+      name: SOLID_SIT
       rect:
         serializedVersion: 2
         x: 26
@@ -280,7 +280,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_SOLID_8
+      name: SOLID_WalkLeft2
       rect:
         serializedVersion: 2
         x: 1258
@@ -301,7 +301,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_SOLID_9
+      name: SOLID_WalkLeft1
       rect:
         serializedVersion: 2
         x: 3165
@@ -332,17 +332,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GGJ24_Sprites_SOLID_0: 1307242907
       GGJ24_Sprites_SOLID_1: 373541296
       GGJ24_Sprites_SOLID_10: -279786131
-      GGJ24_Sprites_SOLID_2: -118895194
-      GGJ24_Sprites_SOLID_3: -736326897
-      GGJ24_Sprites_SOLID_4: 131919097
       GGJ24_Sprites_SOLID_5: 59858429
-      GGJ24_Sprites_SOLID_6: 366334560
       GGJ24_Sprites_SOLID_7: -660346147
-      GGJ24_Sprites_SOLID_8: -624991589
-      GGJ24_Sprites_SOLID_9: -1446726466
+      SOLID_PAWDOWN: -118895194
+      SOLID_PAWUP: 1307242907
+      SOLID_SIT: 366334560
+      SOLID_WalkLeft1: -1446726466
+      SOLID_WalkLeft2: -624991589
+      SOLID_WalkRight1: -736326897
+      SOLID_WalkRight2: 131919097
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

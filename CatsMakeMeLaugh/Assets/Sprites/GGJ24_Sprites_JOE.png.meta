@@ -175,7 +175,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GGJ24_Sprites_JOE_0
+      name: JOE_PawUp
       rect:
         serializedVersion: 2
         x: 66
@@ -196,7 +196,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_JOE_2
+      name: JOE_PAWDOWN
       rect:
         serializedVersion: 2
         x: 1065
@@ -217,7 +217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_JOE_3
+      name: JOE_WalkRight1
       rect:
         serializedVersion: 2
         x: 2351
@@ -238,7 +238,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_JOE_4
+      name: JOE_WalkRight2
       rect:
         serializedVersion: 2
         x: 4293
@@ -246,7 +246,7 @@ TextureImporter:
         width: 1843
         height: 1085
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -259,7 +259,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_JOE_6
+      name: JOE_SIT
       rect:
         serializedVersion: 2
         x: 26
@@ -280,7 +280,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_JOE_8
+      name: JOE_WalkLeft2
       rect:
         serializedVersion: 2
         x: 1258
@@ -301,7 +301,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_JOE_9
+      name: JOE_WalkLeft1
       rect:
         serializedVersion: 2
         x: 3165
@@ -332,18 +332,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GGJ24_Sprites_JOE_0: -1519670444
       GGJ24_Sprites_JOE_1: -631177782
       GGJ24_Sprites_JOE_10: -767191518
       GGJ24_Sprites_JOE_11: -79491151
-      GGJ24_Sprites_JOE_2: 1619894909
-      GGJ24_Sprites_JOE_3: -1927550499
-      GGJ24_Sprites_JOE_4: 1069574648
       GGJ24_Sprites_JOE_5: 406547239
-      GGJ24_Sprites_JOE_6: -1614056072
       GGJ24_Sprites_JOE_7: 1723532483
-      GGJ24_Sprites_JOE_8: 1287932921
-      GGJ24_Sprites_JOE_9: 1641954239
+      JOE_PAWDOWN: 1619894909
+      JOE_PawUp: -1519670444
+      JOE_SIT: -1614056072
+      JOE_WalkLeft1: 1641954239
+      JOE_WalkLeft2: 1287932921
+      JOE_WalkRight1: -1927550499
+      JOE_WalkRight2: 1069574648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

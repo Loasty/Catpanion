@@ -15,6 +15,8 @@ public class dialogue
     public Color boxColor = Color.white;
     public Enums.DialogueSpeed dialogueSpeed;
     public List<Sprite> sprites;
+
+    [Header("Special Events")]
     public UnityEvent specialEventOpen;
     public UnityEvent specialEventDialogueEnd;
 
@@ -65,7 +67,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Lists/Dictionaries")]
     public List<dialogue> dialogues = new List<dialogue>();
     Dictionary<Enums.DialogueSpeed, float> associatedDialogueSpeeds = new Dictionary<Enums.DialogueSpeed, float>();
-    List<Image> spriteSlots;
+    public List<Image> spriteSlots = new List<Image>();
     int currentIndex = 0;
 
 
@@ -143,8 +145,10 @@ public class DialogueManager : MonoBehaviour
     {
         speakerBoxImage.gameObject.SetActive(false);
         textBoxImage.gameObject.SetActive(false);
+        DisableAllSpriteSlots();
         if (destroyOnComplete) { GameObject.Destroy(this.gameObject); }
         else { canContinue = false; };
+
     }
     public void DisplayInfo(dialogue inDialogue)
     {
@@ -208,7 +212,7 @@ public class DialogueManager : MonoBehaviour
     {
         for (int i = 0; i < spriteSlots.Count; i++)
         {
-            if (i > inSprites.Count) { spriteSlots[i].gameObject.SetActive(false); }
+            if (i >= inSprites.Count) { spriteSlots[i].gameObject.SetActive(false); }
             else
             {
                 spriteSlots[i].sprite = inSprites[i];

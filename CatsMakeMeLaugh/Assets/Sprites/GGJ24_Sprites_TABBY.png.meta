@@ -175,7 +175,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GGJ24_Sprites_TABBY_0
+      name: TABBY_PawUp
       rect:
         serializedVersion: 2
         x: 66
@@ -196,7 +196,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_TABBY_2
+      name: TABBY_PAWDOWN
       rect:
         serializedVersion: 2
         x: 1065
@@ -217,7 +217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_TABBY_3
+      name: TABBY_WalkRight1
       rect:
         serializedVersion: 2
         x: 2348
@@ -238,7 +238,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_TABBY_4
+      name: TABBY_WalkRight2
       rect:
         serializedVersion: 2
         x: 4291
@@ -259,7 +259,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_TABBY_6
+      name: TABBY_Sit
       rect:
         serializedVersion: 2
         x: 26
@@ -280,7 +280,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_TABBY_8
+      name: TabbyWalkLeft2
       rect:
         serializedVersion: 2
         x: 1256
@@ -301,7 +301,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GGJ24_Sprites_TABBY_9
+      name: TabbyWalkLeft1
       rect:
         serializedVersion: 2
         x: 3165
@@ -332,17 +332,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GGJ24_Sprites_TABBY_0: 500550835
       GGJ24_Sprites_TABBY_1: 545837585
       GGJ24_Sprites_TABBY_10: -1002113524
-      GGJ24_Sprites_TABBY_2: -1471433490
-      GGJ24_Sprites_TABBY_3: -883177406
-      GGJ24_Sprites_TABBY_4: 549171761
       GGJ24_Sprites_TABBY_5: -850487649
-      GGJ24_Sprites_TABBY_6: -399981555
       GGJ24_Sprites_TABBY_7: 604272385
-      GGJ24_Sprites_TABBY_8: -1325574184
-      GGJ24_Sprites_TABBY_9: 1439642343
+      TABBY_PAWDOWN: -1471433490
+      TABBY_PawUp: 500550835
+      TABBY_Sit: -399981555
+      TABBY_WalkRight1: -883177406
+      TABBY_WalkRight2: 549171761
+      TabbyWalkLeft1: 1439642343
+      TabbyWalkLeft2: -1325574184
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

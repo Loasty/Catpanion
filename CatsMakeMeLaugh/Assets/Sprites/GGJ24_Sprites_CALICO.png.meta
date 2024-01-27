@@ -238,7 +238,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CALICO_WALKRIGHT
+      name: CALICO_WalkRight2
       rect:
         serializedVersion: 2
         x: 4295
@@ -280,7 +280,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CALICO_WALKRIGHT1
+      name: CALICO_WALKLeft2
       rect:
         serializedVersion: 2
         x: 1257
@@ -301,7 +301,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CALICO_WALKRIGHT2
+      name: CALICO_WALKLEFT1
       rect:
         serializedVersion: 2
         x: 3176
@@ -336,9 +336,9 @@ TextureImporter:
       CALICO_PAWDOWN: 24246187
       CALICO_SIT: 695066429
       CALICO_WALK1RIGHT: -955138805
-      CALICO_WALKRIGHT: -1503743398
-      CALICO_WALKRIGHT1: -22341161
-      CALICO_WALKRIGHT2: 1923690516
+      CALICO_WALKLEFT1: 1923690516
+      CALICO_WALKLeft2: -22341161
+      CALICO_WalkRight2: -1503743398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
