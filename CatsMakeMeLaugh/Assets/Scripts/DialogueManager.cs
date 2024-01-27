@@ -16,6 +16,9 @@ public class dialogue
     public Enums.DialogueSpeed dialogueSpeed;
     public List<Sprite> sprites;
 
+    [Header]
+    EmoteEffect emoteEffect
+
     [Header("Special Events")]
     public UnityEvent specialEventOpen;
     public UnityEvent specialEventDialogueEnd;
@@ -94,6 +97,8 @@ public class DialogueManager : MonoBehaviour
         associatedDialogueSpeeds.Add(Enums.DialogueSpeed.FAST, fastSpeed);
         associatedDialogueSpeeds.Add(Enums.DialogueSpeed.VERYFAST, veryFastSpeed);
 
+        canContinue = true;
+        //ProceedNext();
 
 
     }
@@ -103,6 +108,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (canContinue)
         {
+            
             if (Input.GetKeyDown(proceed))
             {
                 if (readInProgress) { StopAllCoroutines(); }
@@ -110,11 +116,13 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (specialEventOnNext)
                     {
+                        if (dialogues[currentIndex -1] != null && dialogues[currentIndex - 1].specialEventDialogueEnd.GetPersistentEventCount() > 0)
                         dialogues[currentIndex -1].specialEventDialogueEnd.Invoke();
                         //Unsubscribe
                         dialogues[currentIndex - 1].specialEventDialogueEnd = null;
                     }
-                    ProceedNext(); }
+                    ProceedNext();
+                }
                 else 
                 { 
                     if (specialEventOnNext)
@@ -173,12 +181,17 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            spriteLocation.gameObject.SetActive(false);
+            DisableAllSpriteSlots();
         }
-
+        
         //Handle Special Events(Like displaying three at a time for example
-        if (inDialogue.specialEventOpen != null) { inDialogue.specialEventOpen.Invoke(); }
-        if (inDialogue.specialEventDialogueEnd != null) { specialEventOnNext = true; }
+        if (inDialogue.specialEventOpen != null && inDialogue.specialEventOpen.GetPersistentEventCount() > 0)
+        {
+            inDialogue.specialEventOpen.Invoke();
+            //Unsubscribe
+            inDialogue.specialEventOpen = null;
+        }
+        if (inDialogue.specialEventDialogueEnd != null && inDialogue.specialEventDialogueEnd.GetPersistentEventCount() > 0) { specialEventOnNext = true; }
         else { specialEventOnNext = false; }
 
 
@@ -229,8 +242,30 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    
-    
+    public void EventTest1()
+    {
+        Debug.Log("Test 1 complete");
+    }
+    public void EventTest2()
+    {
+        Debug.Log("Test 2 complete");
+    }
+    public void EventTest3()
+    {
+        Debug.Log("Test 2 complete");
+    }
+    public void EventTest4()
+    {
+        Debug.Log("Test 2 complete");
+    }
+
+    public void affection(int affection)
+    {
+        Debug.Log("Test " + affection);
+    }
+
+
+
 
 
 
