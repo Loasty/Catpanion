@@ -14,6 +14,7 @@ public class ConfirmPrompt : MonoBehaviour
     public void ResetData()
     {
         GameData.Instance.ClearSaveData();
+        ClosePrompt();
     }
 
     public void ClosePrompt()

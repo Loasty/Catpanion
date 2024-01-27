@@ -22,14 +22,33 @@ public class GameData : MonoBehaviour
     public float meowVolume;
     public float attentionSeekVolume;
 
+    [SerializeField] private SceneLoader sceneLoader;
+
     private void Awake()
     {
         if (instance == null) { instance = this; }
     }
 
+    private void Start()
+    {
+        StartCoroutine(LoadSaveData());
+    }
+
+    public IEnumerator LoadSaveData()
+    {
+
+        yield return null;
+
+        sceneLoader.LoadScene();
+    }
+
     public void SaveAndClose()
     {
         Application.Quit();
+
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #endif
     }
 
     public void ClearSaveData()
