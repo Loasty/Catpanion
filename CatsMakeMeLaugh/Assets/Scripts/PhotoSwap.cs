@@ -8,18 +8,33 @@ public class PhotoSwap : MonoBehaviour
     [SerializeField] Image img;
     [SerializeField] Sprite sprite1;
     [SerializeField] Sprite sprite2;
+    [SerializeField] float speed = 1.0f;
+    [SerializeField] bool isMainMenuJoe;
 
     void Start()
     {
-        StartCoroutine(SwapPhotos());
+        if (isMainMenuJoe)
+        {
+            GameData.justForMainMenuJoe += Swap;
+        }
+        else
+        {
+
+            StartCoroutine(SwapPhotos());
+        }
     }
 
     IEnumerator SwapPhotos()
     {
         while(true)
         {
-            img.sprite = (img.sprite == sprite1) ? sprite2 : sprite1;
-            yield return new WaitForSeconds(.6f);
+            Swap();
+            yield return new WaitForSeconds(speed);
         }
+    }
+
+    private void Swap()
+    {
+        img.sprite = (img.sprite == sprite1) ? sprite2 : sprite1;
     }
 }

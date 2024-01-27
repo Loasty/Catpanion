@@ -215,8 +215,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 159265049}
-  sprite1: {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
-  sprite2: {fileID: -1519670444, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+  sprite1: {fileID: -1519670444, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+  sprite2: {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+  speed: 1.2
+  isMainMenuJoe: 1
 --- !u!114 &159265049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+  m_Sprite: {fileID: -1519670444, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1320,7 +1322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -49
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1339,12 +1341,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7369807912851015269, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
+      propertyPath: effectSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7369807912851015269, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: typeOfEmote
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7369807912851015269, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: effectOfEmote
-      value: 4
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7369807912851015269, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
+      propertyPath: durationOfEffect
+      value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 8416255026379438929, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_IsActive
