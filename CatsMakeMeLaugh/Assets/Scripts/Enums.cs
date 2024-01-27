@@ -10,5 +10,5 @@ public class Enums : MonoBehaviour
    
      public enum Emotes {NONE, HEART, SIGH, ANNOYED  };
 
-     public enum EmoteEffect { NONE, WIGGLE, RESIZE, GO_UP, GO_DOWN };
+     public enum EmoteEffect { WIGGLE, RESIZE, GO_UP, GO_DOWN };
 }
