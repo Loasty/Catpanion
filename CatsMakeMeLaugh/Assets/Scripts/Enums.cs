@@ -1,0 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Enums : MonoBehaviour
+{ 
+     public enum DialogueSpeed { NORMAL, SLOW, VERYSLOW, FAST, VERYFAST }
+
+   
+    
+}
