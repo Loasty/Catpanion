@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class GameData : MonoBehaviour
 {
@@ -10,7 +12,14 @@ public class GameData : MonoBehaviour
         public static Enums.CatType type;
         public static int affectionLevel;
     }
-    
+
+    public class SavedCatNonStatic
+    {
+        public  string name;
+        public  Enums.CatType type;
+        public  int affectionLevel;
+        public bool acquiredCat;
+    }
     /////////////
     /// Instance
     /// 
@@ -37,6 +46,10 @@ public class GameData : MonoBehaviour
 
     public static event JustForMainMenuJoe justForMainMenuJoe;
 
+    public SavedCatNonStatic savedCat;
+
+    public string location;
+
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -44,11 +57,18 @@ public class GameData : MonoBehaviour
 
     private void Start()
     {
+        location = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
+
+
         StartCoroutine(LoadSaveData());
     }
+    
 
     public IEnumerator LoadSaveData()
     {
+        LookForSaveData();
+        LoadData();
+
 
         yield return null;
 
@@ -73,4 +93,60 @@ public class GameData : MonoBehaviour
     {
         justForMainMenuJoe?.Invoke();
     }
+    public void SaveData()
+    {
+        string json = JsonUtility.ToJson(savedCat);
+        Debug.Log(json);
+
+        using (StreamWriter write = new StreamWriter(location))
+        {
+            write.Write(json);
+        }
+
+
+
+    }
+    public void LookForSaveData()
+    {
+        if (File.Exists(location))
+        {
+            Debug.Log("Exists");
+
+        }
+        else
+        {
+            Debug.Log("Doesn't exist. Save thus create.");
+            SaveData();
+        }
+    }
+    public void LoadData()
+    {
+        string data = "";
+
+        using (StreamReader read = new StreamReader(location))
+        {
+            data = read.ReadToEnd();
+        }
+        savedCat = JsonUtility.FromJson<SavedCatNonStatic>(data);
+
+    }
+
+    public void AcquiredCat(CatCharacter cat)
+    {
+        savedCat.acquiredCat = true;
+        savedCat.affectionLevel = cat.affectionLevel;
+        savedCat.name = cat.Name;
+        SaveData();
+
+    }
+    public void DeleteSaveData()
+    {
+        savedCat.acquiredCat = false;
+        savedCat.affectionLevel = 0;
+        savedCat.name = "";
+        SaveData();
+    }
+
+
+    
 }
