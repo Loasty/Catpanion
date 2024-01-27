@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
-    public static class Cat
+    public static class SavedCat
     {
         public static string name;
         public static Enums.CatType type;
@@ -32,6 +32,10 @@ public class GameData : MonoBehaviour
     public List<Sprite> emoteSprites;
 
     [SerializeField] private SceneLoader sceneLoader;
+
+    public delegate void JustForMainMenuJoe();
+
+    public static event JustForMainMenuJoe justForMainMenuJoe;
 
     private void Awake()
     {
@@ -63,5 +67,10 @@ public class GameData : MonoBehaviour
     public void ClearSaveData()
     {
 
+    }
+
+    public void InvokeJoeSwap()
+    {
+        justForMainMenuJoe?.Invoke();
     }
 }
