@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.TextCore.Text;
@@ -10,20 +11,35 @@ using UnityEngine.UI;
 [Serializable]
 public class dialogue
 {
+    [Header("Text")]
     public string speakerName;
     public string txt;
     public Color boxColor = Color.white;
     public Enums.DialogueSpeed dialogueSpeed;
-    public List<Sprite> sprites;
 
-    [Header("EmoteEffects")]
-    public Enums.Emotes emote = Enums.Emotes.NONE;
-    //public Enums.EmoteEffect emoteEffect = null;
+    [Header("Sprites")]
+    public List<Sprite> sprites;
+    public Emote currentEmote;
 
     [Header("Special Events")]
+    public Events events;
+    public List<Options> dialogueOptions;
+}
+[Serializable]
+public class Options
+{
+    public string OptionName;
+    public DialogueManager TransitionToBranch;
+    public bool permanentTransition;
+
+    
+}
+
+[Serializable]
+public class Events
+{
     public UnityEvent specialEventOpen;
     public UnityEvent specialEventDialogueEnd;
-
 }
 
 
@@ -64,6 +80,8 @@ public class DialogueManager : MonoBehaviour
     public bool destroyOnComplete = true;
     public bool specialEventOnNext = false;
     public bool lastDialogue = false;
+    public bool prematureDestroy = false;
+    public bool returning = false;
 
     [Header("Input")]
     public KeyCode proceed = KeyCode.Return;
@@ -72,7 +90,12 @@ public class DialogueManager : MonoBehaviour
     public List<dialogue> dialogues = new List<dialogue>();
     Dictionary<Enums.DialogueSpeed, float> associatedDialogueSpeeds = new Dictionary<Enums.DialogueSpeed, float>();
     public List<Image> spriteSlots = new List<Image>();
+    public List<OptionsButton> optionSlots = new List<OptionsButton>();
     int currentIndex = 0;
+    public DialogueManager returnTo = null;
+
+
+    
 
 
 
@@ -88,7 +111,9 @@ public class DialogueManager : MonoBehaviour
     {
         speakerBoxImage.gameObject.SetActive(true);
         textBoxImage.gameObject.SetActive(true);
-        currentIndex = 0;
+        if (!returning) { currentIndex = 0; }
+        if (currentIndex < dialogues.Count) { ProceedNext(); }
+
     }
     void Start()
     {
@@ -107,34 +132,31 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canContinue)
+        if (canContinue && Input.GetKeyDown(proceed))
         {
-            
-            if (Input.GetKeyDown(proceed))
+            if (readInProgress) { StopAllCoroutines(); }
+            if (!lastDialogue)
             {
-                if (readInProgress) { StopAllCoroutines(); }
-                if (!lastDialogue)
+                if (specialEventOnNext)
                 {
-                    if (specialEventOnNext)
-                    {
-                        if (dialogues[currentIndex -1] != null && dialogues[currentIndex - 1].specialEventDialogueEnd.GetPersistentEventCount() > 0)
-                        dialogues[currentIndex -1].specialEventDialogueEnd.Invoke();
-                        //Unsubscribe
-                        dialogues[currentIndex - 1].specialEventDialogueEnd = null;
-                    }
-                    ProceedNext();
+                    if (dialogues[currentIndex - 1] != null && dialogues[currentIndex - 1].events.specialEventDialogueEnd.GetPersistentEventCount() > 0)
+                        dialogues[currentIndex - 1].events.specialEventDialogueEnd.Invoke();
+                    //Unsubscribe
+                    dialogues[currentIndex - 1].events.specialEventDialogueEnd = null;
                 }
-                else 
-                { 
-                    if (specialEventOnNext)
-                    {
-                        dialogues[currentIndex].specialEventDialogueEnd.Invoke();
-                        //Unsubscribe
-                        dialogues[currentIndex].specialEventDialogueEnd = null;
-                    }
-                    EndResponse();
-                }
+                ProceedNext();
             }
+            else
+            {
+                if (specialEventOnNext)
+                {
+                    dialogues[currentIndex].events.specialEventDialogueEnd.Invoke();
+                    //Unsubscribe
+                    dialogues[currentIndex].events.specialEventDialogueEnd = null;
+                }
+                EndResponse();
+            }
+
         }
     }
 
@@ -142,8 +164,8 @@ public class DialogueManager : MonoBehaviour
     {
         DisplayInfo(dialogues[currentIndex]);
         currentIndex++;
-        if (currentIndex > (dialogues.Count-1)) 
-        { 
+        if (currentIndex > (dialogues.Count - 1))
+        {
             lastDialogue = true;
             //Bring it back into scope for safety
             currentIndex--;
@@ -155,15 +177,20 @@ public class DialogueManager : MonoBehaviour
         speakerBoxImage.gameObject.SetActive(false);
         textBoxImage.gameObject.SetActive(false);
         DisableAllSpriteSlots();
-        if (destroyOnComplete) { GameObject.Destroy(this.gameObject); }
-        else { canContinue = false; };
+        if (returnTo != null)
+        {
+            ReturnTo();
+        }
+        else
+        {
+            if (destroyOnComplete) { GameObject.Destroy(this.gameObject); }
+            else { canContinue = false; };
+        }
 
     }
     public void DisplayInfo(dialogue inDialogue)
     {
-        //Set color
-        textBoxImage.color = inDialogue.boxColor;
-
+        ////Speaker Box
         //If there is a designated speaker, then enable the box & set it up, otherwise, disable the box if it is active.
         if (!string.IsNullOrEmpty(inDialogue.speakerName))
         {
@@ -171,43 +198,64 @@ public class DialogueManager : MonoBehaviour
             speakerNameTextBox.text = inDialogue.speakerName;
             speakerBoxImage.gameObject.SetActive(true);
         }
-        else if (speakerBoxImage.gameObject.activeSelf) 
+        else if (speakerBoxImage.gameObject.activeSelf) //If the speaker box is already active, then disable it.
         {
             speakerBoxImage.gameObject.SetActive(false);
         }
 
+        ////Sprites
+        //If there is sprites, then put them into their slots.
         if (inDialogue.sprites != null)
         {
             HandleSpritesSlots(inDialogue.sprites);
         }
-        else
+        else //If there is no sprites, disable all the slots.
         {
             DisableAllSpriteSlots();
         }
-        
-        //Handle Special Events(Like displaying three at a time for example
-        if (inDialogue.specialEventOpen != null && inDialogue.specialEventOpen.GetPersistentEventCount() > 0)
+
+        ////Events
+        ///Handle Open
+        if (inDialogue.events.specialEventOpen != null && inDialogue.events.specialEventOpen.GetPersistentEventCount() > 0)
         {
-            inDialogue.specialEventOpen.Invoke();
+            inDialogue.events.specialEventOpen.Invoke();
             //Unsubscribe
-            inDialogue.specialEventOpen = null;
+            inDialogue.events.specialEventOpen = null;
         }
-        if (inDialogue.specialEventDialogueEnd != null && inDialogue.specialEventDialogueEnd.GetPersistentEventCount() > 0) { specialEventOnNext = true; }
+        ///Handle Close
+        if (inDialogue.events.specialEventDialogueEnd != null && inDialogue.events.specialEventDialogueEnd.GetPersistentEventCount() > 0) { specialEventOnNext = true; }
         else { specialEventOnNext = false; }
 
-
+        ////Textbox
         //Just in case, make sure there actually is dialogue.
         if (!string.IsNullOrEmpty(inDialogue.txt))
         {
+            //Set color
+            textBoxImage.color = inDialogue.boxColor;
+            //Enable
+            textBoxImage.gameObject.SetActive(true);
             //Make sure the text from the box is cleared.
             textBoxText.text = "";
             float speed = 0f;
             associatedDialogueSpeeds.TryGetValue(inDialogue.dialogueSpeed, out speed);
-            //Start Coroutine
-            StartCoroutine(ReadText(speed, inDialogue.txt));
+            if (inDialogue.dialogueOptions != null && inDialogue.dialogueOptions.Count > 0)
+            {
+                StartCoroutine(ReadText(speed, inDialogue.txt, currentIndex));
+            }
+            else if (inDialogue.dialogueOptions != null)
+            {
+                DisableAllOptionSlots();
+                //Start Coroutine
+                StartCoroutine(ReadText(speed, inDialogue.txt));
+            }
+        }
+        else
+        {
+            //There isn't textbox text so disable
+            textBoxImage.gameObject.SetActive(false);
         }
 
-     
+
     }
 
     IEnumerator ReadText(float speed, string text)
@@ -220,6 +268,19 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(speed);
         }
         readInProgress = false;
+    }
+    IEnumerator ReadText(float speed, string text, int index)
+    {
+        readInProgress = true;
+        //Read in gradually
+        for (int i = 0; i < text.Length; i++)
+        {
+            textBoxText.text += text[i];
+            yield return new WaitForSeconds(speed);
+        }
+        readInProgress = false;
+        HandleOptionSlots(dialogues[index].dialogueOptions, index);
+        canContinue = false;
     }
 
     public void HandleSpritesSlots(List<Sprite> inSprites)
@@ -266,8 +327,102 @@ public class DialogueManager : MonoBehaviour
     }
 
 
+    public void OptionsButtonPressed(int optionsIndex, int dialogueIndex)
+    {
+        if (dialogues[dialogueIndex].dialogueOptions[optionsIndex].permanentTransition)
+        {
+            PermanentTransition(dialogues[dialogueIndex].dialogueOptions[optionsIndex].TransitionToBranch);
+           
+        }
+        else
+        {
+            TemporaryTransition(dialogues[dialogueIndex].dialogueOptions[optionsIndex].TransitionToBranch);
+        }
+        
+    }
+    public void PermanentTransition(DialogueManager inDialogueManager)
+    {
+        inDialogueManager.gameObject.SetActive(true);
+        if (currentIndex < dialogues.Count) { prematureDestroy = true; }
+        GameObject.Destroy(this.gameObject);
+    }
 
+    public void TemporaryTransition(DialogueManager inDialogueManager)
+    {
+        returning = true;
+        inDialogueManager.returnTo = this;
+        inDialogueManager.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
 
+    }
+
+    public void HandleOptionSlots(List<Options> inOptions, int inIndex)
+    {
+       for (int i = 0; i < optionSlots.Count; i++)
+        {
+            if (i >= inOptions.Count) { optionSlots[i].gameObject.SetActive(false); }
+            else
+            {
+                optionSlots[i].btnText.text = inOptions[i].OptionName;
+                optionSlots[i].index = i;
+                optionSlots[i].instance = this;
+                optionSlots[i].dialogueIndex = inIndex;
+                optionSlots[i].gameObject.SetActive(true);
+            }
+        }
+    }
+    public void DisableAllOptionSlots()
+    {
+        for(int i = 0; i < optionSlots.Count; i++)
+        {
+            optionSlots[i].gameObject.SetActive(false);
+        }
+    }
+    private void OnDestroy()
+    {
+        
+        if (prematureDestroy)
+        {
+            //Unsubscribe from the remaining events
+            HandleMassUnsubscribe(currentIndex);
+            
+        }
+        
+    }
+
+    private void OnApplicationQuit()
+    {
+        //Unsubscribe from remaining events c:
+        HandleMassUnsubscribe(0);
+    }
+
+    public void HandleMassUnsubscribe(int startVal)
+    {
+        for (int i = startVal; i < dialogues.Count; i++)
+        {
+            if (dialogues[i].events != null)
+            {
+                HandlePrematureUnsubscribe(ref dialogues[i].events);
+            }
+        }
+    }
+    public void HandlePrematureUnsubscribe(ref Events inEvents)
+    {
+        inEvents.specialEventDialogueEnd = null;
+        inEvents.specialEventOpen = null;
+    }
+
+    public void ReturnTo()
+    {
+        if (returnTo != null)
+        {
+            returnTo.gameObject.SetActive(true);
+            returnTo.canContinue = true;
+            if (destroyOnComplete && returnTo != null) { GameObject.Destroy(this.gameObject); }
+            else if (!destroyOnComplete && returnTo != null) { this.gameObject.SetActive(false); }
+   
+        }
+    }
 
 
 }
