@@ -158,7 +158,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1082}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &309571729
 MonoBehaviour:
@@ -198,6 +198,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309571727}
   m_CullTransparentMesh: 1
+--- !u!1 &412510058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412510059}
+  - component: {fileID: 412510060}
+  m_Layer: 0
+  m_Name: AffectionSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &412510059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412510058}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1072.0227, y: 326.6853, z: -6.6627593}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &412510060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412510058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce467fb3897a6f4db04c747ae56dc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cats:
+  - Name: White Cat
+    type: 1
+    affectionLevel: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - Name: Tabby Cat
+    type: 2
+    affectionLevel: 0
+    color: {r: 1, g: 0.48260385, b: 0.22075468, a: 1}
+  - Name: Calico Cat
+    type: 3
+    affectionLevel: 0
+    color: {r: 0.98823535, g: 0.86666673, b: 0.7176471, a: 1}
+  - Name: Black Cat
+    type: 4
+    affectionLevel: 0
+    color: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
 --- !u!1 &426440738
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +294,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1082}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &426440740
 MonoBehaviour:
@@ -624,10 +685,10 @@ RectTransform:
   - {fileID: 1432654903}
   m_Father: {fileID: 992301437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 775.0278, y: 158.29}
-  m_SizeDelta: {x: 369.925, y: 763.44}
+  m_AnchorMin: {x: 0.78389543, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.78900003}
+  m_AnchoredPosition: {x: 22.527344, y: 1.7900391}
+  m_SizeDelta: {x: -45.075012, y: 450.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732948115
 MonoBehaviour:
@@ -741,6 +802,7 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
     dialogueOptions: []
+    catType: 1
   - speakerName: The Cat That Stares
     txt: Meow!(Very fast!)
     boxColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
@@ -761,6 +823,7 @@ MonoBehaviour:
     - OptionName: Calico
       TransitionToBranch: {fileID: 1796720633}
       permanentTransition: 0
+    catType: 3
   - speakerName: 
     txt: You ponder if the cat understands the void.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
@@ -775,6 +838,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     dialogueOptions: []
+    catType: 0
   - speakerName: The Cat That Stares
     txt: Meow!(Slow)
     boxColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
@@ -791,6 +855,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     dialogueOptions: []
+    catType: 0
   - speakerName: The Cat That Stares
     txt: Meow!(Very Slow)
     boxColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
@@ -805,7 +870,8 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     dialogueOptions: []
-  - speakerName: The Cat That Stares
+    catType: 0
+  - speakerName: 
     txt: Meow!(Fast!)
     boxColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
     dialogueSpeed: 3
@@ -819,6 +885,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     dialogueOptions: []
+    catType: 4
   - speakerName: The Cat That Stares
     txt: Meow!(Very fast!)
     boxColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
@@ -836,6 +903,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     dialogueOptions: []
+    catType: 0
   - speakerName: The Cat That Stares
     txt: Meow!(Very fast!)
     boxColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
@@ -853,6 +921,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     dialogueOptions: []
+    catType: 0
   spriteSlots:
   - {fileID: 6515947836928532871}
   - {fileID: 426440740}
@@ -914,7 +983,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1082}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861257106
 MonoBehaviour:
@@ -1075,7 +1144,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0.174
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1160,10 +1229,10 @@ RectTransform:
   - {fileID: 1377991281}
   m_Father: {fileID: 992301437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.0033569, y: 158.29486}
-  m_SizeDelta: {x: 1920.2, y: 316.59}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.28955558}
+  m_AnchoredPosition: {x: -0.5, y: 1.7929688}
+  m_SizeDelta: {x: 1.1999512, y: 3.5899963}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125996502
 MonoBehaviour:
@@ -1213,6 +1282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134124505}
   - component: {fileID: 1134124506}
+  - component: {fileID: 1134124507}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
@@ -1238,10 +1308,10 @@ RectTransform:
   - {fileID: 309571728}
   m_Father: {fileID: 992301437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.09423828, y: -368.92926}
-  m_SizeDelta: {x: 3001.174, y: 1738.428}
+  m_AnchoredPosition: {x: -0.09375, y: 171.07031}
+  m_SizeDelta: {x: 3001.174, y: 658.428}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1134124506
 MonoBehaviour:
@@ -1265,10 +1335,24 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &1134124507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134124504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 0
+  m_AspectRatio: 2.8308184
 --- !u!1001 &1248665411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1480,7 +1564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1369832970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1496,10 +1580,10 @@ RectTransform:
   - {fileID: 1783688567}
   m_Father: {fileID: 992301437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -677.09705, y: 348.66324}
-  m_SizeDelta: {x: 565.999, y: 64.246}
+  m_AnchorMin: {x: 0, y: 0.28955558}
+  m_AnchorMax: {x: 0.29500002, y: 0.35616785}
+  m_AnchoredPosition: {x: -0.09692383, y: -0.3359375}
+  m_SizeDelta: {x: -0.0009765625, y: -7.753998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1369832971
 MonoBehaviour:
@@ -1571,10 +1655,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1125996501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0011262419, y: -0.0016479492}
-  m_SizeDelta: {x: 1920.2, y: 316.59}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.001953125}
+  m_SizeDelta: {x: -1.8000488, y: 0.58999634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1377991282
 MonoBehaviour:
@@ -1743,10 +1827,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1369832970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00061035, y: -1.414}
-  m_SizeDelta: {x: 566, y: 61.418}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.00061035156, y: -1.4140015}
+  m_SizeDelta: {x: 0, y: -2.5820007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1783688568
 MonoBehaviour:
@@ -1894,7 +1978,7 @@ MonoBehaviour:
   proceed: 13
   dialogues:
   - speakerName: Calico
-    txt: Meow!
+    txt: Meow! Meow! Meowwww!
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites: []
@@ -1907,6 +1991,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     dialogueOptions: []
+    catType: 3
   spriteSlots:
   - {fileID: 6515947836928532871}
   - {fileID: 426440740}
@@ -1982,7 +2067,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1082}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5226268532994946646
 CanvasRenderer:
@@ -2143,6 +2228,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 412510059}
   - {fileID: 776681886}
   - {fileID: 1796720634}
   - {fileID: 992301437}

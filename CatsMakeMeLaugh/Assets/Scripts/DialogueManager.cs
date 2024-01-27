@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,14 +17,18 @@ public class dialogue
     public string txt;
     public Color boxColor = Color.white;
     public Enums.DialogueSpeed dialogueSpeed;
+    
 
     [Header("Sprites")]
     public List<Sprite> sprites;
     public Emote currentEmote;
 
+
     [Header("Special Events")]
     public Events events;
     public List<Options> dialogueOptions;
+    public Enums.CatType catType = Enums.CatType.NONE;
+    
 }
 [Serializable]
 public class Options
@@ -105,28 +110,51 @@ public class DialogueManager : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
 
     private void OnEnable()
     {
+        GetReferences();
         speakerBoxImage.gameObject.SetActive(true);
         textBoxImage.gameObject.SetActive(true);
         if (!returning) { currentIndex = 0; }
         if (currentIndex < dialogues.Count) { ProceedNext(); }
 
     }
+    public void SetSpeed()
+    {
+        if (associatedDialogueSpeeds == null || associatedDialogueSpeeds.Count == 0)
+        {
+            associatedDialogueSpeeds.Add(Enums.DialogueSpeed.NORMAL, normalSpeed);
+            associatedDialogueSpeeds.Add(Enums.DialogueSpeed.SLOW, slowSpeed);
+            associatedDialogueSpeeds.Add(Enums.DialogueSpeed.VERYSLOW, verySlowSpeed);
+            associatedDialogueSpeeds.Add(Enums.DialogueSpeed.FAST, fastSpeed);
+            associatedDialogueSpeeds.Add(Enums.DialogueSpeed.VERYFAST, veryFastSpeed);
+        }
+    }
+
+    // Start is called before the first frame update
     void Start()
     {
-        associatedDialogueSpeeds.Add(Enums.DialogueSpeed.NORMAL, normalSpeed);
-        associatedDialogueSpeeds.Add(Enums.DialogueSpeed.SLOW, slowSpeed);
-        associatedDialogueSpeeds.Add(Enums.DialogueSpeed.VERYSLOW, verySlowSpeed);
-        associatedDialogueSpeeds.Add(Enums.DialogueSpeed.FAST, fastSpeed);
-        associatedDialogueSpeeds.Add(Enums.DialogueSpeed.VERYFAST, veryFastSpeed);
+        GetReferences();
+        SetSpeed();
 
         canContinue = true;
         //ProceedNext();
 
 
+    }
+
+    public void GetReferences()
+    {
+        if (AffectionSystem.Instance == null)
+        {
+            AffectionSystem inst = FindObjectOfType<AffectionSystem>();
+            if (inst == null) { Debug.LogError("There needs to be at least ONE Affection System in the Scene!!"); }
+            else
+            {
+                inst.SetInstance();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -143,6 +171,7 @@ public class DialogueManager : MonoBehaviour
                         dialogues[currentIndex - 1].events.specialEventDialogueEnd.Invoke();
                     //Unsubscribe
                     dialogues[currentIndex - 1].events.specialEventDialogueEnd = null;
+                    specialEventOnNext = false;
                 }
                 ProceedNext();
             }
@@ -153,6 +182,7 @@ public class DialogueManager : MonoBehaviour
                     dialogues[currentIndex].events.specialEventDialogueEnd.Invoke();
                     //Unsubscribe
                     dialogues[currentIndex].events.specialEventDialogueEnd = null;
+                    specialEventOnNext = false;
                 }
                 EndResponse();
             }
@@ -188,50 +218,27 @@ public class DialogueManager : MonoBehaviour
         }
 
     }
-    public void DisplayInfo(dialogue inDialogue)
+
+    public void HandleSpeakerBox(string inString, Color inColor) 
     {
-        ////Speaker Box
-        //If there is a designated speaker, then enable the box & set it up, otherwise, disable the box if it is active.
-        if (!string.IsNullOrEmpty(inDialogue.speakerName))
+        if (!string.IsNullOrEmpty(inString))
         {
-            speakerBoxImage.color = inDialogue.boxColor;
-            speakerNameTextBox.text = inDialogue.speakerName;
+            speakerBoxImage.color = inColor;
+            speakerNameTextBox.text = inString;
             speakerBoxImage.gameObject.SetActive(true);
         }
         else if (speakerBoxImage.gameObject.activeSelf) //If the speaker box is already active, then disable it.
         {
             speakerBoxImage.gameObject.SetActive(false);
         }
+    }
 
-        ////Sprites
-        //If there is sprites, then put them into their slots.
-        if (inDialogue.sprites != null)
-        {
-            HandleSpritesSlots(inDialogue.sprites);
-        }
-        else //If there is no sprites, disable all the slots.
-        {
-            DisableAllSpriteSlots();
-        }
-
-        ////Events
-        ///Handle Open
-        if (inDialogue.events.specialEventOpen != null && inDialogue.events.specialEventOpen.GetPersistentEventCount() > 0)
-        {
-            inDialogue.events.specialEventOpen.Invoke();
-            //Unsubscribe
-            inDialogue.events.specialEventOpen = null;
-        }
-        ///Handle Close
-        if (inDialogue.events.specialEventDialogueEnd != null && inDialogue.events.specialEventDialogueEnd.GetPersistentEventCount() > 0) { specialEventOnNext = true; }
-        else { specialEventOnNext = false; }
-
-        ////Textbox
-        //Just in case, make sure there actually is dialogue.
-        if (!string.IsNullOrEmpty(inDialogue.txt))
+    public void HandleTextBox(string inTxt, Color inColor, dialogue inDialogue)
+    {
+        if (!string.IsNullOrEmpty(inTxt))
         {
             //Set color
-            textBoxImage.color = inDialogue.boxColor;
+            textBoxImage.color = inColor;
             //Enable
             textBoxImage.gameObject.SetActive(true);
             //Make sure the text from the box is cleared.
@@ -254,7 +261,46 @@ public class DialogueManager : MonoBehaviour
             //There isn't textbox text so disable
             textBoxImage.gameObject.SetActive(false);
         }
+    }
+    public void DisplayInfo(dialogue inDialogue)
+    {
+        //If there is sprites, then put them into their slots.
+        if (inDialogue.sprites != null)
+        {
+            HandleSpritesSlots(inDialogue.sprites);
+        }
+        else //If there is no sprites, disable all the slots.
+        {
+            DisableAllSpriteSlots();
+        }
 
+        //Handle Events
+        if (inDialogue.events.specialEventOpen != null && inDialogue.events.specialEventOpen.GetPersistentEventCount() > 0)
+        {
+            inDialogue.events.specialEventOpen.Invoke();
+            //Unsubscribe
+            inDialogue.events.specialEventOpen = null;
+        }
+        ///Handle Close
+        if (inDialogue.events.specialEventDialogueEnd != null && inDialogue.events.specialEventDialogueEnd.GetPersistentEventCount() > 0) { specialEventOnNext = true; }
+        else { specialEventOnNext = false; }
+
+
+
+
+        if (inDialogue.catType == Enums.CatType.NONE)
+        {
+            HandleSpeakerBox(inDialogue.speakerName, inDialogue.boxColor);
+            HandleTextBox(inDialogue.txt, inDialogue.boxColor, inDialogue);
+        }
+        else
+        {
+            CatCharacter cat;
+            AffectionSystem.Instance.catsDict.TryGetValue(inDialogue.catType, out cat);
+            
+            HandleSpeakerBox(cat.Name, cat.color);
+            HandleTextBox(inDialogue.txt, cat.color, inDialogue);
+        }
 
     }
 
@@ -424,5 +470,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void AffectAffectionEnd(int val)
+    {
+        AffectionSystem.Instance.ModifyAffectionPoints(val, dialogues[currentIndex - 1].catType);
+    }
+    public void AffectAffectionStart(int val)
+    {
+        AffectionSystem.Instance.ModifyAffectionPoints(val, dialogues[currentIndex].catType);
+    }
 
 }

@@ -6,7 +6,7 @@ public class Enums : MonoBehaviour
 { 
      public enum DialogueSpeed { NORMAL, SLOW, VERYSLOW, FAST, VERYFAST };
 
-     public enum CatType { WHITE, TABBY, CALICO, BLACK };
+     public enum CatType { NONE, WHITE, TABBY, CALICO, BLACK };
    
      public enum Emotes { NONE, HEART, SIGH, ANNOYED  };
 
