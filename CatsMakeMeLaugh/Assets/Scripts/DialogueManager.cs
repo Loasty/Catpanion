@@ -17,8 +17,8 @@ public class dialogue
     public List<Sprite> sprites;
 
     [Header("EmoteEffects")]
-    public Enums.EmoteEffect emoteEffect = Enums.EmoteEffect.NONE;
-    public e
+    public Enums.Emotes emote = Enums.Emotes.NONE;
+    //public Enums.EmoteEffect emoteEffect = null;
 
     [Header("Special Events")]
     public UnityEvent specialEventOpen;
