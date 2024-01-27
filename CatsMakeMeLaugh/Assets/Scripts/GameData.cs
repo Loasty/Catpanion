@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
+    public static class Cat
+    {
+        public static string name;
+        public static Enums.CatType type;
+        public static int affectionLevel;
+    }
+    
+    
     /////////////
     /// Instance
     /// 

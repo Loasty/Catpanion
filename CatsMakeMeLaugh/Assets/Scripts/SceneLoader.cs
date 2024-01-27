@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,6 +45,6 @@ public class SceneLoader : MonoBehaviour
         AsyncOperation operation = SceneManager.UnloadSceneAsync(prevSceneName);
         
         while (!operation.isDone) { yield return null; }
-        
+
     }
 }
