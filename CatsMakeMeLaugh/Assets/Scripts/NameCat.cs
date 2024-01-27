@@ -37,11 +37,11 @@ public class NameCat : MonoBehaviour
     }
     public void Submit()
     {
-        if (string.IsNullOrEmpty(inputField.text)) { ReadText(disappointedSpeed, noText); }
+        if (string.IsNullOrEmpty(inputField.text)) { StartCoroutine(ReadText(disappointedSpeed, noText)); }
         else
         {
             StartCoroutine(ReadText(textTimeNormal, gagText[gagCount]));
-            gag
+            
         }
     }
 
