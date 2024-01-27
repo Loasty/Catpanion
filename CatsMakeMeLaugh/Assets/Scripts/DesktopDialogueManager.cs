@@ -27,7 +27,7 @@ public class DesktopDialogueManager : MonoBehaviour
 
     public void SaySomething()
     {
-        ReadText(readInSpeed, RandomDialogue());
+        StartCoroutine(ReadText(readInSpeed, RandomDialogue()));
     }
     public string RandomDialogue()
     {
