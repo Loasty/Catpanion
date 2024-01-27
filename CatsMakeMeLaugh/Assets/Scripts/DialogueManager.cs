@@ -1,17 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-
-public struct dialogue
+[Serializable]
+public class dialogue
 {
-    public string txt;
     public string speakerName;
-    public Color boxColor;
+    public string txt;
+    public Color boxColor = Color.white;
     public Enums.DialogueSpeed dialogueSpeed;
+    public List<Sprite> sprites;
+    public UnityEvent specialEventOpen;
+    public UnityEvent specialEventDialogueEnd;
+
 }
 
 
@@ -22,38 +28,47 @@ public class DialogueManager : MonoBehaviour
     TextMeshProUGUI textBoxText;
     [SerializeField]
     TextMeshProUGUI speakerNameTextBox;
+
+    [Header("Images")]
     [SerializeField]
     Image textBoxImage;
     [SerializeField]
     Image speakerBoxImage;
+    [SerializeField]
+    Image spriteLocation;
 
 
     [Header("Speed")]
     [SerializeField]
-    float normalSpeed = 0.3f;
+    float normalSpeed = 0.1f;
     [SerializeField]
-    float slowSpeed = 0.2f;
+    float slowSpeed = 0.1f;
     [SerializeField]
-    float verySlowSpeed = 0.1f;
+    float verySlowSpeed = 0.3f;
     [SerializeField]
-    float fastSpeed = 0.5f;
+    float fastSpeed = 0.05f;
     [SerializeField]
-    float veryFastSpeed = 0.6f;
+    float veryFastSpeed = 0.06f;
+
+    //public Image prefab;
 
     [Header("Bools")]
     public bool canContinue = true;
     public bool readInProgress = false;
     public bool destroyOnComplete = true;
+    public bool specialEventOnNext = false;
     public bool lastDialogue = false;
 
     [Header("Input")]
     public KeyCode proceed = KeyCode.Return;
 
     [Header("Lists/Dictionaries")]
-    [SerializeField]
-    List<dialogue> dialogues = new List<dialogue>();
+    public List<dialogue> dialogues = new List<dialogue>();
     Dictionary<Enums.DialogueSpeed, float> associatedDialogueSpeeds = new Dictionary<Enums.DialogueSpeed, float>();
+    List<Image> spriteSlots;
     int currentIndex = 0;
+
+
 
 
 
@@ -89,8 +104,25 @@ public class DialogueManager : MonoBehaviour
             if (Input.GetKeyDown(proceed))
             {
                 if (readInProgress) { StopAllCoroutines(); }
-                if (!lastDialogue) { ProceedNext(); }
-                else { EndResponse(); }
+                if (!lastDialogue)
+                {
+                    if (specialEventOnNext)
+                    {
+                        dialogues[currentIndex -1].specialEventDialogueEnd.Invoke();
+                        //Unsubscribe
+                        dialogues[currentIndex - 1].specialEventDialogueEnd = null;
+                    }
+                    ProceedNext(); }
+                else 
+                { 
+                    if (specialEventOnNext)
+                    {
+                        dialogues[currentIndex].specialEventDialogueEnd.Invoke();
+                        //Unsubscribe
+                        dialogues[currentIndex].specialEventDialogueEnd = null;
+                    }
+                    EndResponse();
+                }
             }
         }
     }
@@ -99,10 +131,10 @@ public class DialogueManager : MonoBehaviour
     {
         DisplayInfo(dialogues[currentIndex]);
         currentIndex++;
-        if (currentIndex > dialogues.Count) 
+        if (currentIndex > (dialogues.Count-1)) 
         { 
             lastDialogue = true;
-            //Bring it back into scope... just in case.
+            //Bring it back into scope for safety
             currentIndex--;
         }
     }
@@ -124,20 +156,40 @@ public class DialogueManager : MonoBehaviour
         {
             speakerBoxImage.color = inDialogue.boxColor;
             speakerNameTextBox.text = inDialogue.speakerName;
-            speakerNameTextBox.gameObject.SetActive(true);
+            speakerBoxImage.gameObject.SetActive(true);
         }
-        else if (speakerBoxImage.gameObject.activeSelf) { speakerBoxImage.gameObject.SetActive(false); }
-        
+        else if (speakerBoxImage.gameObject.activeSelf) 
+        {
+            speakerBoxImage.gameObject.SetActive(false);
+        }
+
+        if (inDialogue.sprites != null)
+        {
+            HandleSpritesSlots(inDialogue.sprites);
+        }
+        else
+        {
+            spriteLocation.gameObject.SetActive(false);
+        }
+
+        //Handle Special Events(Like displaying three at a time for example
+        if (inDialogue.specialEventOpen != null) { inDialogue.specialEventOpen.Invoke(); }
+        if (inDialogue.specialEventDialogueEnd != null) { specialEventOnNext = true; }
+        else { specialEventOnNext = false; }
+
+
         //Just in case, make sure there actually is dialogue.
         if (!string.IsNullOrEmpty(inDialogue.txt))
         {
             //Make sure the text from the box is cleared.
             textBoxText.text = "";
-            float speed = 0.1f;
+            float speed = 0f;
             associatedDialogueSpeeds.TryGetValue(inDialogue.dialogueSpeed, out speed);
             //Start Coroutine
-            ReadText(speed, inDialogue.txt);
+            StartCoroutine(ReadText(speed, inDialogue.txt));
         }
+
+     
     }
 
     IEnumerator ReadText(float speed, string text)
@@ -152,8 +204,30 @@ public class DialogueManager : MonoBehaviour
         readInProgress = false;
     }
 
+    public void HandleSpritesSlots(List<Sprite> inSprites)
+    {
+        for (int i = 0; i < spriteSlots.Count; i++)
+        {
+            if (i > inSprites.Count) { spriteSlots[i].gameObject.SetActive(false); }
+            else
+            {
+                spriteSlots[i].sprite = inSprites[i];
+                spriteSlots[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void DisableAllSpriteSlots()
+    {
+        for (int i = 0; i < spriteSlots.Count; i++)
+        {
+            spriteSlots[i].gameObject.SetActive(false);
+        }
+    }
 
     
     
+
+
 
 }
