@@ -28,6 +28,8 @@ public class dialogue
     public Events events;
     public List<Options> dialogueOptions;
     public Enums.CatType catType = Enums.CatType.NONE;
+    public bool changeLocation;
+    public Enums.Locations location;
     
 }
 [Serializable]
@@ -155,6 +157,16 @@ public class DialogueManager : MonoBehaviour
                 inst.SetInstance();
             }
         }
+
+        if (LocationManager.Instance == null)
+        {
+            LocationManager inst = FindObjectOfType<LocationManager>();
+            if (inst == null) { Debug.LogError("There needs to be at least ONE Location Manager in the Scene!!"); }
+            else
+            {
+                inst.SetInstance();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -264,6 +276,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void DisplayInfo(dialogue inDialogue)
     {
+        if (inDialogue.changeLocation) { LocationManager.Instance.ChangeLocation(inDialogue.location); }
         //If there is sprites, then put them into their slots.
         if (inDialogue.sprites != null)
         {
