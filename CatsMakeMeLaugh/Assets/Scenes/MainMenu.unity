@@ -1335,6 +1335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Emote
       objectReference: {fileID: 0}
+    - target: {fileID: 2196784446544642653, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1433,7 +1437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8416255026379438929, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

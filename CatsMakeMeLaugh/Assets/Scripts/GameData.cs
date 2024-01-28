@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
 public class GameData : MonoBehaviour
 {
@@ -34,13 +33,14 @@ public class GameData : MonoBehaviour
     public bool isInDesktopMode;
     public bool launchInDesktopMode;
 
-    public int taskbarHeight;
+    public int taskbarHeight = 0;
 
     public float masterVolume;
     public float meowVolume;
     public float attentionSeekVolume;
 
     public List<Sprite> emoteSprites;
+    public List<GameObject> catPrefabs;
 
     [SerializeField] private SceneLoader sceneLoader;
 
@@ -61,6 +61,8 @@ public class GameData : MonoBehaviour
     {
         location = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
 
+        //REMOVE THIS AFTER TESTING
+        SavedCat.type = Enums.CatType.WHITE;
 
         StartCoroutine(LoadSaveData());
     }
