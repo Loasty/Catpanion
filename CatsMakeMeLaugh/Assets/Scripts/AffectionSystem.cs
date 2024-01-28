@@ -11,6 +11,7 @@ public class CatCharacter
     public Enums.CatType type = Enums.CatType.NONE;
     public int affectionLevel = 0;
     public Color color;
+    public GamePlayLoop gamePlayLoop;
 }
 
 public class AffectionSystem : MonoBehaviour
@@ -22,6 +23,9 @@ public class AffectionSystem : MonoBehaviour
     public static AffectionSystem Instance { get { return instance; } }
     [SerializeField]
     private static AffectionSystem instance;
+
+
+    
    
     // Start is called before the first frame update
     
@@ -67,6 +71,9 @@ public class AffectionSystem : MonoBehaviour
         catsDict.TryGetValue(inCatType, out cat);
         if (cats != null) { cat.affectionLevel += val; }
     }
+
+    
+    
    
 
 

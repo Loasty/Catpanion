@@ -30,6 +30,8 @@ public class dialogue
     public bool changeLocation;
     public Enums.Locations location;
     
+
+    
 }
 [Serializable]
 public class Options
@@ -88,6 +90,9 @@ public class DialogueManager : MonoBehaviour
     public bool lastDialogue = false;
     public bool prematureDestroy = false;
     public bool returning = false;
+    public bool resetIndexOnClose = true;
+    public bool disableUIAtEnd = false;
+
 
     [Header("Input")]
     public KeyCode proceed = KeyCode.Return;
@@ -100,12 +105,14 @@ public class DialogueManager : MonoBehaviour
     int currentIndex = 0;
     public DialogueManager returnTo = null;
 
-
-    
-
+    public int eventIndex;
 
 
 
+    private void Awake()
+    {
+        GetReferences();
+    }
 
 
 
@@ -114,7 +121,7 @@ public class DialogueManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GetReferences();
+        //GetReferences();
         speakerBoxImage.gameObject.SetActive(true);
         textBoxImage.gameObject.SetActive(true);
         if (!returning) { currentIndex = 0; }
@@ -181,8 +188,8 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (dialogues[currentIndex - 1] != null && dialogues[currentIndex - 1].events.specialEventDialogueEnd.GetPersistentEventCount() > 0)
                         dialogues[currentIndex - 1].events.specialEventDialogueEnd.Invoke();
-                    //Unsubscribe
-                    dialogues[currentIndex - 1].events.specialEventDialogueEnd = null;
+                    ////Unsubscribe
+                    //dialogues[currentIndex - 1].events.specialEventDialogueEnd = null;
                     specialEventOnNext = false;
                     
                 }
@@ -190,12 +197,15 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
+                
                 if (specialEventOnNext)
                 {
                     dialogues[currentIndex].events.specialEventDialogueEnd.Invoke();
-                    //Unsubscribe
-                    dialogues[currentIndex].events.specialEventDialogueEnd = null;
                     specialEventOnNext = false;
+                }
+                else
+                {
+                    Debug.LogError("There is no closing event. Is this intentional?");
                 }
                 EndResponse();
             }
@@ -217,8 +227,9 @@ public class DialogueManager : MonoBehaviour
 
     public void EndResponse()
     {
-        speakerBoxImage.gameObject.SetActive(false);
-        textBoxImage.gameObject.SetActive(false);
+        //speakerBoxImage.gameObject.SetActive(false);
+        //textBoxImage.gameObject.SetActive(false);
+        
         DisableAllSpriteSlots();
         if (returnTo != null)
         {
@@ -226,8 +237,9 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            if (resetIndexOnClose) { currentIndex = 0; }
             if (destroyOnComplete) { GameObject.Destroy(this.gameObject); }
-            else { canContinue = false; };
+            else { canContinue = true; };
         }
 
     }
@@ -296,8 +308,8 @@ public class DialogueManager : MonoBehaviour
             inDialogue.events.specialEventOpen = null;
         }
         ///Handle Close
-        if (inDialogue.events.specialEventDialogueEnd != null && inDialogue.events.specialEventDialogueEnd.GetPersistentEventCount() > 0) { specialEventOnNext = true; }
-        else { specialEventOnNext = false; }
+        if (inDialogue.events.specialEventDialogueEnd != null && inDialogue.events.specialEventDialogueEnd.GetPersistentEventCount() > 0) { specialEventOnNext = true; eventIndex = currentIndex; }
+        else { specialEventOnNext = false;}
 
 
 
@@ -440,13 +452,9 @@ public class DialogueManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        
-        if (prematureDestroy)
-        {
+
+        HandleMassUnsubscribe(0);
             //Unsubscribe from the remaining events
-            HandleMassUnsubscribe(currentIndex);
-            
-        }
         
     }
 
@@ -491,6 +499,13 @@ public class DialogueManager : MonoBehaviour
     public void AffectAffectionStart(int val)
     {
         AffectionSystem.Instance.ModifyAffectionPoints(val, dialogues[currentIndex].catType);
+    }
+
+    public void TransitionToGameplayLoopAtEnd()
+    {
+        CatCharacter catCharacter;
+        AffectionSystem.Instance.catsDict.TryGetValue(dialogues[eventIndex].catType, out catCharacter);
+        catCharacter.gamePlayLoop.gameObject.SetActive(true);
     }
 
 }
