@@ -9,6 +9,7 @@ public class DesktopDialogueManager : MonoBehaviour
     public List<string> dialogues;
 
     public GameObject textboxImage;
+    public TextMeshProUGUI speakerName;
     public TextMeshProUGUI textBox;
     public float waitTime;
  

@@ -233,7 +233,9 @@ public class DialogueManager : MonoBehaviour
         DisableAllSpriteSlots();
         if (returnTo != null)
         {
+            if (resetIndexOnClose) { currentIndex = 0; }
             ReturnTo();
+
         }
         else
         {
@@ -300,6 +302,7 @@ public class DialogueManager : MonoBehaviour
             DisableAllSpriteSlots();
         }
 
+        if (inDialogue.dialogueOptions.Count > 0) { HandleOptionSlots(inDialogue.dialogueOptions, currentIndex); canContinue = false; }
         //Handle Events
         if (inDialogue.events.specialEventOpen != null && inDialogue.events.specialEventOpen.GetPersistentEventCount() > 0)
         {
