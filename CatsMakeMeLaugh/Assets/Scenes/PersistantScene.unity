@@ -1982,11 +1982,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSaveDataPresent: 0
   isInDesktopMode: 0
-  launchInDesktopMode: 0
-  taskbarHeight: 0
-  masterVolume: 0
-  meowVolume: 0
-  attentionSeekVolume: 0
   emoteSprites:
   - {fileID: 0}
   - {fileID: 21300000, guid: 0f550dcd48f7f0349ad5a0b7016bc3fe, type: 3}
@@ -1999,7 +1994,8 @@ MonoBehaviour:
   - {fileID: 6019286157639801497, guid: 50f0cd86cadb8894d9bbd383a5811200, type: 3}
   - {fileID: 6019286157639801497, guid: 5687588f8def3be44bd7358c6c95678e, type: 3}
   sceneLoader: {fileID: 1473212795}
-  location: 
+  saveDataLocation: 
+  settingsLocation: 
 --- !u!4 &1150176266
 Transform:
   m_ObjectHideFlags: 0
@@ -2952,8 +2948,13 @@ MonoBehaviour:
   startPos: {x: 0, y: 0}
   targetPos: {fileID: 262549448}
   isPanelOpen: 0
+  desktopLaunch: {fileID: 8479829635479949405}
   taskbar: {fileID: 1896683730}
+  masterVol: {fileID: 125890451763728988}
+  meowVol: {fileID: 2894160259212386008}
+  attentionVol: {fileID: 6502200259027690774}
   pixelCount: {fileID: 1908520391}
+  masterMix: {fileID: 24100000, guid: 9a2d082c3a63d3f43a906d23a2867908, type: 2}
 --- !u!1 &1896683728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,8 +3596,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1064415231976785230}
   m_HandleRect: {fileID: 3886665384357684543}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -4368,8 +4369,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 6091721160681164424}
   m_HandleRect: {fileID: 3487177287970856609}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -5444,8 +5445,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1440071437426560808}
   m_HandleRect: {fileID: 6788050274090305626}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -6140,7 +6141,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1888023279}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: ToggleLaunchDesktopMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!224 &8487947754644929958
 RectTransform:

@@ -452,6 +452,21 @@ MonoBehaviour:
   taskbar: {fileID: 0}
   cat: {fileID: 0}
   catAnim: {fileID: 0}
+  catMeowSource: {fileID: 0}
+  catAttentionSource: {fileID: 0}
+  meowSounds:
+  - {fileID: 8300000, guid: 84f4184845b3621478828db8e017a30e, type: 3}
+  - {fileID: 8300000, guid: 31a031976aa7aad45bc802308ba77d6a, type: 3}
+  - {fileID: 8300000, guid: c69ba2646fef1d24d890b2b741bdd003, type: 3}
+  - {fileID: 8300000, guid: 2b2797f0ad946a94c831c24134acd222, type: 3}
+  attentionSounds:
+  - {fileID: 8300000, guid: 07512cbfbc115384098f969ce8a1e465, type: 3}
+  - {fileID: 8300000, guid: 3b0ce5eda041d214b9802871ea478ca8, type: 3}
+  - {fileID: 8300000, guid: 328a2e1cfac8d7a41807cb658d08f653, type: 3}
+  - {fileID: 8300000, guid: 4a215330927b792479504195dc70c2a7, type: 3}
+  playSounds:
+  - {fileID: 8300000, guid: 52489beb992169c48ad3a321e70336ca, type: 3}
+  - {fileID: 8300000, guid: 002ff6ffd8fda034abe4b8fd037a4b7c, type: 3}
   idleDelay: 15
 --- !u!4 &883869893
 Transform:
@@ -784,7 +799,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1583094272}
+  - {fileID: 883869893}
   - {fileID: 271680775}
   - {fileID: 399156260}
   - {fileID: 820510748}
-  - {fileID: 883869893}
