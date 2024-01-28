@@ -66,7 +66,6 @@ public class DesktopMode : MonoBehaviour
     public void PickNewAction()
     {
         int selectedOption = Random.Range(0, 100);
-        selectedOption = 84;
         Debug.Log(selectedOption);
         //{ SIT, WALK, GREET, SWIPE, AFFECTION, ATTENTION, MEOW, PLAY }
         switch (selectedOption)
@@ -183,7 +182,7 @@ public class DesktopMode : MonoBehaviour
         Debug.Log("Attention");
         catAnim.SetTrigger("Attention");
 
-        int num = Random.Range(1, attentionSounds.Count);
+        int num = Random.Range(0, attentionSounds.Count);
         catAttentionSource.clip = attentionSounds[num];
         catAttentionSource.Play();
 
@@ -220,7 +219,8 @@ public class DesktopMode : MonoBehaviour
         Debug.Log("Play");
         catAnim.SetBool("Play", true);
 
-        int num = Random.Range(1, playSounds.Count);
+        int num = Random.Range(0, playSounds.Count);
+        catAttentionSource.Stop();
         catAttentionSource.clip = playSounds[num];
         catAttentionSource.Play();
 

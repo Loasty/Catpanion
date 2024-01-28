@@ -78,7 +78,7 @@ public class GameData : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-
+        yield return new WaitForSeconds(2f);
         if(savedSettings.launchInDesktopMode && savedCat.type != Enums.CatType.NONE) { sceneLoader.nextSceneName = "GameScene_UnityTransparentApp"; }
         sceneLoader.LoadScene();
     }
