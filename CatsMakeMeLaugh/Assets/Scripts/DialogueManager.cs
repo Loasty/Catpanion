@@ -148,6 +148,7 @@ public class DialogueManager : MonoBehaviour
 
     public void GetReferences()
     {
+        SetSpeed();
         if (AffectionSystem.Instance == null)
         {
             AffectionSystem inst = FindObjectOfType<AffectionSystem>();
@@ -184,6 +185,7 @@ public class DialogueManager : MonoBehaviour
                     //Unsubscribe
                     dialogues[currentIndex - 1].events.specialEventDialogueEnd = null;
                     specialEventOnNext = false;
+                    
                 }
                 ProceedNext();
             }

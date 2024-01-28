@@ -147,6 +147,12 @@ public class GameData : MonoBehaviour
         SaveData();
     }
 
+    public void ChangeCatName(string inName)
+    {
+        savedCat.name = inName;
+        SaveData();
+    }
 
-    
+
+
 }

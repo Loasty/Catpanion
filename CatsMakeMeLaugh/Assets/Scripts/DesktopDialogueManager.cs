@@ -11,7 +11,7 @@ public class DesktopDialogueManager : MonoBehaviour
     public GameObject textboxImage;
     public TextMeshProUGUI textBox;
     public float waitTime;
-
+ 
     public float readInSpeed = 0.06f;
     // Start is called before the first frame update
     void Start()
@@ -35,6 +35,7 @@ public class DesktopDialogueManager : MonoBehaviour
     }
     public IEnumerator ReadText(float speed, string text)
     {
+        
         textboxImage.gameObject.SetActive(true);
         textBox.text = "";
         //Read in gradually

@@ -67,7 +67,7 @@ public class AffectionSystem : MonoBehaviour
         catsDict.TryGetValue(inCatType, out cat);
         if (cats != null) { cat.affectionLevel += val; }
     }
-
+   
 
 
 
