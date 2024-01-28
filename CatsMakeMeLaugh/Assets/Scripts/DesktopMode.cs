@@ -49,7 +49,7 @@ public class DesktopMode : MonoBehaviour
     public void PickNewAction()
     {
         int selectedOption = Random.Range(0, 100);
-        selectedOption = 50;
+        selectedOption = 83;
         Debug.Log(selectedOption);
         //{ SIT, WALK, GREET, SWIPE, AFFECTION, ATTENTION, MEOW, PLAY }
         switch (selectedOption)
@@ -129,6 +129,7 @@ public class DesktopMode : MonoBehaviour
     IEnumerator Greet()
     {
         Debug.Log("Greet");
+        catAnim.SetTrigger("Greet");
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
@@ -136,6 +137,7 @@ public class DesktopMode : MonoBehaviour
     IEnumerator Swipe()
     {
         Debug.Log("Swipe");
+        catAnim.SetTrigger("Swipe");
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
@@ -143,6 +145,12 @@ public class DesktopMode : MonoBehaviour
     IEnumerator Affection()
     {
         Debug.Log("Affection");
+        catAnim.SetTrigger("Affection");
+        while (catAnim.GetCurrentAnimatorStateInfo(0).length >
+           catAnim.GetCurrentAnimatorStateInfo(0).normalizedTime)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
@@ -150,6 +158,7 @@ public class DesktopMode : MonoBehaviour
     IEnumerator Attention()
     {
         Debug.Log("Attention");
+        catAnim.SetTrigger("Attention");
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
@@ -157,6 +166,7 @@ public class DesktopMode : MonoBehaviour
     IEnumerator Meow()
     {
         Debug.Log("MEOW");
+        catAnim.SetTrigger("Meow");
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
@@ -164,6 +174,7 @@ public class DesktopMode : MonoBehaviour
     IEnumerator Play()
     {
         Debug.Log("Play");
+        catAnim.SetBool("Play", true);
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
