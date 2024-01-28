@@ -14,7 +14,7 @@ public class GamePlayLoop : MonoBehaviour
     [SerializeField]
     List<DialogueManager> dialogueManagerLoop;
     public DialogueManager acquiredAffectionOfCat;
-    public Enums.CatType catType;
+    public Enums.CatType catType = Enums.CatType.NONE;
     public DialogueManager beginning;
     public NameCat nameCat;
     CatCharacter cat;
@@ -39,7 +39,7 @@ public class GamePlayLoop : MonoBehaviour
                 inst.SetInstance();
             }
         }
-        beginning.optionSlots = buttons;
+        buttons = AffectionSystem.Instance.optionButtons;
 
     }
     // Update is called once per frame

@@ -24,7 +24,7 @@ public class AffectionSystem : MonoBehaviour
     [SerializeField]
     private static AffectionSystem instance;
 
-
+    public List<OptionsButton> optionButtons = new List<OptionsButton>();
     
    
     // Start is called before the first frame update
@@ -71,7 +71,7 @@ public class AffectionSystem : MonoBehaviour
         catsDict.TryGetValue(inCatType, out cat);
         if (cats != null) { cat.affectionLevel += val; }
     }
-
+    
     
     
    

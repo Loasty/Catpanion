@@ -167,15 +167,15 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        if (LocationManager.Instance == null)
-        {
-            LocationManager inst = FindObjectOfType<LocationManager>();
-            if (inst == null) { Debug.LogError("There needs to be at least ONE Location Manager in the Scene!!"); }
-            else
-            {
-                inst.SetInstance();
-            }
-        }
+        //if (LocationManager.Instance == null)
+        //{
+        //    LocationManager inst = FindObjectOfType<LocationManager>();
+        //    if (inst == null) { Debug.LogError("There needs to be at least ONE Location Manager in the Scene!!"); }
+        //    else
+        //    {
+        //        inst.SetInstance();
+        //    }
+        //}
     }
 
     // Update is called once per frame
@@ -189,10 +189,13 @@ public class DialogueManager : MonoBehaviour
                 if (specialEventOnNext)
                 {
                     if (dialogues[currentIndex - 1] != null && dialogues[currentIndex - 1].events.specialEventDialogueEnd.GetPersistentEventCount() > 0)
+                    {
+                        specialEventOnNext = false;
                         dialogues[currentIndex - 1].events.specialEventDialogueEnd.Invoke();
+                    }
                     ////Unsubscribe
                     //dialogues[currentIndex - 1].events.specialEventDialogueEnd = null;
-                    specialEventOnNext = false;
+                    //specialEventOnNext = false;
                     
                 }
                 ProceedNext();
@@ -202,7 +205,7 @@ public class DialogueManager : MonoBehaviour
                 
                 if (specialEventOnNext)
                 {
-                    dialogues[currentIndex].events.specialEventDialogueEnd.Invoke();
+                    dialogues[currentIndex].events.specialEventDialogueEnd?.Invoke();
                     specialEventOnNext = false;
                 }
                 else
@@ -421,7 +424,7 @@ public class DialogueManager : MonoBehaviour
     public void PermanentTransition(DialogueManager inDialogueManager)
     {
         inDialogueManager.gameObject.SetActive(true);
-        if (currentIndex < dialogues.Count) { prematureDestroy = true; }
+        //if (currentIndex < dialogues.Count) { prematureDestroy = true; }
         GameObject.Destroy(this.gameObject);
     }
 
@@ -516,6 +519,7 @@ public class DialogueManager : MonoBehaviour
         AffectionSystem.Instance.catsDict.TryGetValue(dialogues[eventIndex].catType, out catCharacter);
         
         catCharacter.gamePlayLoop.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
 }
