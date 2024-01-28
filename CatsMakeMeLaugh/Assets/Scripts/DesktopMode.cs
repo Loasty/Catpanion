@@ -49,7 +49,7 @@ public class DesktopMode : MonoBehaviour
     public void PickNewAction()
     {
         int selectedOption = Random.Range(0, 100);
-        selectedOption = 83;
+        selectedOption = 89;
         Debug.Log(selectedOption);
         //{ SIT, WALK, GREET, SWIPE, AFFECTION, ATTENTION, MEOW, PLAY }
         switch (selectedOption)
@@ -146,11 +146,13 @@ public class DesktopMode : MonoBehaviour
     {
         Debug.Log("Affection");
         catAnim.SetTrigger("Affection");
+
         while (catAnim.GetCurrentAnimatorStateInfo(0).length >
            catAnim.GetCurrentAnimatorStateInfo(0).normalizedTime)
         {
             yield return new WaitForEndOfFrame();
         }
+
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
@@ -159,6 +161,13 @@ public class DesktopMode : MonoBehaviour
     {
         Debug.Log("Attention");
         catAnim.SetTrigger("Attention");
+
+        while (catAnim.GetCurrentAnimatorStateInfo(0).length >
+           catAnim.GetCurrentAnimatorStateInfo(0).normalizedTime)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
