@@ -1369,27 +1369,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0.53947914
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0.9861838
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0.409
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0.75485164
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1421,11 +1421,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5530166383529446883, guid: e34ddf8f8a31c4745a3a0ae8f3e209f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

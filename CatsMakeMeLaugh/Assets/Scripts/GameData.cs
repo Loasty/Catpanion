@@ -13,6 +13,16 @@ public class GameData : MonoBehaviour
         public int affectionLevel = 0;
         public bool acquiredCat = false;
     }
+
+    public class SavedSettings
+    {
+        public bool launchInDesktopMode = false;
+        public int taskbarHeight = 0;
+        public float masterVolume = 0;
+        public float meowVolume = 0;
+        public float attentionSeekVolume = 0;
+    }
+
     /////////////
     /// Instance
     /// 
@@ -25,13 +35,6 @@ public class GameData : MonoBehaviour
     /// 
     public bool isSaveDataPresent;
     public bool isInDesktopMode;
-    public bool launchInDesktopMode;
-
-    public int taskbarHeight = 0;
-
-    public float masterVolume;
-    public float meowVolume;
-    public float attentionSeekVolume;
 
     public List<Sprite> emoteSprites;
     public List<GameObject> catPrefabs;
@@ -43,8 +46,10 @@ public class GameData : MonoBehaviour
     public static event JustForMainMenuJoe justForMainMenuJoe;
 
     public SavedCatNonStatic savedCat;
+    public SavedSettings savedSettings;
 
-    public string location;
+    public string saveDataLocation;
+    public string settingsLocation;
 
     private void Awake()
     {
@@ -53,8 +58,8 @@ public class GameData : MonoBehaviour
 
     private void Start()
     {
-        location = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
-
+        saveDataLocation = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
+        settingsLocation = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveSettings.json";
         ////REMOVE THIS AFTER TESTING
         //SavedCat.type = Enums.CatType.WHITE;
 
@@ -66,13 +71,15 @@ public class GameData : MonoBehaviour
     {
         //Enter default values for cat info
         savedCat = new SavedCatNonStatic();
+        savedSettings = new SavedSettings();
 
         LookForSaveData();
         LoadData();
 
+        yield return new WaitForEndOfFrame();
 
         yield return new WaitForSeconds(2f);
-
+        if(savedSettings.launchInDesktopMode && savedCat.type != Enums.CatType.NONE) { sceneLoader.nextSceneName = "GameScene_UnityTransparentApp"; }
         sceneLoader.LoadScene();
     }
 
@@ -97,7 +104,15 @@ public class GameData : MonoBehaviour
         string json = JsonUtility.ToJson(savedCat);
         Debug.Log(json);
 
-        using (StreamWriter write = new StreamWriter(location))
+        using (StreamWriter write = new StreamWriter(saveDataLocation))
+        {
+            write.Write(json);
+        }
+
+        json = JsonUtility.ToJson(savedSettings);
+        Debug.Log(json);
+
+        using (StreamWriter write = new StreamWriter(settingsLocation))
         {
             write.Write(json);
         }
@@ -107,7 +122,7 @@ public class GameData : MonoBehaviour
 
     public void LookForSaveData()
     {
-        if (File.Exists(location))
+        if (File.Exists(saveDataLocation) && File.Exists(settingsLocation))
         {
             Debug.Log("Exists");
 
@@ -123,7 +138,7 @@ public class GameData : MonoBehaviour
     {
         string data = "";
 
-        using (StreamReader read = new StreamReader(location))
+        using (StreamReader read = new StreamReader(saveDataLocation))
         {
             data = read.ReadToEnd();
         }
@@ -133,6 +148,12 @@ public class GameData : MonoBehaviour
         {
             isSaveDataPresent = true;
         }
+
+        using (StreamReader read = new StreamReader(settingsLocation))
+        {
+            data = read.ReadToEnd();
+        }
+        savedSettings = JsonUtility.FromJson<SavedSettings>(data);
     }
 
     public void AcquiredCat(CatCharacter cat)
@@ -155,7 +176,7 @@ public class GameData : MonoBehaviour
         savedCat.name = "";
         savedCat.type = Enums.CatType.NONE;
 
-        SaveData();
+        SaveAndClose();
     }
 
     public void ChangeCatName(string inName)

@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
@@ -22,8 +23,15 @@ public class Settings : MonoBehaviour
     [SerializeField] Transform targetPos;
     public bool isPanelOpen = false;
 
+    [SerializeField] Toggle desktopLaunch;
     [SerializeField] Slider taskbar;
+    [SerializeField] Slider masterVol;
+    [SerializeField] Slider meowVol;
+    [SerializeField] Slider attentionVol;
     [SerializeField] TMP_InputField pixelCount;
+
+
+    [SerializeField] AudioMixer masterMix;
 
     public delegate void OpenSettings();
 
@@ -33,6 +41,7 @@ public class Settings : MonoBehaviour
     {
         if (instance == null) { instance = this; }
         startPos = new Vector2(settingsPanel.transform.position.x, settingsPanel.transform.position.y);
+
     }
 
     private void Start()
@@ -41,6 +50,12 @@ public class Settings : MonoBehaviour
 
         taskbar.maxValue = 1080;
         taskbar.minValue = 0;
+
+        desktopLaunch.isOn = GameData.Instance.savedSettings.launchInDesktopMode;
+        taskbar.value = GameData.Instance.savedSettings.taskbarHeight;
+        masterVol.value = GameData.Instance.savedSettings.masterVolume;
+        meowVol.value = GameData.Instance.savedSettings.meowVolume;
+        attentionVol.value = GameData.Instance.savedSettings.attentionSeekVolume;
     }
 
     public void ToggleSettingsMenu()
@@ -67,22 +82,22 @@ public class Settings : MonoBehaviour
 
     public void ToggleLaunchDesktopMode(bool toggle)
     {
-        GameData.Instance.launchInDesktopMode = toggle;
+        GameData.Instance.savedSettings.launchInDesktopMode = toggle;
     }
 
     public void UpdateTaskbar()
     {
-        pixelCount.text = GameData.Instance.taskbarHeight.ToString();
+        pixelCount.text = GameData.Instance.savedSettings.taskbarHeight.ToString();
 
         if (DesktopMode.Instance != null)
         {
-            DesktopMode.Instance.taskbar.transform.position = new Vector2(DesktopMode.Instance.taskbar.transform.position.x, GameData.Instance.taskbarHeight);
+            DesktopMode.Instance.taskbar.transform.position = new Vector2(DesktopMode.Instance.taskbar.transform.position.x, GameData.Instance.savedSettings.taskbarHeight);
         }
     }
 
     public void AdjustTaskbarLocation(float height)
     {
-        GameData.Instance.taskbarHeight = (int)height;
+        GameData.Instance.savedSettings.taskbarHeight = (int)height;
 
         UpdateTaskbar();
     }
@@ -91,31 +106,34 @@ public class Settings : MonoBehaviour
     {
         if(increase)
         {
-            Mathf.Clamp(GameData.Instance.taskbarHeight + 1, taskbar.minValue, taskbar.maxValue);
+            Mathf.Clamp(GameData.Instance.savedSettings.taskbarHeight + 1, taskbar.minValue, taskbar.maxValue);
         } 
         else
         {
-            Mathf.Clamp(GameData.Instance.taskbarHeight - 1, taskbar.minValue, taskbar.maxValue);
+            Mathf.Clamp(GameData.Instance.savedSettings.taskbarHeight - 1, taskbar.minValue, taskbar.maxValue);
         }
 
-        taskbar.value = GameData.Instance.taskbarHeight;
+        taskbar.value = GameData.Instance.savedSettings.taskbarHeight;
 
         UpdateTaskbar();
     }
 
     public void AdjustMasterVolume(float volume)
     {
-        GameData.Instance.masterVolume = volume;
+        GameData.Instance.savedSettings.masterVolume = volume;
+        masterMix.SetFloat("Master", volume);
     }
 
     public void AdjustMeowVolume(float volume)
     {
-        GameData.Instance.meowVolume = volume;
+        GameData.Instance.savedSettings.meowVolume = volume;
+        masterMix.SetFloat("Meow", volume);
     }
 
     public void AdjustAttentionSeekVolume(float volume)
     {
-        GameData.Instance.attentionSeekVolume = volume;
+        GameData.Instance.savedSettings.attentionSeekVolume = volume;
+        masterMix.SetFloat("Attention", volume);
     }
 
     public void ConfirmResetGameDataPrompt()
@@ -141,6 +159,8 @@ public class Settings : MonoBehaviour
             sceneLoader.unloadPreviousScene = true;
             sceneLoader.LoadScene();
         }
+
+        GameData.Instance.SaveData();
         
     }
 
@@ -154,5 +174,7 @@ public class Settings : MonoBehaviour
         {
             MouseHandler.Instance.LeftObject();
         }
+
+        GameData.Instance.SaveData();
     }
 }

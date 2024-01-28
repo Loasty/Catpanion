@@ -18,6 +18,12 @@ public class DesktopMode : MonoBehaviour
     [SerializeField] GameObject cat;
     [SerializeField] Animator catAnim;
 
+    [SerializeField] AudioSource catMeowSource;
+    [SerializeField] AudioSource catAttentionSource;
+    [SerializeField] List<AudioClip> meowSounds;
+    [SerializeField] List<AudioClip> attentionSounds;
+    [SerializeField] List<AudioClip> playSounds;
+
     [Header("Cat Behavior Valeus")]
     [SerializeField] int idleDelay = 15;
 
@@ -33,6 +39,8 @@ public class DesktopMode : MonoBehaviour
         GameObject spawnCat = GameData.Instance.catPrefabs[(int)GameData.Instance.savedCat.type];
         cat = Instantiate(spawnCat, taskbar.transform);
         catAnim = cat.GetComponent<Animator>();
+        catMeowSource = GameObject.FindGameObjectWithTag("MeowSource").GetComponent<AudioSource>();
+        catAttentionSource = GameObject.FindGameObjectWithTag("AttentionSource").GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -58,7 +66,6 @@ public class DesktopMode : MonoBehaviour
     public void PickNewAction()
     {
         int selectedOption = Random.Range(0, 100);
-        //selectedOption = 89;
         Debug.Log(selectedOption);
         //{ SIT, WALK, GREET, SWIPE, AFFECTION, ATTENTION, MEOW, PLAY }
         switch (selectedOption)
@@ -175,6 +182,10 @@ public class DesktopMode : MonoBehaviour
         Debug.Log("Attention");
         catAnim.SetTrigger("Attention");
 
+        int num = Random.Range(0, attentionSounds.Count);
+        catAttentionSource.clip = attentionSounds[num];
+        catAttentionSource.Play();
+
         while (catAnim.GetCurrentAnimatorStateInfo(0).length >
            catAnim.GetCurrentAnimatorStateInfo(0).normalizedTime)
         {
@@ -189,6 +200,16 @@ public class DesktopMode : MonoBehaviour
     {
         Debug.Log("MEOW");
         catAnim.SetTrigger("Meow");
+        if(GameData.Instance.savedCat.type != Enums.CatType.BLACK)
+        {
+            int num = Random.Range(1, meowSounds.Count);
+            catMeowSource.clip = meowSounds[num];
+            catMeowSource.Play();
+        } 
+        else
+        {
+            catMeowSource.PlayOneShot(meowSounds[0]);
+        }
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
@@ -197,6 +218,12 @@ public class DesktopMode : MonoBehaviour
     {
         Debug.Log("Play");
         catAnim.SetBool("Play", true);
+
+        int num = Random.Range(0, playSounds.Count);
+        catAttentionSource.Stop();
+        catAttentionSource.clip = playSounds[num];
+        catAttentionSource.Play();
+
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
     }
