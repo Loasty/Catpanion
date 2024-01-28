@@ -22,6 +22,11 @@ public class Emote : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+    private void OnEnable()
+    {
         SetEmoteImage();
         StartCoroutine(PlayEmoteEffect());
     }

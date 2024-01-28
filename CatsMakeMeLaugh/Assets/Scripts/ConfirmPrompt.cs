@@ -13,7 +13,7 @@ public class ConfirmPrompt : MonoBehaviour
 
     public void ResetData()
     {
-        GameData.Instance.ClearSaveData();
+        GameData.Instance.DeleteSaveData();
         ClosePrompt();
     }
 

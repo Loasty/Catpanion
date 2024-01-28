@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
@@ -20,7 +22,8 @@ public class Settings : MonoBehaviour
     [SerializeField] Transform targetPos;
     public bool isPanelOpen = false;
 
-    [SerializeField] GameObject taskbar;
+    [SerializeField] Slider taskbar;
+    [SerializeField] TMP_InputField pixelCount;
 
     public delegate void OpenSettings();
 
@@ -36,27 +39,30 @@ public class Settings : MonoBehaviour
     {
         openSettingsMenu += ToggleSettingsMenu;
 
+        taskbar.maxValue = 1080;
+        taskbar.minValue = 0;
     }
 
     public void ToggleSettingsMenu()
     {
         isPanelOpen = true;
         settingsPanel.SetActive(true);
-        StartCoroutine(SlidePanel());
+        StartCoroutine(SlidePanel(targetPos.position, true));
     }
 
-    public IEnumerator SlidePanel()
+    public IEnumerator SlidePanel(Vector2 desiredPos, bool toggle)
     {
         float curTime = 0;
         float delay = 1.5f;
-        while(settingsPanel.transform.position.x - targetPos.position.x >= 0.5f)
+        while(settingsPanel.transform.position.x - desiredPos.x >= 0.5f)
         {
             curTime += 0.05f * Time.deltaTime;
-            settingsPanel.transform.position = Vector2.Lerp(settingsPanel.transform.position, targetPos.position, curTime / delay);
+            settingsPanel.transform.position = Vector2.Lerp(settingsPanel.transform.position, desiredPos, curTime / delay);
             
 
             yield return new WaitForEndOfFrame();
         }
+        settingsPanel.SetActive(toggle);
     }
 
     public void ToggleLaunchDesktopMode(bool toggle)
@@ -64,10 +70,37 @@ public class Settings : MonoBehaviour
         GameData.Instance.launchInDesktopMode = toggle;
     }
 
-    public void AdjustTaskbarLocation(int height)
+    public void UpdateTaskbar()
     {
-        
-        GameData.Instance.taskbarHeight = height;
+        pixelCount.text = GameData.Instance.taskbarHeight.ToString();
+
+        if (DesktopMode.Instance != null)
+        {
+            DesktopMode.Instance.taskbar.transform.position = new Vector2(DesktopMode.Instance.taskbar.transform.position.x, GameData.Instance.taskbarHeight);
+        }
+    }
+
+    public void AdjustTaskbarLocation(float height)
+    {
+        GameData.Instance.taskbarHeight = (int)height;
+
+        UpdateTaskbar();
+    }
+
+    public void AdjustTaskbar(bool increase)
+    {
+        if(increase)
+        {
+            Mathf.Clamp(GameData.Instance.taskbarHeight + 1, taskbar.minValue, taskbar.maxValue);
+        } 
+        else
+        {
+            Mathf.Clamp(GameData.Instance.taskbarHeight - 1, taskbar.minValue, taskbar.maxValue);
+        }
+
+        taskbar.value = GameData.Instance.taskbarHeight;
+
+        UpdateTaskbar();
     }
 
     public void AdjustMasterVolume(float volume)
@@ -115,12 +148,11 @@ public class Settings : MonoBehaviour
     {
         isPanelOpen = false;
         settingsPanel.transform.position = new Vector2(startPos.x, startPos.y);
+        StartCoroutine(SlidePanel(startPos, false));
         
         if(MouseHandler.Instance != null)
         {
             MouseHandler.Instance.LeftObject();
         }
-
-        settingsPanel.SetActive(false);
     }
 }

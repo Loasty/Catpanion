@@ -17,19 +17,26 @@ public class MainMenuController : MonoBehaviour
     public GameObject confirmPrompt;
     [SerializeField] TextMeshProUGUI startButtonText;
 
+    [SerializeField] SceneLoader sceneLoader;
+    [SerializeField] string findCatScene = "TeeganDevGrounds";
+    [SerializeField] string desktopModeScene = "GameScene_UnityTransparentApp";
+
     private void Awake()
     {
         if (instance == null) { instance = this; }
+
+        InitializeMenu();
     }
 
     public void InitializeMenu()
     {
-        startButtonText.text = GameData.Instance.isSaveDataPresent ? "Play With Cat" : "Find Your Cat";
+        startButtonText.text = GameData.Instance.savedCat.type != Enums.CatType.NONE ? "Play With Cat" : "Find Your Cat";
+        sceneLoader.nextSceneName = GameData.Instance.savedCat.type != Enums.CatType.NONE ? desktopModeScene : findCatScene;
     }
 
     public void StartGame()
     {
-        
+        sceneLoader.LoadScene();
     }
 
     public void SettingsToggle()

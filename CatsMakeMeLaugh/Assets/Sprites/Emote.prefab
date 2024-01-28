@@ -90,6 +90,7 @@ MonoBehaviour:
   effectOfEmote: 0
   durationOfEffect: 5
   numOfRepeats: 1
+  effectSpeed: 0
   image: {fileID: 7628825305574582534}
   startingPos: {x: 0, y: 0, z: 0}
   topPosPlaceholder: {fileID: 6981962631082058322}
@@ -146,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4621271297890114595
 RectTransform:
   m_ObjectHideFlags: 0
