@@ -108,7 +108,14 @@ public class NameCat : MonoBehaviour
     }
     public void DialogueAfter()
     {
-        
+        gameObject.TryGetComponent(out SceneLoader sceneLoader);
+        if (sceneLoader == null)
+        {
+            sceneLoader = gameObject.AddComponent<SceneLoader>();
+        }
+        sceneLoader.nextSceneName = "MainMenu";
+        sceneLoader.unloadPreviousScene = true;
+        sceneLoader.LoadScene();
     }
     public void BeginNameGag()
     {
