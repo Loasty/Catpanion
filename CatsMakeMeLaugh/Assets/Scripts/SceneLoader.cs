@@ -2,14 +2,13 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] string prevSceneName;
-    [SerializeField] string nextSceneName;
+    [SerializeField] public string nextSceneName;
     public bool isLoading = false;
     public bool unloadPreviousScene = false;
 
@@ -21,7 +20,9 @@ public class SceneLoader : MonoBehaviour
     private IEnumerator LoadSceneAsync()
     {
         isLoading = true;
-        prevSceneName = SceneManager.GetActiveScene().name;
+        int possibleScenes = SceneManager.sceneCount;
+        if(possibleScenes > 1 )
+            prevSceneName = SceneManager.GetSceneAt(1).name;
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(nextSceneName, LoadSceneMode.Additive);
 

@@ -34,6 +34,8 @@ public class GameData : MonoBehaviour
     public bool isInDesktopMode;
     public bool launchInDesktopMode;
 
+    public int taskbarHeight;
+
     public float masterVolume;
     public float meowVolume;
     public float attentionSeekVolume;

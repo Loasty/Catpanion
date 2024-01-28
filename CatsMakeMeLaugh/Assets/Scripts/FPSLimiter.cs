@@ -10,5 +10,6 @@ public class FPSLimiter : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = desiredFPS;
+        Camera.main.clearFlags = CameraClearFlags.SolidColor;
     }
 }

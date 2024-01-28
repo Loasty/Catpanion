@@ -20,10 +20,22 @@ public class Settings : MonoBehaviour
     [SerializeField] Transform targetPos;
     public bool isPanelOpen = false;
 
+    [SerializeField] GameObject taskbar;
+
+    public delegate void OpenSettings();
+
+    public static event OpenSettings openSettingsMenu;
+
     private void Awake()
     {
         if (instance == null) { instance = this; }
         startPos = new Vector2(settingsPanel.transform.position.x, settingsPanel.transform.position.y);
+    }
+
+    private void Start()
+    {
+        openSettingsMenu += ToggleSettingsMenu;
+
     }
 
     public void ToggleSettingsMenu()
@@ -52,6 +64,12 @@ public class Settings : MonoBehaviour
         GameData.Instance.launchInDesktopMode = toggle;
     }
 
+    public void AdjustTaskbarLocation(int height)
+    {
+        
+        GameData.Instance.taskbarHeight = height;
+    }
+
     public void AdjustMasterVolume(float volume)
     {
         GameData.Instance.masterVolume = volume;
@@ -74,14 +92,35 @@ public class Settings : MonoBehaviour
 
     public void MainMenu()
     {
-        MainMenuController.Instance.mainMenuCanvas.SetActive(true);
-        ResetPanelPos();
+        if(MainMenuController.Instance != null)
+        {
+            MainMenuController.Instance.mainMenuCanvas.SetActive(true);
+            ResetPanelPos();
+        }
+        else
+        {
+            gameObject.TryGetComponent(out SceneLoader sceneLoader);
+            if (sceneLoader == null)
+            {
+                sceneLoader = gameObject.AddComponent<SceneLoader>();
+            }
+            sceneLoader.nextSceneName = "MainMenu";
+            sceneLoader.unloadPreviousScene = true;
+            sceneLoader.LoadScene();
+        }
+        
     }
 
     public void ResetPanelPos()
     {
         isPanelOpen = false;
         settingsPanel.transform.position = new Vector2(startPos.x, startPos.y);
+        
+        if(MouseHandler.Instance != null)
+        {
+            MouseHandler.Instance.LeftObject();
+        }
+
         settingsPanel.SetActive(false);
     }
 }
