@@ -58,6 +58,7 @@ public class DesktopMode : MonoBehaviour
     public void PickNewAction()
     {
         int selectedOption = Random.Range(0, 100);
+        //selectedOption = 89;
         Debug.Log(selectedOption);
         //{ SIT, WALK, GREET, SWIPE, AFFECTION, ATTENTION, MEOW, PLAY }
         switch (selectedOption)
@@ -108,25 +109,29 @@ public class DesktopMode : MonoBehaviour
     IEnumerator Walk()
     {
         Debug.Log("Walk");
+        //float width = taskbar.GetComponent<RectTransform>().rect.width;
         float randomX;
         if (cat.transform.position.x > 0)
         {
             //Walk Left
+            //randomX = Random.Range(-(width / 2), 0);
             randomX = Random.Range(-850, 0);
             catAnim.SetTrigger("WalkLeft");
         } 
         else 
         {
             //Walk Right
+            //randomX = Random.Range(0, width/2);
             randomX = Random.Range(0, 850);
             catAnim.SetTrigger("WalkRight");
 
         }
 
-        Vector2 newTargetPos = new Vector2(randomX, cat.transform.position.y);
+        Vector2 newTargetPos = new Vector2(randomX, taskbar.transform.position.y);
 
         while (Vector2.Distance(newTargetPos, cat.transform.position) > 1)
         {
+            newTargetPos = new Vector2(randomX, taskbar.transform.position.y);
             cat.transform.position = Vector2.MoveTowards(cat.transform.position, newTargetPos, .5f);
             yield return new WaitForEndOfFrame();
         }

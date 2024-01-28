@@ -1832,7 +1832,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 540.1232
+  orthographic size: 540.1672
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1995,9 +1995,9 @@ MonoBehaviour:
   catPrefabs:
   - {fileID: 0}
   - {fileID: 6019286157639801497, guid: 458cef7b3da0cb7498c6828c59b707c5, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6019286157639801497, guid: 09fe925a0275c9548a8e652d137f8c3b, type: 3}
+  - {fileID: 6019286157639801497, guid: 50f0cd86cadb8894d9bbd383a5811200, type: 3}
+  - {fileID: 6019286157639801497, guid: 5687588f8def3be44bd7358c6c95678e, type: 3}
   sceneLoader: {fileID: 1473212795}
   location: 
 --- !u!4 &1150176266
