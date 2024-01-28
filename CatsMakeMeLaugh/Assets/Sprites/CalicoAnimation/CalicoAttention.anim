@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: JoeAttention
+  m_Name: CalicoAttention
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -219,11 +219,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1519670444, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+      value: {fileID: -933691403, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
     - time: 0.33333334
-      value: {fileID: 1619894909, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+      value: {fileID: 24246187, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
     - time: 1
-      value: {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+      value: {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -300,9 +300,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1519670444, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
-    - {fileID: 1619894909, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
-    - {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+    - {fileID: -933691403, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
+    - {fileID: 24246187, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
