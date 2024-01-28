@@ -210,6 +210,7 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
+                    
                     Debug.LogError("There is no closing event. Is this intentional?");
                 }
                 EndResponse();
