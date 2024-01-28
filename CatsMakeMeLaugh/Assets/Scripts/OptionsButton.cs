@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,9 +12,23 @@ public class OptionsButton : MonoBehaviour
     public TextMeshProUGUI btnText;
     public DialogueManager instance;
     public int dialogueIndex;
-    
-    
-    
+    public Enums.CatType type = Enums.CatType.NONE;
+    public int relationshipImpact = 0;
+
+
+    private void Awake()
+    {
+        if (AffectionSystem.Instance == null)
+        {
+            AffectionSystem inst = FindObjectOfType<AffectionSystem>();
+            if (inst == null) { Debug.LogError("There needs to be at least ONE Affection System in the Scene!!"); }
+            else
+            {
+                inst.SetInstance();
+            }
+        }
+    }
+
     void Start()
     {
         
@@ -26,6 +41,8 @@ public class OptionsButton : MonoBehaviour
     }
     public void ButtonDown()
     {
+        if (type != Enums.CatType.NONE) { instance.AffectAffection(relationshipImpact, type); }
         instance.OptionsButtonPressed(index, dialogueIndex);
+       
     }
 }

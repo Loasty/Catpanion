@@ -108,22 +108,7 @@ public class NameCat : MonoBehaviour
     }
     public void DialogueAfter()
     {
-        switch (characterCat.type)
-        {
-            case Enums.CatType.WHITE:
-                dialogueWhite.gameObject.SetActive(true);
-                break;
-            case Enums.CatType.BLACK:
-                dialogueBlack.gameObject.SetActive(true);
-                break;
-            case Enums.CatType.CALICO:
-                dialogueCalico.gameObject.SetActive(true);
-                break;
-            case Enums.CatType.TABBY:
-                dialogueTabby.gameObject.SetActive(true);
-                break;
-
-        }
+        
     }
     public void BeginNameGag()
     {

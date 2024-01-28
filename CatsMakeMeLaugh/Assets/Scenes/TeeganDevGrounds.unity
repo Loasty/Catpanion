@@ -349,12 +349,15 @@ MonoBehaviour:
     - OptionName: Pet It
       TransitionToBranch: {fileID: 396481388}
       permanentTransition: 0
+      relationshipImpact: -1
     - OptionName: Let It Sniff Your Hand
       TransitionToBranch: {fileID: 639536344}
       permanentTransition: 0
+      relationshipImpact: 1
     - OptionName: Sit Close-By in Companion-able Silence
       TransitionToBranch: {fileID: 2095000040}
       permanentTransition: 0
+      relationshipImpact: 3
     catType: 0
     changeLocation: 0
     location: 0
@@ -453,12 +456,15 @@ MonoBehaviour:
     - OptionName: Give Nothing
       TransitionToBranch: {fileID: 1625737488}
       permanentTransition: 0
+      relationshipImpact: -1
     - OptionName: Give Medium
       TransitionToBranch: {fileID: 520125255}
       permanentTransition: 0
+      relationshipImpact: 3
     - OptionName: Give small
       TransitionToBranch: {fileID: 346932339}
       permanentTransition: 0
+      relationshipImpact: 2
     catType: 0
     changeLocation: 0
     location: 0
@@ -506,7 +512,6 @@ MonoBehaviour:
   dialogueManagerLoop:
   - {fileID: 505033929}
   - {fileID: 28468181}
-  - {fileID: 1834230138}
   - {fileID: 505033929}
   - {fileID: 28468181}
   - {fileID: 505033929}
@@ -669,106 +674,6 @@ Transform:
   - {fileID: 981208807}
   m_Father: {fileID: 1242737427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &214898564
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 214898565}
-  - component: {fileID: 214898566}
-  m_Layer: 0
-  m_Name: BedBranch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &214898565
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214898564}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200.70099, y: 65.4624, z: 4.6030016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 485116293}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &214898566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214898564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271fe3677f943274391e919c7b393117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBoxText: {fileID: 1377991282}
-  speakerNameTextBox: {fileID: 1783688568}
-  textBoxImage: {fileID: 1125996502}
-  speakerBoxImage: {fileID: 1369832971}
-  spriteLocation: {fileID: 0}
-  normalSpeed: 0.06
-  slowSpeed: 0.3
-  verySlowSpeed: 0.6
-  fastSpeed: 0.03
-  veryFastSpeed: 0.01
-  canContinue: 1
-  readInProgress: 0
-  destroyOnComplete: 0
-  specialEventOnNext: 0
-  lastDialogue: 0
-  prematureDestroy: 0
-  returning: 0
-  resetIndexOnClose: 1
-  disableUIAtEnd: 0
-  proceed: 13
-  dialogues:
-  - speakerName: Do you sleep nearby or close?
-    txt: Test..
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls: []
-    dialogueOptions:
-    - OptionName: Sleep Nearby
-      TransitionToBranch: {fileID: 322377023}
-      permanentTransition: 0
-    - OptionName: Sleep Close
-      TransitionToBranch: {fileID: 1191383046}
-      permanentTransition: 0
-    catType: 0
-    changeLocation: 0
-    location: 0
-  spriteSlots:
-  - {fileID: 6515947836928532871}
-  - {fileID: 426440740}
-  - {fileID: 861257106}
-  - {fileID: 309571729}
-  optionSlots:
-  - {fileID: 1810851875}
-  - {fileID: 1882764675}
-  - {fileID: 1659839218}
-  - {fileID: 1432654904}
-  returnTo: {fileID: 0}
-  eventIndex: 0
 --- !u!1 &224534772
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,11 +778,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: It provides you esteemed disappointment.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 1619894909, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -885,19 +791,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1361974945}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -913,129 +807,6 @@ MonoBehaviour:
   - {fileID: 1659839218}
   - {fileID: 1432654904}
   returnTo: {fileID: 620336183}
-  eventIndex: 0
---- !u!1 &237002480
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 237002481}
-  - component: {fileID: 237002482}
-  m_Layer: 0
-  m_Name: Focus On Getting Inside Barn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &237002481
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237002480}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -727.701, y: -430.5376, z: -5.3969984}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1183997731}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &237002482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237002480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271fe3677f943274391e919c7b393117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBoxText: {fileID: 1377991282}
-  speakerNameTextBox: {fileID: 1783688568}
-  textBoxImage: {fileID: 1125996502}
-  speakerBoxImage: {fileID: 1369832971}
-  spriteLocation: {fileID: 0}
-  normalSpeed: 0.06
-  slowSpeed: 0.3
-  verySlowSpeed: 0.6
-  fastSpeed: 0.03
-  veryFastSpeed: 0.01
-  canContinue: 1
-  readInProgress: 0
-  destroyOnComplete: 1
-  specialEventOnNext: 0
-  lastDialogue: 0
-  prematureDestroy: 0
-  returning: 0
-  resetIndexOnClose: 1
-  disableUIAtEnd: 0
-  proceed: 13
-  dialogues:
-  - speakerName: 
-    txt: The Tabby cat looks at you.
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls: []
-    dialogueOptions: []
-    catType: 0
-    changeLocation: 0
-    location: 0
-  - speakerName: 
-    txt: ....
-    boxColor: {r: 0, g: 0, b: 0, a: 0}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 237002482}
-            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TransitionToGameplayLoopAtEnd
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    dialogueOptions: []
-    catType: 2
-    changeLocation: 0
-    location: 0
-  spriteSlots:
-  - {fileID: 6515947836928532871}
-  - {fileID: 426440740}
-  - {fileID: 861257106}
-  - {fileID: 309571729}
-  optionSlots:
-  - {fileID: 1810851875}
-  - {fileID: 1882764675}
-  - {fileID: 1659839218}
-  - {fileID: 1432654904}
-  returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &242052979
 GameObject:
@@ -1223,19 +994,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1242737426}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -1352,11 +1111,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The tabby cat eats up it's portion quickly!
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: -399981555, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -1364,19 +1124,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -1633,8 +1381,8 @@ MonoBehaviour:
     catType: 0
     changeLocation: 0
     location: 0
-  - speakerName: The cat swipes at you!
-    txt: Mrrw!
+  - speakerName: 
+    txt: The cat swipes at you!
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites:
@@ -1646,13 +1394,25 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 396481388}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: affection
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: -2
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
     dialogueOptions: []
     catType: 0
     changeLocation: 0
     location: 0
-  - speakerName: It runs away in fear!
-    txt: 
+  - speakerName: 
+    txt: It runs away in fear!
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites:
@@ -1669,8 +1429,8 @@ MonoBehaviour:
     catType: 0
     changeLocation: 0
     location: 0
-  - speakerName: You've gotten less close to the cat..
-    txt: 
+  - speakerName: 
+    txt: You've gotten less close to the cat..
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites:
@@ -1729,7 +1489,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 876743455}
-  - {fileID: 2058017703}
   - {fileID: 109879274}
   m_Father: {fileID: 1361974946}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1828,8 +1587,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 608213235}
-  - {fileID: 1367038891}
-  - {fileID: 504186446}
   m_Father: {fileID: 1205536414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &420861976
@@ -2010,7 +1767,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1594845653}
-  - {fileID: 648219437}
   - {fileID: 1833467145}
   m_Father: {fileID: 189811661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2079,8 +1835,56 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: MEOW.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1307242907, guid: 652ed7d18c2fe714daaed48e4fae49bb, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 483977085}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: AffectAffectionStart
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: -3
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    dialogueOptions: []
+    catType: 4
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: The cat yowls, and swipes at you!
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: -118895194, guid: 652ed7d18c2fe714daaed48e4fae49bb, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: It runs away from you. It seems you've gotten less close to the cat..
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites: []
@@ -2091,19 +1895,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 189811660}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -2150,7 +1942,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 673881601}
-  - {fileID: 214898565}
   - {fileID: 839614595}
   m_Father: {fileID: 1242737427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2184,7 +1975,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 119116913}
-  - {fileID: 1916365845}
   - {fileID: 1451722530}
   m_Father: {fileID: 1205536414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2311,112 +2101,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1242737427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &504186445
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 504186446}
-  - component: {fileID: 504186447}
-  m_Layer: 0
-  m_Name: SleepNearby
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &504186446
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504186445}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200.70099, y: 65.4624, z: 4.6030016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 420391554}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &504186447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504186445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271fe3677f943274391e919c7b393117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBoxText: {fileID: 1377991282}
-  speakerNameTextBox: {fileID: 1783688568}
-  textBoxImage: {fileID: 1125996502}
-  speakerBoxImage: {fileID: 1369832971}
-  spriteLocation: {fileID: 0}
-  normalSpeed: 0.06
-  slowSpeed: 0.3
-  verySlowSpeed: 0.6
-  fastSpeed: 0.03
-  veryFastSpeed: 0.01
-  canContinue: 1
-  readInProgress: 0
-  destroyOnComplete: 0
-  specialEventOnNext: 0
-  lastDialogue: 0
-  prematureDestroy: 0
-  returning: 0
-  resetIndexOnClose: 1
-  disableUIAtEnd: 0
-  proceed: 13
-  dialogues:
-  - speakerName: Txt
-    txt: Test..
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    dialogueOptions: []
-    catType: 0
-    changeLocation: 0
-    location: 0
-  spriteSlots:
-  - {fileID: 6515947836928532871}
-  - {fileID: 426440740}
-  - {fileID: 861257106}
-  - {fileID: 309571729}
-  optionSlots:
-  - {fileID: 1810851875}
-  - {fileID: 1882764675}
-  - {fileID: 1659839218}
-  - {fileID: 1432654904}
-  returnTo: {fileID: 608213234}
-  eventIndex: 0
 --- !u!1 &505033928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,11 +2409,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The tabby-cat eats up the food quickly.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: -399981555, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -2737,19 +2422,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -2946,7 +2619,7 @@ MonoBehaviour:
   veryFastSpeed: 0.01
   canContinue: 1
   readInProgress: 0
-  destroyOnComplete: 1
+  destroyOnComplete: 0
   specialEventOnNext: 0
   lastDialogue: 0
   prematureDestroy: 0
@@ -2954,7 +2627,474 @@ MonoBehaviour:
   resetIndexOnClose: 1
   disableUIAtEnd: 0
   proceed: 13
-  dialogues: []
+  dialogues:
+  - speakerName: 
+    txt: Your weary legs step out onto a grassy field. Though this field looks like
+      it hasn't been tilled in a very long time, you still hope to find someone.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: It will also be a very long time until someone you know can retrieve you,
+      as your car has abandoned you on a path to nowhere, completely running out
+      of fuel. All you need is a place to stay in the meantime before your friend
+      gets here with a jerry-can.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Thankfully, since you've ended up in farm land, you can offer to be a temporary
+      farmhand in return for housing you.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: You hear footsteps approach, and see a blur rush out from the barn doors
+      ahead of you.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: You feel hope! Finally, another human!
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Meow!
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 2
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: ...Or not.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: ...Or not.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: The cat slow blinks at you, and circles round you, before walking towards
+      the barn.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Meow! Meow!!! Meow!!
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 2
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: You follow it towards the barn, hoping to find a person inside.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: It serenades you the entire walk with its meows. It won't stop meowing!
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: 'At last, you approach the barn doors. You speak a greeting. '
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Your voice reverberates into the dim barn. The warmth from outside subseeds
+      slightly as you pass through the barrier.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: You hear the sound of footsteps approach, but you don't see anyone. The
+      footsteps keep coming, until suddenly, they stop. You still don't see anyone.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1439642343, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 2
+    changeLocation: 0
+    location: 0
+  - speakerName: Four Cats
+    txt: Meow?
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
+    - {fileID: -399981555, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    - {fileID: 366334560, guid: 652ed7d18c2fe714daaed48e4fae49bb, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: It's best to make the most of a weird situation. You will take in one of
+      these cats, and have your friends take in the others.You just need to get close
+      to them.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Will you go for the super affectionate tabby-cat? It should be pretty easy
+      to get close to, but it may be needy.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: -399981555, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 1
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Will you go for the super affectionate tabby-cat? It should be pretty easy
+      to get close to, but it may be needy.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: -399981555, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Will you go for the calm calico cat? It make take it a bit to get used to
+      you, but you're sure that once it gets close to you it will be affectionate.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Will you go for the cautious white cat? It seems to have trust issues, as
+      if humans and other animals have treated it poorly before. It won't be easy
+      to get close to it.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 597084235}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: TemporaryTransition
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 2007689099}
+              m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Will you go for the cautious white cat? It seems to have trust issues, as
+      if humans and other animals have treated it poorly before. It won't be easy
+      to get close to it.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 597084235}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: TemporaryTransition
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 2007689099}
+              m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Will you go for the cautious white cat? It seems to have trust issues, as
+      if humans and other animals have treated it poorly before. It won't be easy
+      to get close to it.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 597084235}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: TemporaryTransition
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 2007689099}
+              m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
   spriteSlots:
   - {fileID: 6515947836928532871}
   - {fileID: 426440740}
@@ -3326,11 +3466,13 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The cat seems confused by your distance.  It rubs into you and you pet it.
+      It seems you've gotten closer to the cat
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 549171761, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -3338,19 +3480,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -3555,11 +3685,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The cat is alright with that, as it has already ate.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -3567,19 +3698,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1242737426}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -3662,11 +3781,42 @@ MonoBehaviour:
   proceed: 13
   dialogues:
   - speakerName: 
-    txt: The cat sniffs your hand.
+    txt: Mrr..
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites:
     - {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 639536344}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: AffectAffectionStart
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 1
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    dialogueOptions: []
+    catType: 1
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: It doesn't seem displeased, but moves way slightly and lays down on the
+      ground.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 1069574648, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -3762,106 +3912,6 @@ Transform:
   - {fileID: 687074953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &648219436
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 648219437}
-  - component: {fileID: 648219438}
-  m_Layer: 0
-  m_Name: BedBranch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &648219437
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648219436}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200.70099, y: 65.4624, z: 4.6030016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 470093368}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &648219438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648219436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271fe3677f943274391e919c7b393117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBoxText: {fileID: 1377991282}
-  speakerNameTextBox: {fileID: 1783688568}
-  textBoxImage: {fileID: 1125996502}
-  speakerBoxImage: {fileID: 1369832971}
-  spriteLocation: {fileID: 0}
-  normalSpeed: 0.06
-  slowSpeed: 0.3
-  verySlowSpeed: 0.6
-  fastSpeed: 0.03
-  veryFastSpeed: 0.01
-  canContinue: 1
-  readInProgress: 0
-  destroyOnComplete: 0
-  specialEventOnNext: 0
-  lastDialogue: 0
-  prematureDestroy: 0
-  returning: 0
-  resetIndexOnClose: 1
-  disableUIAtEnd: 0
-  proceed: 13
-  dialogues:
-  - speakerName: Do you sleep nearby or close?
-    txt: Test..
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls: []
-    dialogueOptions:
-    - OptionName: Sleep Nearby
-      TransitionToBranch: {fileID: 1780532564}
-      permanentTransition: 0
-    - OptionName: Sleep Close
-      TransitionToBranch: {fileID: 1553191048}
-      permanentTransition: 0
-    catType: 0
-    changeLocation: 0
-    location: 0
-  spriteSlots:
-  - {fileID: 6515947836928532871}
-  - {fileID: 426440740}
-  - {fileID: 861257106}
-  - {fileID: 309571729}
-  optionSlots:
-  - {fileID: 1810851875}
-  - {fileID: 1882764675}
-  - {fileID: 1659839218}
-  - {fileID: 1432654904}
-  returnTo: {fileID: 0}
-  eventIndex: 0
 --- !u!1 &657935386
 GameObject:
   m_ObjectHideFlags: 0
@@ -4148,12 +4198,15 @@ MonoBehaviour:
     - OptionName: Give Nothing
       TransitionToBranch: {fileID: 634718220}
       permanentTransition: 0
+      relationshipImpact: 0
     - OptionName: Give Medium
       TransitionToBranch: {fileID: 2009184295}
       permanentTransition: 0
+      relationshipImpact: 4
     - OptionName: Give small
       TransitionToBranch: {fileID: 1076292918}
       permanentTransition: 0
+      relationshipImpact: 2
     catType: 0
     changeLocation: 0
     location: 0
@@ -4672,6 +4725,7 @@ MonoBehaviour:
     - OptionName: Calico
       TransitionToBranch: {fileID: 1796720633}
       permanentTransition: 0
+      relationshipImpact: 0
     catType: 3
     changeLocation: 0
     location: 0
@@ -5105,12 +5159,15 @@ MonoBehaviour:
     - OptionName: Pet It
       TransitionToBranch: {fileID: 1719631556}
       permanentTransition: 0
+      relationshipImpact: 1
     - OptionName: Let It Sniff Your Hand
       TransitionToBranch: {fileID: 1082562846}
       permanentTransition: 0
+      relationshipImpact: 2
     - OptionName: Sit Close-By in Companion-able Silence
       TransitionToBranch: {fileID: 981208808}
       permanentTransition: 0
+      relationshipImpact: 1
     catType: 0
     changeLocation: 0
     location: 0
@@ -5417,12 +5474,15 @@ MonoBehaviour:
     - OptionName: Give Nothing
       TransitionToBranch: {fileID: 228945565}
       permanentTransition: 0
+      relationshipImpact: -2
     - OptionName: Give Medium
       TransitionToBranch: {fileID: 1167323404}
       permanentTransition: 0
+      relationshipImpact: 4
     - OptionName: Give small
       TransitionToBranch: {fileID: 1365558030}
       permanentTransition: 0
+      relationshipImpact: 2
     catType: 0
     changeLocation: 0
     location: 0
@@ -5889,11 +5949,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The calico looks at you funny, but stays next to you companionable.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -5901,19 +5962,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1242737426}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -6257,11 +6306,13 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The cat seems mildly surprised. Eventually, it eats it's portion. You seem
+      to have gotten closer to the cat.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 366334560, guid: 652ed7d18c2fe714daaed48e4fae49bb, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -6497,11 +6548,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The calico slowly eats up the small portion.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -6509,19 +6561,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1242737426}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -6603,11 +6643,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The calico cat sniffs your hand.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -6615,19 +6656,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1242737426}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -6820,11 +6849,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The cat doesn't seemed surprised.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 366334560, guid: 652ed7d18c2fe714daaed48e4fae49bb, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -6832,19 +6862,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 189811660}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -6926,8 +6944,8 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: Prrr, Prrr!
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites: []
@@ -6939,10 +6957,39 @@ MonoBehaviour:
       specialEventDialogueEnd:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
+          - m_Target: {fileID: 1132252468}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: AffectAffectionStart
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 3
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    dialogueOptions: []
+    catType: 2
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: The cat begins to purr happily!
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1132252468}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: AffectAffectionStart
+            m_Mode: 3
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7237,11 +7284,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The cat seems very pleased, and quickly gobbles it down.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -7249,19 +7297,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1361974945}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -7308,8 +7344,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 422179568}
-  - {fileID: 1898084385}
-  - {fileID: 237002481}
   m_Father: {fileID: 640367327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189214423
@@ -7495,19 +7529,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1242737426}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -7556,7 +7578,6 @@ MonoBehaviour:
   dialogueManagerLoop:
   - {fileID: 934421572}
   - {fileID: 657935387}
-  - {fileID: 944198249}
   - {fileID: 934421572}
   - {fileID: 657935387}
   - {fileID: 934421572}
@@ -7674,7 +7695,6 @@ MonoBehaviour:
   dialogueManagerLoop:
   - {fileID: 1304696104}
   - {fileID: 2055840880}
-  - {fileID: 1362943369}
   - {fileID: 1304696104}
   - {fileID: 2055840880}
   - {fileID: 1304696104}
@@ -8358,11 +8378,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: Meow!
+    txt: 
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 1307242907, guid: 652ed7d18c2fe714daaed48e4fae49bb, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -8370,21 +8391,28 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 189811660}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
-    catType: 0
+    catType: 4
+    changeLocation: 0
+    location: 0
+  - speakerName: It fearfully swipes at your hand and runs off. It seems you have
+      gotten less close to the cat..
+    txt: 
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: -118895194, guid: 652ed7d18c2fe714daaed48e4fae49bb, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 4
     changeLocation: 0
     location: 0
   spriteSlots:
@@ -8431,7 +8459,6 @@ MonoBehaviour:
   dialogueManagerLoop:
   - {fileID: 198502196}
   - {fileID: 620336183}
-  - {fileID: 1987859442}
   - {fileID: 198502196}
   - {fileID: 620336183}
   - {fileID: 198502196}
@@ -8636,11 +8663,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The cat savors the very small portion you gave it with silent judgement.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -8648,19 +8676,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1361974945}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -8676,112 +8692,6 @@ MonoBehaviour:
   - {fileID: 1659839218}
   - {fileID: 1432654904}
   returnTo: {fileID: 620336183}
-  eventIndex: 0
---- !u!1 &1367038890
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1367038891}
-  - component: {fileID: 1367038892}
-  m_Layer: 0
-  m_Name: SleepClose
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1367038891
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367038890}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200.70099, y: 65.4624, z: 4.6030016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 420391554}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1367038892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367038890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271fe3677f943274391e919c7b393117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBoxText: {fileID: 1377991282}
-  speakerNameTextBox: {fileID: 1783688568}
-  textBoxImage: {fileID: 1125996502}
-  speakerBoxImage: {fileID: 1369832971}
-  spriteLocation: {fileID: 0}
-  normalSpeed: 0.06
-  slowSpeed: 0.3
-  verySlowSpeed: 0.6
-  fastSpeed: 0.03
-  veryFastSpeed: 0.01
-  canContinue: 1
-  readInProgress: 0
-  destroyOnComplete: 0
-  specialEventOnNext: 0
-  lastDialogue: 0
-  prematureDestroy: 0
-  returning: 0
-  resetIndexOnClose: 1
-  disableUIAtEnd: 0
-  proceed: 13
-  dialogues:
-  - speakerName: Txt
-    txt: Test..
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    dialogueOptions: []
-    catType: 0
-    changeLocation: 0
-    location: 0
-  spriteSlots:
-  - {fileID: 6515947836928532871}
-  - {fileID: 426440740}
-  - {fileID: 861257106}
-  - {fileID: 309571729}
-  optionSlots:
-  - {fileID: 1810851875}
-  - {fileID: 1882764675}
-  - {fileID: 1659839218}
-  - {fileID: 1432654904}
-  returnTo: {fileID: 608213234}
   eventIndex: 0
 --- !u!1 &1368502658
 GameObject:
@@ -9379,12 +9289,15 @@ MonoBehaviour:
     - OptionName: Pet It
       TransitionToBranch: {fileID: 1132252468}
       permanentTransition: 0
+      relationshipImpact: 3
     - OptionName: Let It Sniff Your Hand
       TransitionToBranch: {fileID: 1597661125}
       permanentTransition: 0
+      relationshipImpact: 2
     - OptionName: Sit Close-By in Companion-able Silence
       TransitionToBranch: {fileID: 625908057}
       permanentTransition: 0
+      relationshipImpact: 1
     catType: 0
     changeLocation: 0
     location: 0
@@ -9696,19 +9609,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 189811660}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -9808,12 +9709,15 @@ MonoBehaviour:
     - OptionName: Give Nothing
       TransitionToBranch: {fileID: 1130861702}
       permanentTransition: 0
+      relationshipImpact: -3
     - OptionName: Give Medium
       TransitionToBranch: {fileID: 1930968746}
       permanentTransition: 0
+      relationshipImpact: 3
     - OptionName: Give small
       TransitionToBranch: {fileID: 1057726427}
       permanentTransition: 0
+      relationshipImpact: 2
     catType: 0
     changeLocation: 0
     location: 0
@@ -9894,11 +9798,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: Meow!
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: -399981555, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -9907,18 +9812,37 @@ MonoBehaviour:
       specialEventDialogueEnd:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
+          - m_Target: {fileID: 1597661123}
+            m_TargetAssemblyTypeName: 
+            m_MethodName: 
+            m_Mode: 0
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_ObjectArgumentAssemblyTypeName: 
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+    dialogueOptions: []
+    catType: 2
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: It sniffs your hand and then rubs into it. It seems you've gotten closer
+      to the cat.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: -399981555, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -10000,11 +9924,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: It seems a little disappointed.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: -1471433490, guid: e3ca34ec6e90f7840963885a5e3d0468, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -10012,19 +9937,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -10263,11 +10176,70 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The cat looks up at your hand as you go to pat it, making it difficult for
+      you to pat it. You lower your hand. The cat looks down. You raise your hand.
+      The cat looks up.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: The cat looks up at your hand as you go to pat it, making it difficult for
+      you to pat it. You lower your hand. The cat looks down. You raise your hand.
+      The cat looks up.
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: ....You're not getting anywhere..
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Meow?
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -10276,20 +10248,20 @@ MonoBehaviour:
       specialEventDialogueEnd:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1242737426}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
+          - m_Target: {fileID: 1719631556}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: AffectAffectionStart
+            m_Mode: 3
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
+              m_IntArgument: 2
               m_FloatArgument: 0
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
     dialogueOptions: []
-    catType: 0
+    catType: 3
     changeLocation: 0
     location: 0
   spriteSlots:
@@ -10670,19 +10642,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 189811660}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -11004,19 +10964,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1361974945}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -11208,12 +11156,15 @@ MonoBehaviour:
     - OptionName: Pet It
       TransitionToBranch: {fileID: 483977085}
       permanentTransition: 0
+      relationshipImpact: -3
     - OptionName: Let It Sniff Your Hand
       TransitionToBranch: {fileID: 1339234804}
       permanentTransition: 0
+      relationshipImpact: -2
     - OptionName: Sit Close-By in Companion-able Silence
       TransitionToBranch: {fileID: 2097972615}
       permanentTransition: 0
+      relationshipImpact: 3
     catType: 0
     changeLocation: 0
     location: 0
@@ -11535,19 +11486,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1361974945}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -11580,129 +11519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9f550049f51b44381b39bae4b148fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1898084384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1898084385}
-  - component: {fileID: 1898084386}
-  m_Layer: 0
-  m_Name: Great Cat
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1898084385
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898084384}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -727.701, y: -430.5376, z: -5.3969984}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1183997731}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1898084386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898084384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271fe3677f943274391e919c7b393117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBoxText: {fileID: 1377991282}
-  speakerNameTextBox: {fileID: 1783688568}
-  textBoxImage: {fileID: 1125996502}
-  speakerBoxImage: {fileID: 1369832971}
-  spriteLocation: {fileID: 0}
-  normalSpeed: 0.06
-  slowSpeed: 0.3
-  verySlowSpeed: 0.6
-  fastSpeed: 0.03
-  veryFastSpeed: 0.01
-  canContinue: 1
-  readInProgress: 0
-  destroyOnComplete: 1
-  specialEventOnNext: 0
-  lastDialogue: 0
-  prematureDestroy: 0
-  returning: 0
-  resetIndexOnClose: 1
-  disableUIAtEnd: 0
-  proceed: 13
-  dialogues:
-  - speakerName: 
-    txt: The Tabby cat looks at you.
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls: []
-    dialogueOptions: []
-    catType: 0
-    changeLocation: 0
-    location: 0
-  - speakerName: 
-    txt: ....
-    boxColor: {r: 0, g: 0, b: 0, a: 0}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1898084386}
-            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TransitionToGameplayLoopAtEnd
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    dialogueOptions: []
-    catType: 2
-    changeLocation: 0
-    location: 0
-  spriteSlots:
-  - {fileID: 6515947836928532871}
-  - {fileID: 426440740}
-  - {fileID: 861257106}
-  - {fileID: 309571729}
-  optionSlots:
-  - {fileID: 1810851875}
-  - {fileID: 1882764675}
-  - {fileID: 1659839218}
-  - {fileID: 1432654904}
-  returnTo: {fileID: 0}
-  eventIndex: 0
 --- !u!1 &1903084760
 GameObject:
   m_ObjectHideFlags: 0
@@ -11801,106 +11617,6 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     dialogueOptions: []
-    catType: 0
-    changeLocation: 0
-    location: 0
-  spriteSlots:
-  - {fileID: 6515947836928532871}
-  - {fileID: 426440740}
-  - {fileID: 861257106}
-  - {fileID: 309571729}
-  optionSlots:
-  - {fileID: 1810851875}
-  - {fileID: 1882764675}
-  - {fileID: 1659839218}
-  - {fileID: 1432654904}
-  returnTo: {fileID: 0}
-  eventIndex: 0
---- !u!1 &1916365844
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1916365845}
-  - component: {fileID: 1916365846}
-  m_Layer: 0
-  m_Name: BedBranch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1916365845
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916365844}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200.70099, y: 65.4624, z: 4.6030016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 494851465}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1916365846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916365844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271fe3677f943274391e919c7b393117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBoxText: {fileID: 1377991282}
-  speakerNameTextBox: {fileID: 1783688568}
-  textBoxImage: {fileID: 1125996502}
-  speakerBoxImage: {fileID: 1369832971}
-  spriteLocation: {fileID: 0}
-  normalSpeed: 0.06
-  slowSpeed: 0.3
-  verySlowSpeed: 0.6
-  fastSpeed: 0.03
-  veryFastSpeed: 0.01
-  canContinue: 1
-  readInProgress: 0
-  destroyOnComplete: 0
-  specialEventOnNext: 0
-  lastDialogue: 0
-  prematureDestroy: 0
-  returning: 0
-  resetIndexOnClose: 1
-  disableUIAtEnd: 0
-  proceed: 13
-  dialogues:
-  - speakerName: Do you sleep nearby or close?
-    txt: Test..
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls: []
-    dialogueOptions:
-    - OptionName: Sleep Nearby
-      TransitionToBranch: {fileID: 504186447}
-      permanentTransition: 0
-    - OptionName: Sleep Close
-      TransitionToBranch: {fileID: 1367038892}
-      permanentTransition: 0
     catType: 0
     changeLocation: 0
     location: 0
@@ -12148,11 +11864,13 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The cat seems cautious and paranoid. After a few moments, it decides to
+      chow down on it quickly. You've gotten closer to the cat.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 366334560, guid: 652ed7d18c2fe714daaed48e4fae49bb, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -12160,19 +11878,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 189811660}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -12524,7 +12230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2007689098
 Transform:
   m_ObjectHideFlags: 0
@@ -12564,7 +12270,7 @@ MonoBehaviour:
   veryFastSpeed: 0.01
   canContinue: 1
   readInProgress: 0
-  destroyOnComplete: 1
+  destroyOnComplete: 0
   specialEventOnNext: 0
   lastDialogue: 0
   prematureDestroy: 0
@@ -12573,9 +12279,9 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: (Choose truthfully, this cannot be undone!)
-    txt: 
-    boxColor: {r: 0, g: 0, b: 0, a: 0}
+  - speakerName: 
+    txt: (Choose truthfully, this cannot be undone!)
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites: []
     currentEmote: {fileID: 0}
@@ -12590,9 +12296,9 @@ MonoBehaviour:
     catType: 0
     changeLocation: 0
     location: 0
-  - speakerName: (Well... at least as long as you don't delete your save file.)
-    txt: 
-    boxColor: {r: 0, g: 0, b: 0, a: 0}
+  - speakerName: 
+    txt: (Well... at least as long as you don't delete your save file.)
+    boxColor: {r: 1, g: 1, b: 1, a: 0}
     dialogueSpeed: 0
     sprites: []
     currentEmote: {fileID: 0}
@@ -12607,9 +12313,9 @@ MonoBehaviour:
     catType: 0
     changeLocation: 0
     location: 0
-  - speakerName: (So, with your future save file on the line....)
-    txt: 
-    boxColor: {r: 0, g: 0, b: 0, a: 0}
+  - speakerName: 
+    txt: (So, with your future save file on the line....)
+    boxColor: {r: 1, g: 1, b: 1, a: 0}
     dialogueSpeed: 0
     sprites: []
     currentEmote: {fileID: 0}
@@ -12624,9 +12330,9 @@ MonoBehaviour:
     catType: 0
     changeLocation: 0
     location: 0
-  - speakerName: Who do you choose?
-    txt: 
-    boxColor: {r: 0, g: 0, b: 0, a: 0}
+  - speakerName: 
+    txt: Who do you pick?
+    boxColor: {r: 1, g: 1, b: 1, a: 0}
     dialogueSpeed: 0
     sprites: []
     currentEmote: {fileID: 0}
@@ -12641,15 +12347,19 @@ MonoBehaviour:
     - OptionName: Tabby Cat
       TransitionToBranch: {fileID: 580481622}
       permanentTransition: 1
+      relationshipImpact: 0
     - OptionName: Calico
       TransitionToBranch: {fileID: 767171373}
       permanentTransition: 1
+      relationshipImpact: 0
     - OptionName: White Cat
       TransitionToBranch: {fileID: 1137449626}
       permanentTransition: 1
+      relationshipImpact: 0
     - OptionName: Black Cat
       TransitionToBranch: {fileID: 1051768681}
       permanentTransition: 1
+      relationshipImpact: 0
     catType: 0
     changeLocation: 0
     location: 0
@@ -12730,11 +12440,12 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: It seems pleasantly surprised. It gobbles up the portion with glee.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 695066429, guid: 1204b54586ba3404f9ca6d027c6f5837, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -12742,19 +12453,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1242737426}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -12978,12 +12677,15 @@ MonoBehaviour:
     - OptionName: Pet It
       TransitionToBranch: {fileID: 1132252468}
       permanentTransition: 0
+      relationshipImpact: 0
     - OptionName: Let It Sniff Your Hand
       TransitionToBranch: {fileID: 1597661125}
       permanentTransition: 0
+      relationshipImpact: 0
     - OptionName: Sit Close-By in Companion-able Silence
       TransitionToBranch: {fileID: 625908057}
       permanentTransition: 0
+      relationshipImpact: 0
     catType: 0
     changeLocation: 0
     location: 0
@@ -13134,106 +12836,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1088213103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2058017702
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2058017703}
-  - component: {fileID: 2058017704}
-  m_Layer: 0
-  m_Name: BedBranch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2058017703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058017702}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200.70099, y: 65.4624, z: 4.6030016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 407745297}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2058017704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058017702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271fe3677f943274391e919c7b393117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBoxText: {fileID: 1377991282}
-  speakerNameTextBox: {fileID: 1783688568}
-  textBoxImage: {fileID: 1125996502}
-  speakerBoxImage: {fileID: 1369832971}
-  spriteLocation: {fileID: 0}
-  normalSpeed: 0.06
-  slowSpeed: 0.3
-  verySlowSpeed: 0.6
-  fastSpeed: 0.03
-  veryFastSpeed: 0.01
-  canContinue: 1
-  readInProgress: 0
-  destroyOnComplete: 0
-  specialEventOnNext: 0
-  lastDialogue: 0
-  prematureDestroy: 0
-  returning: 0
-  resetIndexOnClose: 1
-  disableUIAtEnd: 0
-  proceed: 13
-  dialogues:
-  - speakerName: Do you sleep nearby or close?
-    txt: Test..
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls: []
-    dialogueOptions:
-    - OptionName: Sleep Nearby
-      TransitionToBranch: {fileID: 1797733896}
-      permanentTransition: 0
-    - OptionName: Sleep Close
-      TransitionToBranch: {fileID: 1877529515}
-      permanentTransition: 0
-    catType: 0
-    changeLocation: 0
-    location: 0
-  spriteSlots:
-  - {fileID: 6515947836928532871}
-  - {fileID: 426440740}
-  - {fileID: 861257106}
-  - {fileID: 309571729}
-  optionSlots:
-  - {fileID: 1810851875}
-  - {fileID: 1882764675}
-  - {fileID: 1659839218}
-  - {fileID: 1432654904}
-  returnTo: {fileID: 0}
-  eventIndex: 0
 --- !u!1 &2095000038
 GameObject:
   m_ObjectHideFlags: 0
@@ -13304,7 +12906,7 @@ MonoBehaviour:
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites:
-    - {fileID: 0}
+    - {fileID: -1614056072, guid: 6e58693606fc1ef4fbe325f61374e381, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -13312,19 +12914,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1361974945}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -13478,11 +13068,13 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Txt
-    txt: Test..
+  - speakerName: 
+    txt: The cat seems surprised by your lack of initiation. It seems to relax. It
+      seems you've gotten closer.
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
-    sprites: []
+    sprites:
+    - {fileID: 366334560, guid: 652ed7d18c2fe714daaed48e4fae49bb, type: 3}
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
@@ -13490,19 +13082,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 189811660}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0

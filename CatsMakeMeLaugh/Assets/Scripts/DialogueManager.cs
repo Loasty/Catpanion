@@ -39,6 +39,7 @@ public class Options
     public string OptionName;
     public DialogueManager TransitionToBranch;
     public bool permanentTransition;
+    public int relationshipImpact;
 
     
 }
@@ -122,6 +123,7 @@ public class DialogueManager : MonoBehaviour
     private void OnEnable()
     {
         //GetReferences();
+        canContinue = true;
         speakerBoxImage.gameObject.SetActive(true);
         textBoxImage.gameObject.SetActive(true);
         if (!returning) { currentIndex = 0; }
@@ -404,6 +406,7 @@ public class DialogueManager : MonoBehaviour
 
     public void OptionsButtonPressed(int optionsIndex, int dialogueIndex)
     {
+        
         if (dialogues[dialogueIndex].dialogueOptions[optionsIndex].permanentTransition)
         {
             PermanentTransition(dialogues[dialogueIndex].dialogueOptions[optionsIndex].TransitionToBranch);
@@ -426,8 +429,10 @@ public class DialogueManager : MonoBehaviour
     {
         returning = true;
         inDialogueManager.returnTo = this;
+        canContinue = false;
         inDialogueManager.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
+        
 
     }
 
@@ -442,6 +447,7 @@ public class DialogueManager : MonoBehaviour
                 optionSlots[i].index = i;
                 optionSlots[i].instance = this;
                 optionSlots[i].dialogueIndex = inIndex;
+                optionSlots[i].relationshipImpact = inOptions[i].relationshipImpact;
                 optionSlots[i].gameObject.SetActive(true);
             }
         }
@@ -495,9 +501,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void AffectAffectionEnd(int val)
+    public void AffectAffection(int val, Enums.CatType cat)
     {
-        AffectionSystem.Instance.ModifyAffectionPoints(val, dialogues[currentIndex - 1].catType);
+        AffectionSystem.Instance.ModifyAffectionPoints(val, cat);
     }
     public void AffectAffectionStart(int val)
     {
@@ -508,6 +514,7 @@ public class DialogueManager : MonoBehaviour
     {
         CatCharacter catCharacter;
         AffectionSystem.Instance.catsDict.TryGetValue(dialogues[eventIndex].catType, out catCharacter);
+        
         catCharacter.gamePlayLoop.gameObject.SetActive(true);
     }
 

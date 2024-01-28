@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GamePlayLoop : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class GamePlayLoop : MonoBehaviour
     public GameObject speakerBox;
     public GameObject uiBox;
 
+    public int maxRepeats = 30;
+
+    List<OptionsButton> buttons = new List<OptionsButton>();
+
 
     // Start is called before the first frame update
     void Awake()
@@ -34,7 +39,7 @@ public class GamePlayLoop : MonoBehaviour
                 inst.SetInstance();
             }
         }
-
+        beginning.optionSlots = buttons;
 
     }
     // Update is called once per frame
@@ -45,10 +50,19 @@ public class GamePlayLoop : MonoBehaviour
     private void OnEnable()
     {
         currentIndex = 0;
+        SetUpButtons();
         dialogueManagerLoop[currentIndex].gameObject.SetActive(true);
 
     }
     
+    
+    public void SetUpButtons()
+    {
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttons[i].type = cat.type;
+        }
+    }
 
     public void UIOn()
     {
