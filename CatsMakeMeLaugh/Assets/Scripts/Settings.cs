@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,7 @@ public class Settings : MonoBehaviour
     public bool isPanelOpen = false;
 
     [SerializeField] Slider taskbar;
+    [SerializeField] TMP_InputField pixelCount;
 
     public delegate void OpenSettings();
 
@@ -37,7 +39,8 @@ public class Settings : MonoBehaviour
     {
         openSettingsMenu += ToggleSettingsMenu;
 
-        taskbar.maxValue = Screen.height;
+        taskbar.maxValue = 1080;
+        taskbar.minValue = 0;
     }
 
     public void ToggleSettingsMenu()
@@ -67,10 +70,37 @@ public class Settings : MonoBehaviour
         GameData.Instance.launchInDesktopMode = toggle;
     }
 
-    public void AdjustTaskbarLocation(int height)
+    public void UpdateTaskbar()
     {
-        
-        GameData.Instance.taskbarHeight = height;
+        pixelCount.text = GameData.Instance.taskbarHeight.ToString();
+
+        if (DesktopMode.Instance != null)
+        {
+            DesktopMode.Instance.taskbar.transform.position = new Vector2(DesktopMode.Instance.taskbar.transform.position.x, GameData.Instance.taskbarHeight);
+        }
+    }
+
+    public void AdjustTaskbarLocation(float height)
+    {
+        GameData.Instance.taskbarHeight = (int)height;
+
+        UpdateTaskbar();
+    }
+
+    public void AdjustTaskbar(bool increase)
+    {
+        if(increase)
+        {
+            Mathf.Clamp(GameData.Instance.taskbarHeight + 1, taskbar.minValue, taskbar.maxValue);
+        } 
+        else
+        {
+            Mathf.Clamp(GameData.Instance.taskbarHeight - 1, taskbar.minValue, taskbar.maxValue);
+        }
+
+        taskbar.value = GameData.Instance.taskbarHeight;
+
+        UpdateTaskbar();
     }
 
     public void AdjustMasterVolume(float volume)

@@ -267,6 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 563076770}
   - component: {fileID: 563076769}
+  - component: {fileID: 563076771}
   m_Layer: 0
   m_Name: MainMenuController
   m_TagString: Untagged
@@ -289,6 +290,9 @@ MonoBehaviour:
   mainMenuCanvas: {fileID: 4351145454885688456}
   confirmPrompt: {fileID: 2021956336}
   startButtonText: {fileID: 8483984749608987453}
+  sceneLoader: {fileID: 563076771}
+  findCatScene: TeeganDevGrounds
+  desktopModeScene: GameScene_UnityTransparentApp
 --- !u!4 &563076770
 Transform:
   m_ObjectHideFlags: 0
@@ -304,6 +308,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &563076771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563076768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fea26d273909d4788ee06424831749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prevSceneName: 
+  nextSceneName: 
+  isLoading: 0
+  unloadPreviousScene: 1
 --- !u!1 &701169791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,7 +1618,6 @@ GameObject:
   - component: {fileID: 4102598652151716156}
   - component: {fileID: 4663098579487570103}
   - component: {fileID: 3943369592359683188}
-  - component: {fileID: 8369784419533304174}
   m_Layer: 5
   m_Name: StartGame
   m_TagString: Untagged
@@ -1755,9 +1774,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8369784419533304174}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 563076769}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2195,22 +2214,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: -0.55999756, y: 0}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &8369784419533304174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3535024907444574953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fea26d273909d4788ee06424831749, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prevSceneName: 
-  nextSceneName: GameScene_UnityTransparentApp
-  isLoading: 0
-  unloadPreviousScene: 1
 --- !u!114 &8483984749608987453
 MonoBehaviour:
   m_ObjectHideFlags: 0

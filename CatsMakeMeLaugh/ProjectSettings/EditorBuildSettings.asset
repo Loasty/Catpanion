@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene_UnityTransparentApp.unity
     guid: 442dde0f4834f0d49b1ef085d2431075
+  - enabled: 1
+    path: Assets/Scenes/TeeganDevGrounds.unity
+    guid: 9e7da4fcc3215744a9e4e1335418b159
   m_configObjects: {}

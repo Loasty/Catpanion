@@ -6,7 +6,15 @@ using UnityEngine.UI;
 
 public class DesktopMode : MonoBehaviour
 {
-    [SerializeField] GameObject taskbar;
+    /////////////
+    /// Instance
+    /// 
+    private static DesktopMode instance;
+
+    public static DesktopMode Instance { get { return instance; } }
+
+
+    public GameObject taskbar;
     [SerializeField] GameObject cat;
     [SerializeField] Animator catAnim;
 
@@ -15,13 +23,14 @@ public class DesktopMode : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null) instance = this;
         taskbar = GameObject.FindGameObjectWithTag("Taskbar");
         LoadCatData();
     }
 
     public void LoadCatData()
     {
-        GameObject spawnCat = GameData.Instance.catPrefabs[(int)GameData.SavedCat.type];
+        GameObject spawnCat = GameData.Instance.catPrefabs[(int)GameData.Instance.savedCat.type];
         cat = Instantiate(spawnCat, taskbar.transform);
         catAnim = cat.GetComponent<Animator>();
     }
@@ -49,7 +58,6 @@ public class DesktopMode : MonoBehaviour
     public void PickNewAction()
     {
         int selectedOption = Random.Range(0, 100);
-        selectedOption = 89;
         Debug.Log(selectedOption);
         //{ SIT, WALK, GREET, SWIPE, AFFECTION, ATTENTION, MEOW, PLAY }
         switch (selectedOption)

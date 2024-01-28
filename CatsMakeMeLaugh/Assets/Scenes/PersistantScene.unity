@@ -699,7 +699,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 322201712}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1888023279}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: AdjustTaskbar
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &322201712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,6 +1737,7 @@ GameObject:
   - component: {fileID: 938526953}
   - component: {fileID: 938526952}
   - component: {fileID: 938526951}
+  - component: {fileID: 938526955}
   m_Layer: 0
   m_Name: MainCam
   m_TagString: MainCamera
@@ -1819,7 +1832,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 500
+  orthographic size: 540.1232
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1844,12 +1857,25 @@ Transform:
   m_GameObject: {fileID: 938526950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 960, y: 540, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &938526955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938526950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088184d5ba0b27f49ba2ca529e1e4741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneWidth: 1920
 --- !u!1 &1036918510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,7 +2269,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1439023463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1888023279}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: AdjustTaskbar
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1439023463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2915,6 +2953,7 @@ MonoBehaviour:
   targetPos: {fileID: 262549448}
   isPanelOpen: 0
   taskbar: {fileID: 1896683730}
+  pixelCount: {fileID: 1908520391}
 --- !u!1 &1896683728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3004,7 +3043,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1888023279}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: AdjustTaskbarLocation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1908520389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,7 +3134,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1908520392}
   m_TextViewport: {fileID: 2111804316}
   m_TextComponent: {fileID: 2055198289}
@@ -4078,7 +4129,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.3
+  m_fontSize: 31.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4570,7 +4621,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.3
+  m_fontSize: 31.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4760,7 +4811,7 @@ Canvas:
   m_GameObject: {fileID: 1743921661067897396}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -5299,7 +5350,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.3
+  m_fontSize: 31.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

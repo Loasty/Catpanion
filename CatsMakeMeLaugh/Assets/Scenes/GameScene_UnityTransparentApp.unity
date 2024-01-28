@@ -452,6 +452,7 @@ MonoBehaviour:
   taskbar: {fileID: 0}
   cat: {fileID: 0}
   catAnim: {fileID: 0}
+  idleDelay: 15
 --- !u!4 &883869893
 Transform:
   m_ObjectHideFlags: 0
