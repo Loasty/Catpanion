@@ -212,6 +212,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &28468182
@@ -259,7 +260,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 934421573}
-  - {fileID: 2052850728}
   - {fileID: 1132252467}
   - {fileID: 1597661124}
   - {fileID: 625908056}
@@ -371,6 +371,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &119116912
@@ -506,6 +507,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &189811659
@@ -545,7 +547,7 @@ MonoBehaviour:
   - {fileID: 505033929}
   - {fileID: 1663550703}
   - {fileID: 1535573529}
-  acquiredAffectionOfCat: {fileID: 2032788894}
+  acquiredAffectionOfCat: {fileID: 0}
   catType: 4
   beginning: {fileID: 0}
   nameCat: {fileID: 1293937788}
@@ -692,6 +694,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &198502197
@@ -876,6 +879,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 620336183}
   eventIndex: 0
 --- !u!1 &242052979
@@ -1079,6 +1083,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 1285715356}
   eventIndex: 0
 --- !u!1 &325705195
@@ -1197,11 +1202,11 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 346932339}
             m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TemporaryTransition
-            m_Mode: 2
+            m_MethodName: ReturnTo
+            m_Mode: 1
             m_Arguments:
-              m_ObjectArgument: {fileID: 657935387}
-              m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
@@ -1221,6 +1226,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 657935387}
   eventIndex: 0
 --- !u!1 &349490888
@@ -1363,6 +1369,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &395687254
@@ -1551,6 +1558,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 198502196}
   eventIndex: 0
 --- !u!1 &407745296
@@ -1636,21 +1644,25 @@ MonoBehaviour:
     affectionLevel: 0
     color: {r: 1, g: 1, b: 1, a: 1}
     gamePlayLoop: {fileID: 1361974945}
+    nameGag: {fileID: 1293937788}
   - Name: Tabby Cat
     type: 2
     affectionLevel: 0
     color: {r: 1, g: 0.48260385, b: 0.22075468, a: 1}
     gamePlayLoop: {fileID: 1205536413}
+    nameGag: {fileID: 1293937788}
   - Name: Calico Cat
     type: 3
     affectionLevel: 0
     color: {r: 0.98823535, g: 0.86666673, b: 0.7176471, a: 1}
     gamePlayLoop: {fileID: 1242737426}
+    nameGag: {fileID: 1293937788}
   - Name: Black Cat
     type: 4
     affectionLevel: 0
     color: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
     gamePlayLoop: {fileID: 189811660}
+    nameGag: {fileID: 1293937788}
   optionButtons:
   - {fileID: 1810851875}
   - {fileID: 1882764675}
@@ -2009,6 +2021,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 505033929}
   eventIndex: 0
 --- !u!1 &485116292
@@ -2169,6 +2182,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &500774698
@@ -2304,6 +2318,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &505033930
@@ -2347,7 +2362,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,11 +2554,11 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 520125255}
             m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TemporaryTransition
-            m_Mode: 2
+            m_MethodName: ReturnTo
+            m_Mode: 1
             m_Arguments:
-              m_ObjectArgument: {fileID: 657935387}
-              m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
@@ -2563,6 +2578,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 657935387}
   eventIndex: 0
 --- !u!1 &580481620
@@ -2631,23 +2647,6 @@ MonoBehaviour:
   proceed: 13
   dialogues:
   - speakerName: 
-    txt: You look down at the tabby-cat near your feet.
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls: []
-    dialogueOptions: []
-    catType: 0
-    changeLocation: 0
-    location: 0
-  - speakerName: 
     txt: ....
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
@@ -2663,7 +2662,7 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 580481622}
             m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TransitionToGameplayLoopAtEnd
+            m_MethodName: AcquireTabby
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -2687,6 +2686,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &597084233
@@ -3231,6 +3231,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &608213233
@@ -3322,6 +3323,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &608213235
@@ -3510,6 +3512,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &620336184
@@ -3606,7 +3609,19 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 625908057}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: ReturnTo
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -3621,6 +3636,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 934421572}
   eventIndex: 0
 --- !u!1 &630467552
@@ -3715,6 +3731,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &630467554
@@ -3825,6 +3842,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 2055840880}
   eventIndex: 0
 --- !u!1 &639536342
@@ -3988,6 +4006,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 198502196}
   eventIndex: 0
 --- !u!1 &640367326
@@ -4086,14 +4105,60 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions: []
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: Do you give a small portion of your food, a medium portion, or give nothing?
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions:
+    - OptionName: Give Nothing
+      TransitionToBranch: {fileID: 1625737488}
+      permanentTransition: 0
+      relationshipImpact: -1
+    - OptionName: Give Medium
+      TransitionToBranch: {fileID: 520125255}
+      permanentTransition: 0
+      relationshipImpact: 3
+    - OptionName: Give small
+      TransitionToBranch: {fileID: 346932339}
+      permanentTransition: 0
+      relationshipImpact: 2
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: What to do now...
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 657935387}
-            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TemporaryTransition
-            m_Mode: 2
+          - m_Target: {fileID: 1293937788}
+            m_TargetAssemblyTypeName: NameCat, Assembly-CSharp
+            m_MethodName: BeginNameGag
+            m_Mode: 1
             m_Arguments:
-              m_ObjectArgument: {fileID: 119116914}
-              m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
@@ -4113,6 +4178,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &657935388
@@ -4332,6 +4398,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &687074952
@@ -4668,23 +4735,6 @@ MonoBehaviour:
   proceed: 13
   dialogues:
   - speakerName: 
-    txt: You look over at the calico laying in the sun.
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls: []
-    dialogueOptions: []
-    catType: 0
-    changeLocation: 0
-    location: 0
-  - speakerName: 
     txt: ....
     boxColor: {r: 0, g: 0, b: 0.16862746, a: 0}
     dialogueSpeed: 0
@@ -4700,7 +4750,7 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 767171373}
             m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TransitionToGameplayLoopAtEnd
+            m_MethodName: AcquireCalicoCat
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -4724,6 +4774,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &776681884
@@ -4961,6 +5012,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &776681886
@@ -5293,6 +5345,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &842619286
@@ -5683,6 +5736,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &915841623
@@ -5815,25 +5869,44 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2052850727}
-            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TemporaryTransition
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 2052850729}
-              m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
     location: 0
   - speakerName: 
-    txt: ...
+    txt: Do you pet the cat, or do you let it sniff your hand first, or do you sit
+      down where you are or do you stay near the cat and let it do what it wants
+      near you?
+    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    dialogueSpeed: 0
+    sprites: []
+    currentEmote: {fileID: 0}
+    events:
+      specialEventOpen:
+        m_PersistentCalls:
+          m_Calls: []
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
+    dialogueOptions:
+    - OptionName: Pet It
+      TransitionToBranch: {fileID: 1132252468}
+      permanentTransition: 0
+      relationshipImpact: 3
+    - OptionName: Let It Sniff Your Hand
+      TransitionToBranch: {fileID: 1597661125}
+      permanentTransition: 0
+      relationshipImpact: 2
+    - OptionName: Sit Close-By in Companion-able Silence
+      TransitionToBranch: {fileID: 625908057}
+      permanentTransition: 0
+      relationshipImpact: 2
+    catType: 0
+    changeLocation: 0
+    location: 0
+  - speakerName: 
+    txt: What to do now..
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites: []
@@ -5871,6 +5944,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &934421573
@@ -5977,6 +6051,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &944198250
@@ -6087,6 +6162,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 1304696104}
   eventIndex: 0
 --- !u!1 &992301433
@@ -6305,7 +6381,19 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 1051768681}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: AcquireBlackCat
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -6350,6 +6438,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &1057726425
@@ -6458,6 +6547,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 28468181}
   eventIndex: 0
 --- !u!1 &1076039705
@@ -6687,6 +6777,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 2055840880}
   eventIndex: 0
 --- !u!1 &1082562844
@@ -6794,6 +6885,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 1304696104}
   eventIndex: 0
 --- !u!1 &1088213102
@@ -7000,6 +7092,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 28468181}
   eventIndex: 0
 --- !u!1 &1132252466
@@ -7111,8 +7204,8 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 1132252468}
             m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: AffectAffectionStart
-            m_Mode: 3
+            m_MethodName: ReturnTo
+            m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7135,6 +7228,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 934421572}
   eventIndex: 0
 --- !u!1 &1134124504
@@ -7295,7 +7389,19 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 1137449626}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: AcquireWhite
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -7310,6 +7416,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &1167323402
@@ -7405,6 +7512,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 620336183}
   eventIndex: 0
 --- !u!1 &1183997730
@@ -7528,6 +7636,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1189214425
@@ -7637,6 +7746,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 1285715356}
   eventIndex: 0
 --- !u!1 &1205536412
@@ -7671,12 +7781,7 @@ MonoBehaviour:
   dialogueManagerLoop:
   - {fileID: 934421572}
   - {fileID: 657935387}
-  - {fileID: 934421572}
-  - {fileID: 657935387}
-  - {fileID: 934421572}
-  - {fileID: 608213234}
-  - {fileID: 395687253}
-  acquiredAffectionOfCat: {fileID: 1860159815}
+  acquiredAffectionOfCat: {fileID: 1293937786}
   catType: 2
   beginning: {fileID: 0}
   nameCat: {fileID: 1293937788}
@@ -7794,7 +7899,7 @@ MonoBehaviour:
   - {fileID: 1304696104}
   - {fileID: 1285715356}
   - {fileID: 1189214424}
-  acquiredAffectionOfCat: {fileID: 500774697}
+  acquiredAffectionOfCat: {fileID: 0}
   catType: 3
   beginning: {fileID: 0}
   nameCat: {fileID: 1293937788}
@@ -8009,6 +8114,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1285715357
@@ -8094,6 +8200,7 @@ MonoBehaviour:
     affectionLevel: 0
     color: {r: 0, g: 0, b: 0, a: 0}
     gamePlayLoop: {fileID: 0}
+    nameGag: {fileID: 0}
   inputField: {fileID: 824772443}
   textBox: {fileID: 1775397567}
   button: {fileID: 842619288}
@@ -8314,6 +8421,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1304696105
@@ -8443,6 +8551,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 505033929}
   eventIndex: 0
 --- !u!1 &1361974944
@@ -8482,7 +8591,7 @@ MonoBehaviour:
   - {fileID: 198502196}
   - {fileID: 0}
   - {fileID: 0}
-  acquiredAffectionOfCat: {fileID: 630467553}
+  acquiredAffectionOfCat: {fileID: 0}
   catType: 1
   beginning: {fileID: 0}
   nameCat: {fileID: 1293937788}
@@ -8598,6 +8707,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1362943370
@@ -8708,6 +8818,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 620336183}
   eventIndex: 0
 --- !u!1 &1369832969
@@ -9171,6 +9282,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1433366972
@@ -9243,7 +9355,7 @@ MonoBehaviour:
   fastSpeed: 0.03
   veryFastSpeed: 0.01
   canContinue: 1
-  readInProgress: 0
+  readInProgress: 1
   destroyOnComplete: 0
   specialEventOnNext: 0
   lastDialogue: 1
@@ -9253,10 +9365,10 @@ MonoBehaviour:
   disableUIAtEnd: 0
   proceed: 13
   dialogues:
-  - speakerName: Do you pet the cat, or do you let it sniff your hand first, or do
-      you sit down where you are or do you stay near the cat and let it do what it
-      wants near you?
-    txt: Test..
+  - speakerName: 
+    txt: Do you pet the cat, or do you let it sniff your hand first, or do you sit
+      down where you are or do you stay near the cat and let it do what it wants
+      near you?
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites: []
@@ -9284,10 +9396,8 @@ MonoBehaviour:
     catType: 0
     changeLocation: 0
     location: 0
-  - speakerName: Do you pet the cat, or do you let it sniff your hand first, or do
-      you sit down where you are or do you stay near the cat and let it do what it
-      wants near you?
-    txt: Test..
+  - speakerName: 
+    txt: What to do now..
     boxColor: {r: 1, g: 1, b: 1, a: 1}
     dialogueSpeed: 0
     sprites: []
@@ -9298,19 +9408,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -9325,6 +9423,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &1518264056
@@ -9438,6 +9537,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &1535573528
@@ -9529,6 +9629,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1535573530
@@ -9638,6 +9739,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 1663550703}
   eventIndex: 0
 --- !u!1 &1594845652
@@ -9745,6 +9847,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &1597661123
@@ -9825,19 +9928,7 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1597661123}
-            m_TargetAssemblyTypeName: 
-            m_MethodName: 
-            m_Mode: 0
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: 
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     dialogueOptions: []
     catType: 2
     changeLocation: 0
@@ -9856,7 +9947,19 @@ MonoBehaviour:
           m_Calls: []
       specialEventDialogueEnd:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 1597661125}
+            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+            m_MethodName: ReturnTo
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -9871,6 +9974,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 934421572}
   eventIndex: 0
 --- !u!1 &1625737486
@@ -9954,11 +10058,11 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 1625737488}
             m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TemporaryTransition
-            m_Mode: 2
+            m_MethodName: ReturnTo
+            m_Mode: 1
             m_Arguments:
-              m_ObjectArgument: {fileID: 657935387}
-              m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
@@ -9978,6 +10082,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 657935387}
   eventIndex: 0
 --- !u!1 &1629900764
@@ -10120,6 +10225,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1663550704
@@ -10300,6 +10406,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 1304696104}
   eventIndex: 0
 --- !u!1 &1748601359
@@ -10683,6 +10790,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 1663550703}
   eventIndex: 0
 --- !u!1 &1783688566
@@ -10896,6 +11004,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1796720634
@@ -11139,6 +11248,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &1834230137
@@ -11230,6 +11340,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1834230139
@@ -11298,33 +11409,30 @@ MonoBehaviour:
   proceed: 13
   dialogues:
   - speakerName: 
-    txt: You wake up to the cuddling with you. You have won it's affection. That
-      very day, your friend shows up with a jerry can. You manage to get all the
-      cats into your car, and give the other cats to your friends so they can still
-      be close.
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
+    txt: AAAAA
+    boxColor: {r: 0, g: 0, b: 0, a: 0}
     dialogueSpeed: 0
     sprites: []
     currentEmote: {fileID: 0}
     events:
       specialEventOpen:
         m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: GoToNameCat
-            m_Mode: 1
+          - m_Target: {fileID: 11500000, guid: d3aca0887703e6149abee3fbaeddec50, type: 3}
+            m_TargetAssemblyTypeName: 
+            m_MethodName: 
+            m_Mode: 0
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_ObjectArgumentAssemblyTypeName: 
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+      specialEventDialogueEnd:
+        m_PersistentCalls:
+          m_Calls: []
     dialogueOptions: []
     catType: 0
     changeLocation: 0
@@ -11339,6 +11447,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1860159816
@@ -11483,6 +11592,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &1924865741
@@ -11650,6 +11760,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &1930968744
@@ -11746,6 +11857,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 28468181}
   eventIndex: 0
 --- !u!1 &1932955782
@@ -11894,6 +12006,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &1987859441
@@ -12050,6 +12163,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &1987859443
@@ -12226,6 +12340,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!1 &2009184293
@@ -12321,6 +12436,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 2055840880}
   eventIndex: 0
 --- !u!1 &2032788893
@@ -12432,6 +12548,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &2032788895
@@ -12449,143 +12566,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 189811661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2052850727
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2052850728}
-  - component: {fileID: 2052850729}
-  m_Layer: 0
-  m_Name: PetBranch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2052850728
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052850727}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200.70099, y: 65.4624, z: 4.6030016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 76142460}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2052850729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052850727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271fe3677f943274391e919c7b393117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBoxText: {fileID: 1377991282}
-  speakerNameTextBox: {fileID: 1783688568}
-  textBoxImage: {fileID: 1125996502}
-  speakerBoxImage: {fileID: 1369832971}
-  spriteLocation: {fileID: 0}
-  normalSpeed: 0.06
-  slowSpeed: 0.3
-  verySlowSpeed: 0.6
-  fastSpeed: 0.03
-  veryFastSpeed: 0.01
-  canContinue: 1
-  readInProgress: 0
-  destroyOnComplete: 0
-  specialEventOnNext: 0
-  lastDialogue: 0
-  prematureDestroy: 0
-  returning: 0
-  resetIndexOnClose: 1
-  disableUIAtEnd: 0
-  proceed: 13
-  dialogues:
-  - speakerName: Do you pet the cat, or do you let it sniff your hand first, or do
-      you sit down where you are or do you stay near the cat and let it do what it
-      wants near you?
-    txt: Test..
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls: []
-    dialogueOptions:
-    - OptionName: Pet It
-      TransitionToBranch: {fileID: 1132252468}
-      permanentTransition: 0
-      relationshipImpact: 0
-    - OptionName: Let It Sniff Your Hand
-      TransitionToBranch: {fileID: 1597661125}
-      permanentTransition: 0
-      relationshipImpact: 0
-    - OptionName: Sit Close-By in Companion-able Silence
-      TransitionToBranch: {fileID: 625908057}
-      permanentTransition: 0
-      relationshipImpact: 0
-    catType: 0
-    changeLocation: 0
-    location: 0
-  - speakerName: 
-    txt: ...
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1205536413}
-            m_TargetAssemblyTypeName: GamePlayLoop, Assembly-CSharp
-            m_MethodName: Next
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    dialogueOptions: []
-    catType: 1
-    changeLocation: 0
-    location: 0
-  spriteSlots:
-  - {fileID: 6515947836928532871}
-  - {fileID: 426440740}
-  - {fileID: 861257106}
-  - {fileID: 309571729}
-  optionSlots:
-  - {fileID: 1810851875}
-  - {fileID: 1882764675}
-  - {fileID: 1659839218}
-  - {fileID: 1432654904}
-  returnTo: {fileID: 0}
-  eventIndex: 0
 --- !u!1 &2055840879
 GameObject:
   m_ObjectHideFlags: 0
@@ -12675,6 +12655,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 0}
   eventIndex: 0
 --- !u!4 &2055840881
@@ -12857,6 +12838,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 198502196}
   eventIndex: 0
 --- !u!1 &2097972613
@@ -12953,6 +12935,7 @@ MonoBehaviour:
   - {fileID: 1882764675}
   - {fileID: 1659839218}
   - {fileID: 1432654904}
+  currentIndex: 0
   returnTo: {fileID: 505033929}
   eventIndex: 0
 --- !u!224 &3611280249562685748

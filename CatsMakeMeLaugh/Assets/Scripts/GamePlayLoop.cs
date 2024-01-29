@@ -13,7 +13,7 @@ public class GamePlayLoop : MonoBehaviour
 
     [SerializeField]
     List<DialogueManager> dialogueManagerLoop;
-    public DialogueManager acquiredAffectionOfCat;
+    public GameObject acquiredAffectionOfCat;
     public Enums.CatType catType = Enums.CatType.NONE;
     public DialogueManager beginning;
     public NameCat nameCat;
@@ -77,27 +77,33 @@ public class GamePlayLoop : MonoBehaviour
     }
     public void Next()
     {
+        dialogueManagerLoop[currentIndex].currentIndex = 0;
         dialogueManagerLoop[currentIndex].gameObject.SetActive(false);
         currentIndex++;
         if (currentIndex >= (dialogueManagerLoop.Count))
         {
 
-            if (cat.affectionLevel >= maxAffection)
-            {
-                currentIndex = 0;
-                acquiredAffectionOfCat.gameObject.SetActive(true);
-            }
-            else
-            {
-                currentIndex = 0;
+            //if (cat.affectionLevel >= maxAffection)
+            //{
                 //currentIndex = 0;
-                dialogueManagerLoop[currentIndex].gameObject.SetActive(true);
-            }
+                
+                acquiredAffectionOfCat.gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
+            //}
+            //else
+            //{
+            //    currentIndex = 0;
+            //    //currentIndex = 0;
+            //    dialogueManagerLoop[currentIndex].currentIndex = 0;
+            //    dialogueManagerLoop[currentIndex].gameObject.SetActive(true);
+            //}
         }
         else
         {
             //currentIndex = 0;
+            dialogueManagerLoop[currentIndex].currentIndex = 0;
             dialogueManagerLoop[currentIndex].gameObject.SetActive(true);
+            
         }
     }
     public void DisableAll()

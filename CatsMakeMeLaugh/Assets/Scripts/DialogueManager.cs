@@ -103,7 +103,7 @@ public class DialogueManager : MonoBehaviour
     Dictionary<Enums.DialogueSpeed, float> associatedDialogueSpeeds = new Dictionary<Enums.DialogueSpeed, float>();
     public List<Image> spriteSlots = new List<Image>();
     public List<OptionsButton> optionSlots = new List<OptionsButton>();
-    int currentIndex = 0;
+    public int currentIndex = 0;
     public DialogueManager returnTo = null;
 
     public int eventIndex;
@@ -148,7 +148,7 @@ public class DialogueManager : MonoBehaviour
         GetReferences();
         SetSpeed();
 
-        canContinue = true;
+        //canContinue = true;
         //ProceedNext();
 
 
@@ -212,7 +212,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     //
                     ///rest
-                    Debug.LogError("There is no closing event. Is this intentional?");
+                    Debug.LogWarning("There is no closing event. Is this intentional?");
                 }
                 EndResponse();
             }
@@ -331,6 +331,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("To");
             CatCharacter cat;
             AffectionSystem.Instance.catsDict.TryGetValue(inDialogue.catType, out cat);
             
@@ -433,11 +434,12 @@ public class DialogueManager : MonoBehaviour
     public void TemporaryTransition(DialogueManager inDialogueManager)
     {
         returning = true;
+        canContinue = false;
         inDialogueManager.returnTo = this;
         canContinue = false;
         inDialogueManager.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
-        
+
 
     }
 
@@ -526,4 +528,36 @@ public class DialogueManager : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    public void AcquireBlackCat()
+    {
+        CatCharacter cat;
+        AffectionSystem.Instance.catsDict.TryGetValue(Enums.CatType.BLACK, out cat);
+        cat.nameGag.characterCat = cat;
+        cat.nameGag.gameObject.SetActive(true);
+
+    }
+    public void AcquireCalicoCat()
+    {
+        CatCharacter cat;
+        AffectionSystem.Instance.catsDict.TryGetValue(Enums.CatType.CALICO, out cat);
+        cat.nameGag.characterCat = cat;
+        cat.nameGag.gameObject.SetActive(true);
+
+    }
+    public void AcquireWhite()
+    {
+        CatCharacter cat;
+        AffectionSystem.Instance.catsDict.TryGetValue(Enums.CatType.WHITE, out cat);
+        cat.nameGag.characterCat = cat;
+        cat.nameGag.gameObject.SetActive(true);
+
+    }
+    public void AcquireTabby()
+    {
+        CatCharacter cat;
+        AffectionSystem.Instance.catsDict.TryGetValue(Enums.CatType.TABBY, out cat);
+        cat.nameGag.characterCat = cat;
+        cat.nameGag.gameObject.SetActive(true);
+
+    }
 }

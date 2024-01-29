@@ -12,6 +12,7 @@ public class CatCharacter
     public int affectionLevel = 0;
     public Color color;
     public GamePlayLoop gamePlayLoop;
+    public NameCat nameGag;
 }
 
 public class AffectionSystem : MonoBehaviour
@@ -72,7 +73,7 @@ public class AffectionSystem : MonoBehaviour
     {
         CatCharacter cat;
         catsDict.TryGetValue(inCatType, out cat);
-        if (cats != null) { cat.affectionLevel += val; }
+        if (cat != null) { cat.affectionLevel += val; }
     }
     
     

@@ -143,7 +143,7 @@ public class NameCat : MonoBehaviour
                 StartCoroutine(ReadText(textTimeNormal, "You have won the affections of the white cat, please, give it a name! :)"));
                 break;
             case Enums.CatType.BLACK:
-                StartCoroutine(ReadText(textTimeNormal, "You have won the affections of the white cat, please, give it a name! :)"));
+                StartCoroutine(ReadText(textTimeNormal, "You have won the affections of the black cat, please, give it a name! :)"));
                 break;
             case Enums.CatType.CALICO:
                 StartCoroutine(ReadText(textTimeNormal, "You have won the affections of the calico cat, please, give it a name! :)"));
