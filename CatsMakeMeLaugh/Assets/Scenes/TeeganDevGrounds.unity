@@ -4103,35 +4103,6 @@ MonoBehaviour:
     catType: 0
     changeLocation: 0
     location: 0
-  - speakerName: 
-    txt: What to do...
-    boxColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueSpeed: 0
-    sprites: []
-    currentEmote: {fileID: 0}
-    events:
-      specialEventOpen:
-        m_PersistentCalls:
-          m_Calls: []
-      specialEventDialogueEnd:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 520125255}
-            m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-            m_MethodName: TemporaryTransition
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 657935387}
-              m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    dialogueOptions: []
-    catType: 0
-    changeLocation: 0
-    location: 0
   spriteSlots:
   - {fileID: 6515947836928532871}
   - {fileID: 426440740}
@@ -5845,7 +5816,7 @@ MonoBehaviour:
       specialEventDialogueEnd:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 934421572}
+          - m_Target: {fileID: 2052850727}
             m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
             m_MethodName: TemporaryTransition
             m_Mode: 2
