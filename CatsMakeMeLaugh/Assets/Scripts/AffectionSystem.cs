@@ -25,13 +25,16 @@ public class AffectionSystem : MonoBehaviour
     private static AffectionSystem instance;
 
     public List<OptionsButton> optionButtons = new List<OptionsButton>();
-    
-   
+
+
     // Start is called before the first frame update
-    
-    void Start()
+    private void Awake()
     {
         SetInstance();
+    }
+
+    void Start()
+    {
         SortCats();
     }
     public void SetInstance()

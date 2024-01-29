@@ -517,9 +517,11 @@ public class DialogueManager : MonoBehaviour
 
     public void TransitionToGameplayLoopAtEnd()
     {
+        Debug.LogWarning($"before: {dialogues[eventIndex].catType}");
         CatCharacter catCharacter;
         AffectionSystem.Instance.catsDict.TryGetValue(dialogues[eventIndex].catType, out catCharacter);
-        
+        Debug.LogWarning($"after: {dialogues[eventIndex].catType}");
+
         catCharacter.gamePlayLoop.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }

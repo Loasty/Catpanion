@@ -39,6 +39,8 @@ public class GamePlayLoop : MonoBehaviour
                 inst.SetInstance();
             }
         }
+
+        InitializeCat();
         buttons = AffectionSystem.Instance.optionButtons;
 
     }
@@ -54,8 +56,12 @@ public class GamePlayLoop : MonoBehaviour
         dialogueManagerLoop[currentIndex].gameObject.SetActive(true);
 
     }
-    
-    
+
+    public void InitializeCat()
+    {
+        AffectionSystem.Instance.catsDict.TryGetValue(catType, out cat);
+    }
+
     public void SetUpButtons()
     {
         for (int i = 0; i < buttons.Count; i++)
