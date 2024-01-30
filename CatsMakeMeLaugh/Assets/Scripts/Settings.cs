@@ -47,7 +47,7 @@ public class Settings : MonoBehaviour
     {
         openSettingsMenu += ToggleSettingsMenu;
 
-        taskbar.maxValue = 1080;
+        taskbar.maxValue = Screen.height;
         taskbar.minValue = 0;
 
         desktopLaunch.isOn = GameData.Instance.savedSettings.launchInDesktopMode;
@@ -62,6 +62,7 @@ public class Settings : MonoBehaviour
         isPanelOpen = true;
         settingsPanel.SetActive(true);
         StartCoroutine(SlidePanel(targetPos.position, true));
+
     }
 
     public IEnumerator SlidePanel(Vector2 desiredPos, bool toggle)
@@ -76,7 +77,15 @@ public class Settings : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+
+
+        if (DesktopMode.Instance != null)
+        {
+            DesktopMode.Instance.taskbar.GetComponent<Image>().enabled = toggle;
+        }
+
         settingsPanel.SetActive(toggle);
+
     }
 
     public void ToggleLaunchDesktopMode(bool toggle)

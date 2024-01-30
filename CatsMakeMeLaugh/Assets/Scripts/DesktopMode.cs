@@ -46,6 +46,7 @@ public class DesktopMode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Settings.Instance.UpdateTaskbar();
         PickNewAction();
     }
 
@@ -118,18 +119,20 @@ public class DesktopMode : MonoBehaviour
         Debug.Log("Walk");
         //float width = taskbar.GetComponent<RectTransform>().rect.width;
         float randomX;
+        float offset = Screen.width * .20f;
+
         if (cat.transform.position.x > 0)
         {
             //Walk Left
-            //randomX = Random.Range(-(width / 2), 0);
-            randomX = Random.Range(-850, 0);
+            randomX = Random.Range(0 - offset, Screen.width/2);
+            //randomX = Random.Range(-850, 0);
             catAnim.SetTrigger("WalkLeft");
         } 
         else 
         {
             //Walk Right
-            //randomX = Random.Range(0, width/2);
-            randomX = Random.Range(0, 850);
+            randomX = Random.Range(Screen.width/2, Screen.width + offset);
+            //randomX = Random.Range(0, 850);
             catAnim.SetTrigger("WalkRight");
 
         }
