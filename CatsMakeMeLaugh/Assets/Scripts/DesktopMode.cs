@@ -119,19 +119,21 @@ public class DesktopMode : MonoBehaviour
         Debug.Log("Walk");
         //float width = taskbar.GetComponent<RectTransform>().rect.width;
         float randomX;
-        float offset = Screen.width * .20f;
 
-        if (cat.transform.position.x > 0)
+        float width = Screen.width;
+        float offset = width * .20f;
+
+        if (cat.transform.position.x > width / 2)
         {
             //Walk Left
-            randomX = Random.Range(0 - offset, Screen.width/2);
+            randomX = Random.Range(0 - offset, width / 2);
             //randomX = Random.Range(-850, 0);
             catAnim.SetTrigger("WalkLeft");
         } 
         else 
         {
             //Walk Right
-            randomX = Random.Range(Screen.width/2, Screen.width + offset);
+            randomX = Random.Range(width / 2, width + offset);
             //randomX = Random.Range(0, 850);
             catAnim.SetTrigger("WalkRight");
 
