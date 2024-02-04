@@ -11,13 +11,12 @@ public class Emote : MonoBehaviour
     [SerializeField] float numOfRepeats;
     [SerializeField] float effectSpeed;
     [SerializeField] Image image;
-    [SerializeField] Vector3 startingPos;
     [SerializeField] Transform topPosPlaceholder;
     [SerializeField] Transform botPosPlaceholder;
 
     private void Awake()
     {
-        startingPos = transform.position;
+
     }
 
     private void Start()
@@ -42,7 +41,6 @@ public class Emote : MonoBehaviour
         effectOfEmote = effect;
         durationOfEffect = duration;
         numOfRepeats = repeats;
-        startingPos = transform.position;
         effectSpeed = speed;
 
         SetEmoteImage();
@@ -91,7 +89,6 @@ public class Emote : MonoBehaviour
                         curTime += Time.deltaTime;
 
                         image.transform.localScale = Vector3.one;
-                        image.transform.position = startingPos;
 
                         if (rotatingClockwise)
                         {
@@ -118,7 +115,6 @@ public class Emote : MonoBehaviour
                     {
                         curTime += Time.deltaTime;
 
-                        image.transform.position = startingPos;
                         image.transform.rotation = Quaternion.identity;
 
                         if (!increasing)
@@ -151,6 +147,8 @@ public class Emote : MonoBehaviour
                         yield return new WaitForEndOfFrame();
                     }
 
+                    image.transform.position = Vector2.zero;
+
                     break;
 
                 case Enums.EmoteEffect.GO_DOWN:
@@ -166,6 +164,9 @@ public class Emote : MonoBehaviour
 
                         yield return new WaitForEndOfFrame();
                     }
+
+                    image.transform.position = Vector2.zero;
+
                     break;
                      
             }
