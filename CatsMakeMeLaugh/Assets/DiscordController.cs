@@ -20,7 +20,8 @@ public class DiscordController : MonoBehaviour
     public string details = "Launching Catpanions";
     public string state = "Loading";
     [Space]
-    public string largeImage = "game_logo";
+    public string largeImage = "gameicon";
+    public string smallImage = "catpanionlogo";
     public string largeText = "Discord Tutorial";
     [Space]
     public long timeLaunched;
@@ -37,6 +38,11 @@ public class DiscordController : MonoBehaviour
     private void OnDestroy()
     {
        discord?.Dispose();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(UpdateStatus());
     }
 
     void Update()
@@ -56,39 +62,47 @@ public class DiscordController : MonoBehaviour
     {
         details = "Playing with their Catpanions";
         state = "Active Catpanions: " + GameData.Instance.savedCats.cats.Count;
-        UpdateStatus();
+        if (GameData.Instance.savedCats.cats.Count > 0 ) { largeText = GameData.Instance.savedCats.cats[0].catName; }
+        
     }
 
-    void UpdateStatus()
+    IEnumerator UpdateStatus()
     {
-        // Update Status every frame
-        try
+        while(true)
         {
-            var activityManager = discord.GetActivityManager();
-            var activity = new Discord.Activity
+            // Update Status every 5 seconds
+            try
             {
-                Details = details,
-                State = state,
-                Assets =
+                var activityManager = discord.GetActivityManager();
+                var activity = new Discord.Activity
                 {
-                    LargeImage = largeImage,
-                    LargeText = largeText
-                },
-                Timestamps =
-                {
-                    Start = timeLaunched
-                }
-            };
+                    Details = details,
+                    State = state,
+                    Assets =
+                    {
+                        LargeImage = largeImage,
+                        SmallImage = smallImage,
+                        LargeText = largeText
+                    },
+                        Timestamps =
+                    {
+                        Start = timeLaunched
+                    }
+                };
 
-            activityManager.UpdateActivity(activity, (res) =>
+                activityManager.UpdateActivity(activity, (res) =>
+                {
+                    if (res != Discord.Result.Ok) Debug.LogWarning("Failed connecting to Discord!");
+                });
+            }
+            catch
             {
-                if (res != Discord.Result.Ok) Debug.LogWarning("Failed connecting to Discord!");
-            });
+                // If updating the status fails, Destroy the GameObject
+                Destroy(gameObject);
+            }
+
+            yield return new WaitForSeconds(5f);
         }
-        catch
-        {
-            // If updating the status fails, Destroy the GameObject
-            Destroy(gameObject);
-        }
+        
     }
 }

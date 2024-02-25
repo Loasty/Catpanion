@@ -2801,7 +2801,8 @@ MonoBehaviour:
   details: Launching Catpanions
   state: Loading
   largeImage: gameicon
-  largeText: catpanionlogofull
+  smallImage: catpanionlogo
+  largeText: catname
   timeLaunched: 0
 --- !u!4 &1667341366
 Transform:
