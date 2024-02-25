@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
     public Color colorTextbox = Color.white;
     public Color colorSpeakerbox = Color.white;
     
+    
     void Start()
     {
         

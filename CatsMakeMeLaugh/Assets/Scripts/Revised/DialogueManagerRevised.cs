@@ -18,7 +18,10 @@ public class DialogueRevised
     public Enums.Locations newLocation = Enums.Locations.NONE;
     public UnityEvent startEvents;
     public UnityEvent endEvents;
-
+    public bool playSoundFX;
+    public bool changeBgm;
+    public AudioClip soundEffect;
+    public AudioClip bgmAudioClip;
 }
 [Serializable]
 public class OptionsRevised
@@ -34,6 +37,11 @@ public class OnScreenCharacter
 {
     public Enums.CatType characterType;
     public Enums.Actions action;
+    public Enums.Emotes emotes;
+    public Enums.EmoteEffect emoteEffect;
+    public float emoteDuration = 0f;
+    public float emoteRepeats = 0f;
+    public float emoteSpeed = 0f;
 }
 
 
@@ -117,6 +125,8 @@ public class DialogueManagerRevised : MonoBehaviour
                     StopAllCoroutines();
                     textDialogueBox.text = dialogues[currentIndex].dialogue;
                     readInComplete = true;
+
+
                     if (dialogues[currentIndex].options.Count > 0)
                     {
                         canContinue = false;
@@ -138,9 +148,7 @@ public class DialogueManagerRevised : MonoBehaviour
             currentIndex = dialogues.Count - 1;
             lastDialogue = true;
         }
-        UpdateUI(dialogues[currentIndex]);
-        
-
+        ProcessDialogue(dialogues[currentIndex]);
     }
     public void IncreaseIndex()
     {
@@ -151,9 +159,28 @@ public class DialogueManagerRevised : MonoBehaviour
             lastDialogue = true;
         }
     }
-    public void UpdateUI(DialogueRevised inDialogue)
+    
+    public void ProcessDialogue(DialogueRevised inDialogue)
     {
         if (inDialogue.changeLocation) { RevisedLocationManager.Instance.ChangeLocation(inDialogue.newLocation); }
+        if (inDialogue.changeBgm)
+        {
+            if (MassDialogueManager.Instance.bgmAudioSource != null)
+            {
+                MassDialogueManager.Instance.bgmAudioSource.clip = inDialogue.bgmAudioClip;
+                MassDialogueManager.Instance.bgmAudioSource.Play();
+            }
+        }
+        if (inDialogue.playSoundFX)
+        {
+            if (MassDialogueManager.Instance.sfxAudioSource != null)
+            {
+                MassDialogueManager.Instance.sfxAudioSource.clip = inDialogue.soundEffect;
+                MassDialogueManager.Instance.sfxAudioSource.Play();
+            }
+        }
+
+
         if (textBox.gameObject != null) { if (textBox != null) { textBox.color = Color.white; } }
         if (inDialogue.OnScreen.Count > 0) { CharacterManager.Instance.ManageVisible(inDialogue.OnScreen); }
         if (inDialogue.speakerCharacter != Enums.CatType.NONE)
@@ -212,8 +239,6 @@ public class DialogueManagerRevised : MonoBehaviour
        
     }
 
-
-
     private void OnDestroy()
     {
         for (int i = 0; i < dialogues.Count; i++)
@@ -227,15 +252,9 @@ public class DialogueManagerRevised : MonoBehaviour
 
     public void TransitionTo(DialogueManager dialogueManager)
     {
-        
         dialogueManager.gameObject.SetActive(true);
         canContinue = false;
         dialogueManager.returnTo = dialogueManager;
         this.gameObject.SetActive(false);
     }
-
-    
-    
-   
-
 }

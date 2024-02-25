@@ -8,10 +8,6 @@ public class RevisedGameLoopManager : MonoBehaviour
     public List<DialogueManagerRevised> loopList = new List<DialogueManagerRevised>();
     public int currentIndex = 0;
    
-    
-
-
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +18,11 @@ public class RevisedGameLoopManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnDisable()
+    {
+        currentIndex = 0;
     }
     public void ProcessLoopList()
     {

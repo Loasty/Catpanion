@@ -8,10 +8,10 @@ public class NameCat : MonoBehaviour
 {
     // Start is called before the first frame update
     int gagCount = 0;
-    int maxGagCount = 2;
+    //int maxGagCount = 2;
     [SerializeField]
     List<string> gagText = new List<string>();
-    int gagCounter = 0;
+    //int gagCounter = 0;
 
 
 

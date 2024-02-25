@@ -92,7 +92,6 @@ MonoBehaviour:
   numOfRepeats: 1
   effectSpeed: 0
   image: {fileID: 7628825305574582534}
-  startingPos: {x: 0, y: 0, z: 0}
   topPosPlaceholder: {fileID: 6981962631082058322}
   botPosPlaceholder: {fileID: 2827935359358684862}
 --- !u!1 &5202655340729670156

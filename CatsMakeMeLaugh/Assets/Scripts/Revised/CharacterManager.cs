@@ -40,6 +40,7 @@ public class CharacterManager : MonoBehaviour
         for (int i = 0; i < characters.Count; i++)
         {
             characters[i].characterObj.SetActive(false);
+            characters[i].emote.gameObject.SetActive(false);
         }
     }
 
@@ -51,6 +52,11 @@ public class CharacterManager : MonoBehaviour
             Character cat;
             charactersDict.TryGetValue(catsActive[i].characterType, out cat);
             if (cat != null) { cat.characterObj.SetActive(true); }
+            if (catsActive[i].emoteEffect != Enums.EmoteEffect.NONE)
+            {
+                cat.emote.gameObject.SetActive(true);
+                cat.emote.PlayEmote(catsActive[i].emotes, catsActive[i].emoteEffect, catsActive[i].emoteDuration, catsActive[i].emoteRepeats, catsActive[i].emoteSpeed);
+            }
         }
     }
     public void HandleAnim(Animator animator, Enums.Actions action)

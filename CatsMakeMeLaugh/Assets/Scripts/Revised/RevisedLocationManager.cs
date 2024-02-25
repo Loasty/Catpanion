@@ -13,6 +13,7 @@ public class RevisedLocationManager : MonoBehaviour
 {
     public List<LocationClass> locationsData = new List<LocationClass>();
     public Image backgroundImage;
+    public SpecialUIHandler backgroundImageHandler;
     Dictionary<Enums.Locations, Sprite> Locations = new Dictionary<Enums.Locations, Sprite>();
     public Enum currentLocation = Enums.Locations.NONE;
 

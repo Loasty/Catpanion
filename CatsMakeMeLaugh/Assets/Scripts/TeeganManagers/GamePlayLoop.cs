@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class GamePlayLoop : MonoBehaviour
 {
     //public CatCharacter savedCat;
-    int maxAffection = 20;
+    //int maxAffection = 20;
 
     [SerializeField]
     List<DialogueManager> dialogueManagerLoop;

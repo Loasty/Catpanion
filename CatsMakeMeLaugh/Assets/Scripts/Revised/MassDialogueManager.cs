@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -28,14 +29,13 @@ public class MassDialogueManager : MonoBehaviour
      [SerializeField]
     public Dictionary<Enums.DialogueSpeed, float> dialogueSpeeds = new Dictionary<Enums.DialogueSpeed, float>();
 
+    public AudioSource bgmAudioSource;
+    public AudioSource sfxAudioSource;
+
     
     private static MassDialogueManager instance;
     public static MassDialogueManager Instance { get { return instance; } }
     
-    
-
-    
-
 
     void Awake()
     {
@@ -98,5 +98,8 @@ public class MassDialogueManager : MonoBehaviour
         ClearButtons();
     }
 
-    
+
+   
+
+
 }
