@@ -30,8 +30,8 @@ public class MainMenuController : MonoBehaviour
 
     public void InitializeMenu()
     {
-        startButtonText.text = GameData.Instance.savedCat.type != Enums.CatType.NONE ? "Play With Cat" : "Find Your Cat";
-        sceneLoader.nextSceneName = GameData.Instance.savedCat.type != Enums.CatType.NONE ? desktopModeScene : findCatScene;
+        startButtonText.text = GameData.Instance.savedCats.cats.Count != 0 ? "Play With Cat" : "Find Your Cat";
+        sceneLoader.nextSceneName = GameData.Instance.savedCats.cats.Count != 0 ? desktopModeScene : findCatScene;
     }
 
     public void StartGame()
