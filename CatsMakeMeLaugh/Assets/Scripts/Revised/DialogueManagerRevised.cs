@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -13,8 +14,11 @@ public class DialogueRevised
     public List<OptionsRevised> options = new List<OptionsRevised>();
     public List<OnScreenCharacter> OnScreen = new List<OnScreenCharacter>();
     public Enums.CatType speakerCharacter = Enums.CatType.NONE;
-    public UnityEvent endEvents;
+    public bool changeLocation;
+    public Enums.Locations newLocation = Enums.Locations.NONE;
     public UnityEvent startEvents;
+    public UnityEvent endEvents;
+
 }
 [Serializable]
 public class OptionsRevised
@@ -55,8 +59,12 @@ public class DialogueManagerRevised : MonoBehaviour
     [SerializeField]
     KeyCode nextDialogueBtn = KeyCode.Mouse0;
     public bool readInComplete = false;
+    public bool lastDialogueManager = false;
     public bool canContinue = true;
     public bool lastDialogue = false;
+    public delegate void DialogueEvent();
+    public DialogueEvent NotifyDialogueComplete;
+
    
     [HideInInspector]
     public DialogueManagerRevised returnTo;
@@ -70,14 +78,18 @@ public class DialogueManagerRevised : MonoBehaviour
     }
     private void OnDisable()
     {
+        
         canContinue = false;
+        readInComplete = true;
         StopAllCoroutines();
         if (returnTo != null)
         {
             returnTo.gameObject.SetActive(true);
         }
+        
     }
-
+    
+    
     // Update is called once per frame
     void Update()
     {
@@ -89,13 +101,14 @@ public class DialogueManagerRevised : MonoBehaviour
                 {
                     if (lastDialogue)
                     {
+                        NotifyDialogueComplete?.Invoke();
+                        //if (dialogues[currentIndex].endEvents != null) { dialogues[currentIndex].endEvents.Invoke(); }
                         lastDialogue = false;
                         this.gameObject.SetActive(false);
                     }
                     else
                     {
                         CharacterManager.Instance.HandleAnims(dialogues[currentIndex].OnScreen, false);
-                        if (dialogues[currentIndex].endEvents != null) { dialogues[currentIndex].endEvents.Invoke(); }
                         if (canContinue) { DialogueForward(); }
                     }
                 }
@@ -140,7 +153,8 @@ public class DialogueManagerRevised : MonoBehaviour
     }
     public void UpdateUI(DialogueRevised inDialogue)
     {
-        textBox.color = Color.white;
+        if (inDialogue.changeLocation) { RevisedLocationManager.Instance.ChangeLocation(inDialogue.newLocation); }
+        if (textBox.gameObject != null) { if (textBox != null) { textBox.color = Color.white; } }
         if (inDialogue.OnScreen.Count > 0) { CharacterManager.Instance.ManageVisible(inDialogue.OnScreen); }
         if (inDialogue.speakerCharacter != Enums.CatType.NONE)
         {
@@ -168,8 +182,6 @@ public class DialogueManagerRevised : MonoBehaviour
         MassDialogueManager.Instance.dialogueSpeeds.TryGetValue(inDialogue.speed, out speed);
         if (inDialogue.options.Count > 0) { StartCoroutine(ReadInText(speed, inDialogue.dialogue, inDialogue)); }
         else { StartCoroutine(ReadInText(speed, inDialogue.dialogue)); }
-
-
     }
     public IEnumerator ReadInText(float speed, string dialogue)
     {
@@ -209,14 +221,21 @@ public class DialogueManagerRevised : MonoBehaviour
             dialogues[i].startEvents = null;
             dialogues[i].endEvents = null;
         }
+        NotifyDialogueComplete = null;
+
     }
 
     public void TransitionTo(DialogueManager dialogueManager)
     {
+        
         dialogueManager.gameObject.SetActive(true);
         canContinue = false;
         dialogueManager.returnTo = dialogueManager;
         this.gameObject.SetActive(false);
     }
+
+    
+    
+   
 
 }

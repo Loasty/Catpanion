@@ -31,7 +31,10 @@ public class MassDialogueManager : MonoBehaviour
     
     private static MassDialogueManager instance;
     public static MassDialogueManager Instance { get { return instance; } }
+    
+    
 
+    
 
 
     void Awake()
@@ -95,7 +98,5 @@ public class MassDialogueManager : MonoBehaviour
         ClearButtons();
     }
 
-
-    
     
 }
