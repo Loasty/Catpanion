@@ -57,6 +57,9 @@ public class TransparentWindow : MonoBehaviour {
     private void Start() {
         //MessageBox(new IntPtr(0), "Hello World!", "Hello Dialog", 0);
 
+        int fWidth = Screen.width;
+        int fHeight = Screen.height;
+
 #if !UNITY_EDITOR
         hWnd = GetActiveWindow();
 
@@ -66,7 +69,7 @@ public class TransparentWindow : MonoBehaviour {
         SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
         //SetLayeredWindowAttributes(hWnd, 0, 0, LWA_COLORKEY);
 
-        SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, 0);
+        SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, fWidth, fHeight, 0);
 #endif
 
         Application.runInBackground = true;
