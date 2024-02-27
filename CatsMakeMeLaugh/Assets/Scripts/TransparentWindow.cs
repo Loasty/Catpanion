@@ -43,6 +43,7 @@ public class TransparentWindow : MonoBehaviour {
     [DllImport("Dwmapi.dll")]
     private static extern uint DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS margins);
 
+    const int GWL_STYLE = -16;
     const int GWL_EXSTYLE = -20;
 
     const uint WS_EX_LAYERED = 0x00080000;
@@ -54,29 +55,68 @@ public class TransparentWindow : MonoBehaviour {
 
     private IntPtr hWnd;
 
-    private void Start() {
-        //MessageBox(new IntPtr(0), "Hello World!", "Hello Dialog", 0);
+    [DllImport("user32.dll")]
+    static extern System.IntPtr GetWindowLong(
+        System.IntPtr hWnd,
+        int nIndex
+    );
 
-        int fWidth = Screen.width;
-        int fHeight = Screen.height;
+    const uint WS_SIZEBOX = 0x00040000;
+    const int WS_BORDER = 0x00800000; //window with border
+    const int WS_DLGFRAME = 0x00400000;
+    const int WS_CAPTION = WS_BORDER | WS_DLGFRAME;
+    private const int WS_EX_TOOLWINDOW = 0x0080;
+
+    private const uint WS_VISIBLE = 0x10000000;
+    private const uint WS_POPUP = 0x80000000;
+
+    Resolution res;
+    uint style;
+
+    private void Awake()
+    {
+#if !UNITY_EDITOR
+        res = Screen.currentResolution;
+        style = (uint)GetWindowLong(hWnd, GWL_EXSTYLE); //gets current style
+        hWnd = GetActiveWindow();
+#endif
+    }
+
+    private void Start() {
+        
 
 #if !UNITY_EDITOR
-        hWnd = GetActiveWindow();
-
-        MARGINS margins = new MARGINS { cxLeftWidth = -1 };
-        DwmExtendFrameIntoClientArea(hWnd, ref margins);
-
-        SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
-        //SetLayeredWindowAttributes(hWnd, 0, 0, LWA_COLORKEY);
-
-        SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, fWidth, fHeight, 0);
+        SetTransparent();
+        SetTopWindow();
 #endif
+
 
         Application.runInBackground = true;
     }
 
+    public void SetTransparent()
+    {
+        SetWindowLong(hWnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+        SetWindowLong(hWnd, GWL_EXSTYLE, style | WS_EX_LAYERED | WS_EX_TRANSPARENT);
+
+        int marginValue = -1;
+        MARGINS margins = new MARGINS { cxLeftWidth = marginValue, cxRightWidth = marginValue, cyTopHeight = marginValue, cyBottomHeight = marginValue };
+        DwmExtendFrameIntoClientArea(hWnd, ref margins);
+    }
+
+    public void SetTopWindow()
+    {
+        SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, res.width, res.height - 1, 0);
+    }
+
     private void Update() {
         SetClickthrough(!MouseHandler.Instance.IsOverUIElement());
+    }
+    private void LateUpdate()
+    {
+#if !UNITY_EDITOR
+        SetTopWindow();
+#endif
     }
 
     private void SetClickthrough(bool clickthrough) {
