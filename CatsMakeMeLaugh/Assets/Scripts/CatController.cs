@@ -16,8 +16,12 @@ public class CatController : MonoBehaviour
     [Header("Cat Behavior Valeus")]
     [SerializeField] int idleDelay = 15;
 
+    int curDemoAnimIndex = 0;
+    bool demoMode = false;
+
     private void Awake()
     {
+        demoMode = true;
         //LoadCatData();
     }
 
@@ -44,6 +48,34 @@ public class CatController : MonoBehaviour
     public void PickNewAction()
     {
         int selectedOption = Random.Range(0, 100);
+
+        if(demoMode)
+        {
+            switch(curDemoAnimIndex)
+            {
+                case 0:
+                    selectedOption = (int)Enums.Actions.SIT;
+                    break;
+                case 1:
+                    selectedOption = (int)Enums.Actions.WALK;
+                    break;
+                case 2:
+                    selectedOption = (int)Enums.Actions.WALK;
+                    break;
+                case 3:
+                    selectedOption = (int)Enums.Actions.GREET;
+                    break;
+                case 4:
+                    selectedOption = (int)Enums.Actions.SWIPE;
+                    break;
+                case 5:
+                    selectedOption = (int)Enums.Actions.AFFECTION;
+                    break;
+            }
+            curDemoAnimIndex++;
+            if(curDemoAnimIndex >= 5) { curDemoAnimIndex = 0; }
+        }
+
         Debug.Log(selectedOption);
         //{ SIT, WALK, GREET, SWIPE, AFFECTION, ATTENTION, MEOW, PLAY }
         switch (selectedOption)
