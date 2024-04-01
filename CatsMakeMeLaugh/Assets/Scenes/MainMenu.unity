@@ -915,7 +915,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 563076769}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: SettingsToggle
+        m_MethodName: AboutUs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1429,6 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuCanvas: {fileID: 4351145454885688456}
+  aboutUsCanvas: {fileID: 959260482}
   confirmPrompt: {fileID: 2021956336}
   startButtonText: {fileID: 8483984749608987453}
   startDesktopButton: {fileID: 3943369592359683188}
@@ -4205,7 +4206,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 563076769}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: SettingsToggle
+        m_MethodName: AboutUs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

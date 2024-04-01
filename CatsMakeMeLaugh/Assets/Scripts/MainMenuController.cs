@@ -15,6 +15,7 @@ public class MainMenuController : MonoBehaviour
 
 
     public GameObject mainMenuCanvas;
+    public GameObject aboutUsCanvas;
     public GameObject confirmPrompt;
     [SerializeField] TextMeshProUGUI startButtonText;
     [SerializeField] Button startDesktopButton;
@@ -53,6 +54,12 @@ public class MainMenuController : MonoBehaviour
     {
         if(Settings.Instance.isPanelOpen == false)
             Settings.Instance.ToggleSettingsMenu();
+    }
+
+    public void AboutUs()
+    {
+        mainMenuCanvas.SetActive(!mainMenuCanvas.activeSelf);
+        aboutUsCanvas.SetActive(!aboutUsCanvas.activeSelf);
     }
 
     public void ConfirmQuitPrompt()
