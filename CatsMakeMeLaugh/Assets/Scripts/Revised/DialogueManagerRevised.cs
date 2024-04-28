@@ -109,6 +109,7 @@ public class DialogueManagerRevised : MonoBehaviour
                 {
                     if (lastDialogue)
                     {
+                        dialogues[currentIndex].endEvents?.Invoke();
                         NotifyDialogueComplete?.Invoke();
                         //if (dialogues[currentIndex].endEvents != null) { dialogues[currentIndex].endEvents.Invoke(); }
                         lastDialogue = false;
@@ -117,6 +118,7 @@ public class DialogueManagerRevised : MonoBehaviour
                     else
                     {
                         CharacterManager.Instance.HandleAnims(dialogues[currentIndex].OnScreen, false);
+                        dialogues[currentIndex].endEvents?.Invoke();
                         if (canContinue) { DialogueForward(); }
                     }
                 }
@@ -182,7 +184,7 @@ public class DialogueManagerRevised : MonoBehaviour
 
 
         if (textBox.gameObject != null) { if (textBox != null) { textBox.color = Color.white; } }
-        if (inDialogue.OnScreen.Count > 0) { CharacterManager.Instance.ManageVisible(inDialogue.OnScreen); }
+        CharacterManager.Instance.ManageVisible(inDialogue.OnScreen);
         if (inDialogue.speakerCharacter != Enums.CatType.NONE)
         {
             Character character = CharacterManager.Instance.GetCharacter(inDialogue.speakerCharacter);
@@ -202,7 +204,7 @@ public class DialogueManagerRevised : MonoBehaviour
         }
         else { speakerBox.gameObject.SetActive(false); }
 
-        if (inDialogue.startEvents != null) { inDialogue.startEvents.Invoke(); }
+        inDialogue.startEvents?.Invoke();
         
         CharacterManager.Instance.HandleAnims(inDialogue.OnScreen, true);
         float speed = 0.1f;
@@ -243,8 +245,8 @@ public class DialogueManagerRevised : MonoBehaviour
     {
         for (int i = 0; i < dialogues.Count; i++)
         {
-            dialogues[i].startEvents = null;
-            dialogues[i].endEvents = null;
+            dialogues[i].startEvents.RemoveAllListeners();
+            dialogues[i].endEvents.RemoveAllListeners();
         }
         NotifyDialogueComplete = null;
 

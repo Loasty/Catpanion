@@ -26,16 +26,26 @@ public class MassDialogueManager : MonoBehaviour
     private float fastSpeed = 0.001f;
     [SerializeField]
     private float veryFastSpeed = 0.001f;
-     [SerializeField]
+    [SerializeField]
     public Dictionary<Enums.DialogueSpeed, float> dialogueSpeeds = new Dictionary<Enums.DialogueSpeed, float>();
 
     public AudioSource bgmAudioSource;
     public AudioSource sfxAudioSource;
 
-    
+    [SerializeField]
+    DialogueManagerRevised wonAffectionsTabby;
+    [SerializeField]
+    DialogueManagerRevised wonAffectionsCalico;
+    [SerializeField]
+    DialogueManagerRevised wonAffectionsWhite;
+    [SerializeField]
+    DialogueManagerRevised wonAffectionsBlack;
+
+
+
     private static MassDialogueManager instance;
     public static MassDialogueManager Instance { get { return instance; } }
-    
+
 
     void Awake()
     {
@@ -45,12 +55,14 @@ public class MassDialogueManager : MonoBehaviour
         dialogueSpeeds.Add(Enums.DialogueSpeed.VERYSLOW, verySlowSpeed);
         dialogueSpeeds.Add(Enums.DialogueSpeed.FAST, fastSpeed);
         dialogueSpeeds.Add(Enums.DialogueSpeed.VERYFAST, veryFastSpeed);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void DisplayButtons(List<OptionsRevised> options, DialogueManagerRevised requester)
     {
@@ -72,11 +84,11 @@ public class MassDialogueManager : MonoBehaviour
             buttonsOnScreen.Add(btn);
 
 
-            
+
 
         }
     }
-    
+
     public void ClearButtons()
     {
         for (int i = 0; i < buttonsOnScreen.Count; i++)
@@ -98,8 +110,38 @@ public class MassDialogueManager : MonoBehaviour
         ClearButtons();
     }
 
-
-   
-
-
+    public void WonAffections(Enums.CatType inEnum)
+    {
+        switch (inEnum)
+        {
+            case Enums.CatType.TABBY:
+                wonAffectionsTabby.gameObject.SetActive(true);
+                break;
+            case Enums.CatType.CALICO:
+                wonAffectionsCalico.gameObject.SetActive(true);
+                break;
+            case Enums.CatType.WHITE:
+                wonAffectionsWhite.gameObject.SetActive(true);
+                break;
+            case Enums.CatType.BLACK:
+                wonAffectionsBlack.gameObject.SetActive(true);
+                break;
+        }
+    }
+    public void HandleIfTabbyWon()
+    {
+        CharacterManager.Instance.HandleIfWonAffections(Enums.CatType.TABBY);
+    }
+    public void HandleIfCalicoWon()
+    {
+        CharacterManager.Instance.HandleIfWonAffections(Enums.CatType.CALICO);
+    }
+    public void HandleIfWhiteWon()
+    {
+        CharacterManager.Instance.HandleIfWonAffections(Enums.CatType.WHITE);
+    }
+    public void HandleIfBlackWon()
+    {
+        CharacterManager.Instance.HandleIfWonAffections(Enums.CatType.BLACK);
+    }
 }

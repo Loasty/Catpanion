@@ -19,6 +19,10 @@ public class RevisedDialogueButton : MonoBehaviour
 
     public void ButtonPressed()
     {
+        foreach (AffectType affect in impact)
+        {
+            CharacterManager.Instance.HandleAffectionImpact(affect);
+        }
         MassDialogueManager.Instance.HandleButtonDown(this);
     }
 

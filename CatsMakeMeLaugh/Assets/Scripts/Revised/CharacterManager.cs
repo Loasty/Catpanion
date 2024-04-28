@@ -10,6 +10,14 @@ public class CharacterManager : MonoBehaviour
     public Dictionary<Enums.CatType, Character> charactersDict = new Dictionary<Enums.CatType, Character>();
     public static CharacterManager Instance { get { return instance; } }
     private static CharacterManager instance;
+    public Dictionary<string, Enums.CatType> secretKey = new Dictionary<string, Enums.CatType>();
+    public string whiteCatKey = "$WhiteCat$";
+    public string tabbyCatKey = "$TabbyCat$";
+    public string blackCatKey = "$BlackCat$";
+    public string calicoCatKey = "$CalicoCat$";
+    int MAX_AFFECTION = 30;
+    
+
 
     private void Awake()
     {
@@ -25,8 +33,16 @@ public class CharacterManager : MonoBehaviour
                 Debug.LogError("Cat configuration not correct, check enums on characters.");
             }
         }
-    }
+        secretKey.Add(whiteCatKey, Enums.CatType.WHITE);
+        secretKey.Add(blackCatKey, Enums.CatType.BLACK);
+        secretKey.Add(tabbyCatKey, Enums.CatType.TABBY);
+        secretKey.Add(calicoCatKey, Enums.CatType.CALICO);
 
+    }
+    private void OnDestroy()
+    {
+        instance = null;
+    }
     public Character GetCharacter(Enums.CatType type)
     {
        
@@ -35,27 +51,72 @@ public class CharacterManager : MonoBehaviour
             return chara;
        
     }
+    public Character GetCharacterFromKey(string key)
+    {
+        try
+        {
+            Character character;
+            character = GetCharacter(secretKey[key]);
+            if (character != null)
+            {
+                return character;
+            }
+        }
+        catch
+        {
+            Debug.LogError("Not a valid key, check enums on characters.");
+        }
+        return null;
+    }
+    
+    public string GetNameFromKey(string key)
+    {
+        try
+        {
+            Character character;
+            character = GetCharacter(secretKey[key]);
+            if (character != null)
+            {
+                return character.name;
+            }
+        }
+        catch
+        {
+            Debug.LogError("Not a valid key, check enums on characters.");
+        }
+        return "";
+    }
     public void DisableAllCharacterObj()
     {
         for (int i = 0; i < characters.Count; i++)
         {
             characters[i].characterObj.SetActive(false);
-            characters[i].emote.gameObject.SetActive(false);
+            if (characters[i].emote != null)
+            {
+                characters[i].emote.gameObject.SetActive(false);
+            }
         }
     }
 
     public void ManageVisible(List<OnScreenCharacter> catsActive)
     {
         DisableAllCharacterObj();
-        for (int i = 0; i < catsActive.Count; i++)
+        if (catsActive.Count > 0)
         {
-            Character cat;
-            charactersDict.TryGetValue(catsActive[i].characterType, out cat);
-            if (cat != null) { cat.characterObj.SetActive(true); }
-            if (catsActive[i].emoteEffect != Enums.EmoteEffect.NONE)
+            for (int i = 0; i < catsActive.Count; i++)
             {
-                cat.emote.gameObject.SetActive(true);
-                cat.emote.PlayEmote(catsActive[i].emotes, catsActive[i].emoteEffect, catsActive[i].emoteDuration, catsActive[i].emoteRepeats, catsActive[i].emoteSpeed);
+                Character cat;
+                charactersDict.TryGetValue(catsActive[i].characterType, out cat);
+                if (cat != null) { cat.characterObj.SetActive(true); }
+                if (catsActive[i].emoteEffect != Enums.EmoteEffect.NONE)
+                {
+                    if (cat.emote != null)
+                    {
+
+                        cat.emote.gameObject.SetActive(true);
+                        cat.emote.PlayEmote(catsActive[i].emotes, catsActive[i].emoteEffect, catsActive[i].emoteDuration, catsActive[i].emoteRepeats, catsActive[i].emoteSpeed);
+                    }
+                }
             }
         }
     }
@@ -98,4 +159,41 @@ public class CharacterManager : MonoBehaviour
         }
     }
   
+    public void HandleAffectionImpact(AffectType affectType)
+    {
+        try
+        {
+            charactersDict[affectType.affectCat].affectionLevel += affectType.affectionImpact;
+        }
+        catch
+        {
+            Debug.LogError("Check cat type");
+        }
+    }
+    public bool WonAffectionsCheck(Enums.CatType catType)
+    {
+        try
+        {
+            if (charactersDict[catType].affectionLevel >= MAX_AFFECTION)
+            {
+                return true;
+            }
+        }
+        catch
+        {
+            Debug.LogError("Check enums");
+        }
+        return false;
+    }
+    public void HandleIfWonAffections(Enums.CatType catType)
+    {
+        if (WonAffectionsCheck(catType))
+        {
+            MassDialogueManager.Instance.WonAffections(catType);
+        }
+        else
+        {
+            
+        }
+    }
 }
