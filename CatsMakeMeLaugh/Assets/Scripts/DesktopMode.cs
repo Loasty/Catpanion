@@ -35,7 +35,7 @@ public class DesktopMode : MonoBehaviour
 
         foreach(Cat cat in GameData.Instance.savedCats.cats)
         {
-            Vector3 catSpawnPos = new Vector3((distanceBetweenCats * catCounter) - offsetDistance, 0, 0);
+            Vector3 catSpawnPos = new Vector3((distanceBetweenCats * catCounter) - offsetDistance, 0, 0) + new Vector3(0,0, 0.01f * catCounter);
 
             GameObject desiredCat = GameData.Instance.catPrefabs[(int)cat.type];
             GameObject spawnCat = Instantiate(desiredCat, taskbar.transform);
@@ -43,6 +43,7 @@ public class DesktopMode : MonoBehaviour
             spawnCat.transform.position = catSpawnPos;
             spawnCat.GetComponent<CatController>().LoadCatData(cat);
 
+            spawnCat.GetComponent<SpriteRenderer>().sortingOrder = catCounter * -1;
             catCounter++;
         }
     }
