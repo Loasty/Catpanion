@@ -80,8 +80,15 @@ public class DialogueManagerRevised : MonoBehaviour
 
     private void OnEnable()
     {
-        canContinue = true;
-        DialogueForward();
+        if (lastDialogue)
+        {
+            NotifyDialogueComplete?.Invoke();
+        }
+        else
+        {
+            canContinue = true;
+            DialogueForward();
+        }
         
     }
     private void OnDisable()
@@ -109,7 +116,16 @@ public class DialogueManagerRevised : MonoBehaviour
                 {
                     if (lastDialogue)
                     {
-                        dialogues[currentIndex].endEvents?.Invoke();
+                        try
+                        {
+                            dialogues[currentIndex].endEvents?.Invoke();
+                        }
+                        catch
+                        {
+                            Debug.Log("Error for some reason?");
+
+                            dialogues[currentIndex].endEvents?.Invoke();
+                        }
                         NotifyDialogueComplete?.Invoke();
                         //if (dialogues[currentIndex].endEvents != null) { dialogues[currentIndex].endEvents.Invoke(); }
                         lastDialogue = false;
@@ -144,6 +160,7 @@ public class DialogueManagerRevised : MonoBehaviour
     
     public void DialogueForward()
     {
+        
         currentIndex++;
         if (currentIndex >= (dialogues.Count -1))
         {
@@ -259,4 +276,5 @@ public class DialogueManagerRevised : MonoBehaviour
         dialogueManager.returnTo = dialogueManager;
         this.gameObject.SetActive(false);
     }
+   
 }

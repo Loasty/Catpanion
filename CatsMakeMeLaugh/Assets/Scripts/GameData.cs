@@ -164,7 +164,20 @@ public class GameData : MonoBehaviour
         }
         savedSettings = JsonUtility.FromJson<SavedSettings>(data);
     }
+    public void AcquiredCat(Character cat)
+    {
+        Cat newCat = new Cat();
+        newCat.acquiredCat = true;
+        newCat.affectionLevel = (int)cat.affectionLevel;
+        newCat.catName = cat.speakerName;
+        newCat.type = cat.cat;
 
+        savedCats.cats.Add(newCat);
+
+        isSaveDataPresent = true;
+
+        SaveData();
+    }
     public void AcquiredCat(CatCharacter cat)
     {
         Cat newCat = new Cat();

@@ -15,7 +15,7 @@ public class CharacterManager : MonoBehaviour
     public string tabbyCatKey = "$TabbyCat$";
     public string blackCatKey = "$BlackCat$";
     public string calicoCatKey = "$CalicoCat$";
-    int MAX_AFFECTION = 30;
+    public int MAX_AFFECTION = 15;
     
 
 
@@ -40,6 +40,10 @@ public class CharacterManager : MonoBehaviour
 
     }
     private void OnDestroy()
+    {
+        instance = null;
+    }
+    private void OnDisable()
     {
         instance = null;
     }

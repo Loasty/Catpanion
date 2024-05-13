@@ -33,7 +33,14 @@ public class AffectionSystem : MonoBehaviour
     {
         SetInstance();
     }
-
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+    private void OnDisable()
+    {
+        instance = null;
+    }
     void Start()
     {
         SortCats();

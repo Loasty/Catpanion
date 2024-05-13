@@ -29,9 +29,11 @@ public class MassDialogueManager : MonoBehaviour
     [SerializeField]
     public Dictionary<Enums.DialogueSpeed, float> dialogueSpeeds = new Dictionary<Enums.DialogueSpeed, float>();
 
+    [Header("Audio")]
     public AudioSource bgmAudioSource;
     public AudioSource sfxAudioSource;
 
+    [Header("Won Affections")]
     [SerializeField]
     DialogueManagerRevised wonAffectionsTabby;
     [SerializeField]
@@ -40,6 +42,16 @@ public class MassDialogueManager : MonoBehaviour
     DialogueManagerRevised wonAffectionsWhite;
     [SerializeField]
     DialogueManagerRevised wonAffectionsBlack;
+
+    [Header("Game Loops")]
+    [SerializeField]
+    RevisedGameLoopManager revisedGameLoopManagerTabby;
+    [SerializeField]
+    RevisedGameLoopManager revisedGameLoopManagerCalico;
+    [SerializeField]
+    RevisedGameLoopManager revisedGameLoopManagerWhite;
+    [SerializeField]
+    RevisedGameLoopManager revisedGameLoopManagerBlack;
 
 
 
@@ -58,7 +70,14 @@ public class MassDialogueManager : MonoBehaviour
 
 
     }
-
+    private void OnDisable()
+    {
+        instance = null;
+    }
+    private void OnDestroy()
+    {
+        instance = null;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -78,6 +97,7 @@ public class MassDialogueManager : MonoBehaviour
             if (options[i].returnToHere)
             {
                 diaButton.transitionTo.returnTo = requester;
+                
             }
 
             //Add To Screen
@@ -115,15 +135,19 @@ public class MassDialogueManager : MonoBehaviour
         switch (inEnum)
         {
             case Enums.CatType.TABBY:
+                revisedGameLoopManagerTabby.gameObject.SetActive(false);
                 wonAffectionsTabby.gameObject.SetActive(true);
                 break;
             case Enums.CatType.CALICO:
+                revisedGameLoopManagerCalico.gameObject.SetActive(false);
                 wonAffectionsCalico.gameObject.SetActive(true);
                 break;
             case Enums.CatType.WHITE:
+                revisedGameLoopManagerWhite.gameObject.SetActive(false);
                 wonAffectionsWhite.gameObject.SetActive(true);
                 break;
             case Enums.CatType.BLACK:
+                revisedGameLoopManagerBlack.gameObject.SetActive(false);
                 wonAffectionsBlack.gameObject.SetActive(true);
                 break;
         }
@@ -131,6 +155,7 @@ public class MassDialogueManager : MonoBehaviour
     public void HandleIfTabbyWon()
     {
         CharacterManager.Instance.HandleIfWonAffections(Enums.CatType.TABBY);
+        
     }
     public void HandleIfCalicoWon()
     {
