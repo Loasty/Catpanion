@@ -68,8 +68,8 @@ public class Settings : MonoBehaviour
     public IEnumerator SlidePanel(Vector2 desiredPos, bool toggle)
     {
         float curTime = 0;
-        float delay = 1.5f;
-        while(settingsPanel.transform.position.x - desiredPos.x >= 0.5f)
+        float delay = .25f;
+        while(Mathf.Abs(settingsPanel.transform.position.x - desiredPos.x) >= 0.5f)
         {
             curTime += 0.05f * Time.deltaTime;
             settingsPanel.transform.position = Vector2.Lerp(settingsPanel.transform.position, desiredPos, curTime / delay);

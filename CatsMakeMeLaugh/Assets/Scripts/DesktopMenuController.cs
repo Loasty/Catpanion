@@ -46,6 +46,7 @@ public class DesktopMenuController : MonoBehaviour
                         ToggleListOfButtons(cat_Items);
                         break;
                     case MenuOptions_Main.Closet:
+                        ClosetMenuController.Instance.ToggleMenu();
                         ToggleListOfButtons(closet_Items);
                         break;
                     case MenuOptions_Main.Visit:
@@ -75,8 +76,10 @@ public class DesktopMenuController : MonoBehaviour
             case MenuOptions_Main.Closet:
                 switch (item.menuType_Closet)
                 {
-                    default: 
-
+                    default:
+                        //REFER TO 'case MenuOptions_Main.Main:' FOR CLOSET MENU OPTION
+                        //CLOSET DOES NOT CONTAIN SUB_BUTTONS AT THIS TIME, IF IT CHANGES MOVE
+                        //TO THIS AREA OF CODE
                         break;
                 }
                 RetractAllButtons();
