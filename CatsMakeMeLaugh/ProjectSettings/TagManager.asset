@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Taskbar
   - Cat
   - Emote
   - MeowSource
   - AttentionSource
+  - PlayAreaBorder
   layers:
   - Default
   - TransparentFX

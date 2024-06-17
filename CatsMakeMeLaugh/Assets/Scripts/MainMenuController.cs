@@ -52,7 +52,7 @@ public class MainMenuController : MonoBehaviour
 
     public void SettingsToggle()
     {
-        if(Settings.Instance.isPanelOpen == false)
+        if(Settings.Instance.isSettingsMenuOpen == false)
             Settings.Instance.ToggleSettingsMenu();
     }
 

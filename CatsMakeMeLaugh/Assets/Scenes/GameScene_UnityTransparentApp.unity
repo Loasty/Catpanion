@@ -3254,7 +3254,7 @@ GameObject:
   - component: {fileID: 849257438}
   m_Layer: 5
   m_Name: PlayArea_Roof
-  m_TagString: Taskbar
+  m_TagString: PlayAreaBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4008,7 +4008,7 @@ GameObject:
   - component: {fileID: 1143260933}
   m_Layer: 5
   m_Name: PlayArea_RightWall
-  m_TagString: Taskbar
+  m_TagString: PlayAreaBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6076,7 +6076,7 @@ GameObject:
   - component: {fileID: 1665256863}
   m_Layer: 5
   m_Name: PlayArea_LeftWall
-  m_TagString: Taskbar
+  m_TagString: PlayAreaBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7037,7 +7037,7 @@ GameObject:
   - component: {fileID: 1956477125}
   m_Layer: 5
   m_Name: PlayArea_Floor
-  m_TagString: Taskbar
+  m_TagString: PlayAreaBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

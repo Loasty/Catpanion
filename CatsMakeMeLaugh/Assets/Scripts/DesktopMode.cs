@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,22 @@ public class DesktopMode : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
-        taskbar = GameObject.FindGameObjectWithTag("Taskbar");
+
+        List<GameObject> playAreaBorders = GameObject.FindGameObjectsWithTag("PlayAreaBorder").ToList();
+        foreach(GameObject obj in playAreaBorders)
+        {
+            if(obj.TryGetComponent(out PlayAreaDefiner definer))
+            {
+                if (definer.playAreaSide == Enums.PlayAreaBorders.BOTTOM)
+                {
+                    Debug.Log("Taskbar Found");
+                    taskbar = definer.gameObject;
+                    break;
+                }
+            }
+        }
+
+        Debug.Log("Loading Cats");
         LoadAllCatsIntoScene();
     }
 
@@ -33,8 +49,10 @@ public class DesktopMode : MonoBehaviour
         float offsetDistance = distanceBetweenCats / 2;
         int catCounter = 1;
 
+        Debug.Log($"{catCounter} cats being loaded");
         foreach(Cat cat in GameData.Instance.savedCats.cats)
         {
+            Debug.Log($"Cat {cat.catName} loading");
             Vector3 catSpawnPos = new Vector3((distanceBetweenCats * catCounter) - offsetDistance, 0, 0) + new Vector3(0,0, 0.01f * catCounter);
 
             GameObject desiredCat = GameData.Instance.catPrefabs[(int)cat.type];
