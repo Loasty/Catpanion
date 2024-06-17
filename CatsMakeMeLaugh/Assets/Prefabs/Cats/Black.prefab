@@ -464,10 +464,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cat:
-    catName: 
-    type: 0
-    affectionLevel: 0
     acquiredCat: 0
+    isEnabled: 1
+    isMuted: 0
+    canHumanSpeak: 0
+    catName: 
+    gender: 0
+    type: 0
+    personality: 0
+    meowType: 0
+    meowPitch: 0
+    currentMood: 0
+    affectionLevel: 0
+    foodLevel: 0
+    waterLevel: 0
+    ownerName: 
+    clothing_Hat_ID: 0
+    clothing_Shirt_ID: 0
+    clothing_Booties_ID: 0
+    clothing_Extra_ID: 0
+  spriteRenderer: {fileID: 6192012168622414593}
   catAnim: {fileID: 4578661323203823912}
   catMeowSource: {fileID: 6525680121947034136}
   catAttentionSource: {fileID: 8953589596014509778}

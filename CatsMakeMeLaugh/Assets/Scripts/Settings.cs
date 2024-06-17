@@ -231,7 +231,9 @@ public class Settings : MonoBehaviour
 
             catToggleData.catImgDisplay.sprite = GameData.Instance.referenceSprites.catSprites[(int)cat.type -1];
             catToggleData.catNameDisplay.text = cat.catName;
-            catToggleData.catEnabled.isOn = true;//cat.enabled;
+            catToggleData.catEnabled.isOn = cat.isEnabled;
+
+            catToggleData.catEnabled.onValueChanged.AddListener(cat.ToggleCat);
         }
     }
 

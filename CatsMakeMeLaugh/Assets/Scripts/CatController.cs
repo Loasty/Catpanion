@@ -6,6 +6,7 @@ using UnityEngine;
 public class CatController : MonoBehaviour
 {
     [SerializeField] Cat cat;
+    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator catAnim;
 
     [SerializeField] AudioSource catMeowSource;
@@ -21,14 +22,32 @@ public class CatController : MonoBehaviour
 
     private void Awake()
     {
-        demoMode = true;
+        demoMode = false;
+
         //LoadCatData();
+    }
+
+    public void ToggleCat(bool onOff)
+    {
+        if(onOff) { StopAllCoroutines(); } else { StartCoroutine(SitIdle());}
+
+        spriteRenderer.enabled = onOff;
+        catAnim.enabled = onOff;
+        catMeowSource.enabled = onOff;
+        catAttentionSource.enabled = onOff;
+        nameDisplay.enabled = onOff;
     }
 
     public void LoadCatData(Cat data)
     {
         cat = data;
         nameDisplay.text = cat.catName;
+
+        ToggleCat(cat.isEnabled);
+        if (cat != null)
+        {
+            cat.catToggled += ToggleCat;
+        }
     }
 
     // Start is called before the first frame update
@@ -76,7 +95,7 @@ public class CatController : MonoBehaviour
             if(curDemoAnimIndex >= 5) { curDemoAnimIndex = 0; }
         }
 
-        Debug.Log(selectedOption);
+        //Debug.Log(selectedOption);
         //{ SIT, WALK, GREET, SWIPE, AFFECTION, ATTENTION, MEOW, PLAY }
         switch (selectedOption)
         {
@@ -125,7 +144,7 @@ public class CatController : MonoBehaviour
 
     IEnumerator Walk()
     {
-        Debug.Log("Walk");
+        //Debug.Log("Walk");
         //float width = taskbar.GetComponent<RectTransform>().rect.width;
         float randomX;
 
@@ -162,7 +181,7 @@ public class CatController : MonoBehaviour
 
     IEnumerator Greet()
     {
-        Debug.Log("Greet");
+        //Debug.Log("Greet");
         catAnim.SetTrigger("Greet");
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
@@ -170,7 +189,7 @@ public class CatController : MonoBehaviour
 
     IEnumerator Swipe()
     {
-        Debug.Log("Swipe");
+        //Debug.Log("Swipe");
         catAnim.SetTrigger("Swipe");
         yield return new WaitForEndOfFrame();
         StartCoroutine(SitIdle());
@@ -178,7 +197,7 @@ public class CatController : MonoBehaviour
 
     IEnumerator Affection()
     {
-        Debug.Log("Affection");
+        //Debug.Log("Affection");
         catAnim.SetTrigger("Affection");
 
         while (catAnim.GetCurrentAnimatorStateInfo(0).length >
@@ -193,7 +212,7 @@ public class CatController : MonoBehaviour
 
     IEnumerator Attention()
     {
-        Debug.Log("Attention");
+        //Debug.Log("Attention");
         catAnim.SetTrigger("Attention");
 
         int num = Random.Range(0, DesktopMode.Instance.attentionSounds.Count);
@@ -212,7 +231,7 @@ public class CatController : MonoBehaviour
 
     IEnumerator Meow()
     {
-        Debug.Log("MEOW");
+        //Debug.Log("MEOW");
         catAnim.SetTrigger("Meow");
         if (cat.type != Enums.CatType.BLACK)
         {
@@ -230,7 +249,7 @@ public class CatController : MonoBehaviour
 
     IEnumerator Play()
     {
-        Debug.Log("Play");
+        //Debug.Log("Play");
         catAnim.SetBool("Play", true);
 
         int num = Random.Range(0, DesktopMode.Instance.playSounds.Count);

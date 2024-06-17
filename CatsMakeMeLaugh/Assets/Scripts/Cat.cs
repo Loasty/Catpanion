@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 
 [Serializable]
@@ -32,6 +33,21 @@ public class Cat
     public int clothing_Shirt_ID = 0;
     public int clothing_Booties_ID = 0;
     public int clothing_Extra_ID = 0;
+
+
+    /////////////
+    /// Events
+    /// 
+    public delegate void CatToggled(bool onOff);
+
+    public event CatToggled catToggled;
+
+    public void ToggleCat(bool onOff) { 
+        isEnabled = onOff; 
+        GameData.Instance.SaveData(GameData.Instance.saveDataLocation, GameData.Instance.settingsLocation, true);
+
+        catToggled?.Invoke(onOff);
+    }
 }
 
 
