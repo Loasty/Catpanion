@@ -15,8 +15,10 @@ public class Enums : MonoBehaviour
 
     //CAT RELATED
     public enum CatType { NONE, WHITE, TABBY, CALICO, BLACK };
-    public enum CatPersonality { Average, Confident, Energetic, Goofy, Gentle, Grumpy, Lazy, Timid, };
+    public enum MeowType { Normal, Long, Loud, Quiet, Soft, Raspy };
+    public enum CatPersonality { Average, Anxious, Confident, Energetic, Goofy, Gentle, Grumpy, Lazy, Timid, Wizard};
     //Average - Normal behaviours, no special traits
+    //Anxious - More likely to be attention seeking and affectionate -- but requires more care at higher affection levels
     //Confident - Likes to walk around more often, almost like strutting behaviour
     //Energetic - Likes to play more often and sleep less
     //Goofy - Likes to emote and meow more often, maybe gets zoomie behaviour often?
@@ -24,8 +26,9 @@ public class Enums : MonoBehaviour
     //Grumpy - More likely to be Attention Seeking than Affectionate
     //Lazy - Will sleep more than any other action
     //Timid - Will hide & less affectionate at lower affection levels, but more present and affectionate as it rises
-    public enum CatMood { };
-    public enum CatGender { Boy, Girl};
+    //Wizard - Cautious but smart -- Affection makes it speak humanly more
+    public enum CatMood { Normal };
+    public enum CatGender { Unknown, Boy, Girl };
     public enum Actions { SIT = 30, WALK = 60, GREET = 75, SWIPE = 80, AFFECTION = 85, ATTENTION = 90, MEOW = 95, PLAY = 100 };
 
 

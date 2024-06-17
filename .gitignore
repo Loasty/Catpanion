@@ -11,6 +11,10 @@
 [Uu]ser[Ss]ettings/
 /[Bb]ackups/
 
+#Secure Data To Be Kept Locally
+CatsMakeMeLaugh/Assets/SecureData.cs
+
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/

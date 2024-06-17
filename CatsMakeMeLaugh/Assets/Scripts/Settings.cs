@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using static DG.Tweening.Core.DOTweenSettings;
 
 public class Settings : MonoBehaviour
 {
@@ -45,6 +47,10 @@ public class Settings : MonoBehaviour
     [Header("Tracked Game Settings")]
     [SerializeField] Toggle desktopLaunch;
 
+    [Header("Game Settings Variables")]
+    [SerializeField] GameObject catDisplayField;
+    [SerializeField] GameObject catDisplayPrefab;
+
     /////////////
     /// Events
     /// 
@@ -59,7 +65,8 @@ public class Settings : MonoBehaviour
     private void Awake()
     {
         if (instance == null) { instance = this; }
-
+        DateTime now = DateTime.Now;
+        Debug.Log(now);
         isConfirmResetPanelOpen = false;
 
         isSettingsMenuOpen = false;
@@ -67,11 +74,13 @@ public class Settings : MonoBehaviour
         settingsPanelCanvas.alpha = 0.0f;
         settingsPanelCanvas.interactable = false;
         settingsPanelCanvas.blocksRaycasts = false;
+
+        openSettingsMenu += ToggleSettingsMenu;
+        GameData.saveDataLoadCompleted += LoadCatsIntoMenu;
     }
 
     private void Start()
     {
-        openSettingsMenu += ToggleSettingsMenu;
 
         taskbar.maxValue = Screen.height;
         taskbar.minValue = 0;
@@ -207,8 +216,23 @@ public class Settings : MonoBehaviour
             sceneLoader.LoadScene();
         }
 
-        GameData.Instance.SaveData();
+        GameData.Instance.SaveData(GameData.Instance.saveDataLocation, GameData.Instance.settingsLocation);
         
+    }
+
+
+    void LoadCatsIntoMenu()
+    {
+        Debug.Log("Looking For Cat Data");
+        foreach (Cat cat in GameData.Instance.savedCats.cats)
+        {
+            GameObject catToggleDisplay = Instantiate(catDisplayPrefab, catDisplayField.transform);
+            CatToggleMenu catToggleData = catToggleDisplay.GetComponent<CatToggleMenu>();
+
+            catToggleData.catImgDisplay.sprite = GameData.Instance.referenceSprites.catSprites[(int)cat.type -1];
+            catToggleData.catNameDisplay.text = cat.catName;
+            catToggleData.catEnabled.isOn = true;//cat.enabled;
+        }
     }
 
 
