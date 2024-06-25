@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -26,7 +27,7 @@ public class RandomizedPersonality
 {
     //Again, generic as possible.
     public Enums.CatPersonality catPersonality;
-    int personalityLimitPerRun = 0; //No limit
+    public int personalityLimitPerRun = 0; //No limit
     public int count;
 
 }
@@ -37,6 +38,8 @@ public class RandomizedHandler : MonoBehaviour
 {
     [SerializeField]
     int MaxCatCount = 4;
+    [SerializeField]
+    Transform spawnPos;
  
   
 
@@ -105,9 +108,13 @@ public class RandomizedHandler : MonoBehaviour
         Dictionary<Enums.CatType, RandomizedCatHandler> catHandler = new Dictionary<Enums.CatType, RandomizedCatHandler>();
         foreach (RandomizedCatHandler c in catTypes) { if (catHandler[c.catType] == null) { catHandler.Add(c.catType, c); } }
 
+        
         Dictionary<Enums.AdoptionDifficulty, RandomizedPersonalityPool> personalityHandler = new Dictionary<Enums.AdoptionDifficulty, RandomizedPersonalityPool>();
         foreach (RandomizedPersonalityPool p in personalityPools) { if (personalityHandler[p.adoptionDifficulty] == null) { personalityHandler.Add(p.adoptionDifficulty, p); } }
-  
+        List<Enums.AdoptionDifficulty> validDifficulties = System.Enum.GetValues(typeof(Enums.AdoptionDifficulty)).Cast<Enums.AdoptionDifficulty>().ToList<Enums.AdoptionDifficulty>();
+
+
+
 
         for (int i = 0; i < MaxCatCount; i++)
         {
@@ -115,8 +122,57 @@ public class RandomizedHandler : MonoBehaviour
             int rand = Random.Range(0, validCatTypes.Count);
             catHandler[(Enums.CatType)rand].count++;
             if (catHandler[(Enums.CatType)rand].limitPerRun > 0) { if (catHandler[(Enums.CatType)rand].count > catHandler[(Enums.CatType)rand].limitPerRun) { validCatTypes.Remove((Enums.CatType)rand); } }
-            
-            
+
+            //Cat difficulty
+            int randDifficulty = Random.Range(0, validDifficulties.Count);
+            personalityHandler[(Enums.AdoptionDifficulty)randDifficulty].count++;
+            if (personalityHandler[(Enums.AdoptionDifficulty)randDifficulty].limitPerRun > 0) { if (personalityHandler[(Enums.AdoptionDifficulty)randDifficulty].count > personalityHandler[(Enums.AdoptionDifficulty)randDifficulty].limitPerRun) { validDifficulties.Remove((Enums.AdoptionDifficulty)randDifficulty); } };
+
+            RandomizedPersonalityPool pool = new RandomizedPersonalityPool();
+            personalityHandler.TryGetValue((Enums.AdoptionDifficulty)randDifficulty, out pool);
+            // filter out
+            foreach(Character c in list)
+            {
+                if (c.cat == catHandler[(Enums.CatType)rand].catType)
+                {
+                    foreach (RandomizedPersonality p in pool.personalityList)
+                    {
+                        if (c.catPersonality == p.catPersonality)
+                        {
+                            pool.personalityList.Remove(p);
+                        }
+                    }
+                }
+
+            }
+            int randPersonality = Random.Range(0, pool.personalityList.Count);
+          
+
+            Character cat = new Character();
+            cat.cat = (Enums.CatType)rand;
+            cat.difficulty = (Enums.AdoptionDifficulty)randDifficulty;
+            cat.catPersonality = pool.personalityList[randPersonality].catPersonality;
+            cat.characterObj = GameObject.Instantiate(catHandler[(Enums.CatType)rand].prefab, spawnPos);
+            cat.speakerName = cat.catPersonality.ToString().ToLower().FirstCharacterToUpper() + " " + cat.cat.ToString().ToLower().FirstCharacterToUpper() + " Cat";
+
+
+
+
+
+            //    cat.catPersonality = (Enums.CatPersonality)catPersonality;
+            //    cat.speakerName = catPersonality.ToString().ToLower().FirstCharacterToUpper() + " " + cat.cat.ToString().ToLower().FirstCharacterToUpper() + " Cat";
+            //    cat.characterObj = 
+
+            //    list.Add(cat);
+
+
+
+
+
+
+
+
+
 
         }
 

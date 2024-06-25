@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
     public float affectionLevel = 0;
     public Color colorTextbox = Color.white;
     public Color colorSpeakerbox = Color.white;
+    
 
 
 
