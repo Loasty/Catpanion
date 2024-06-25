@@ -27,9 +27,12 @@ public class Enums : MonoBehaviour
     //Lazy - Will sleep more than any other action
     //Timid - Will hide & less affectionate at lower affection levels, but more present and affectionate as it rises
     //Wizard - Cautious but smart -- Affection makes it speak humanly more
+
+    //Average, 
     public enum CatMood { Normal };
     public enum CatGender { Unknown, Boy, Girl };
     public enum Actions { SIT = 30, WALK = 60, GREET = 75, SWIPE = 80, AFFECTION = 85, ATTENTION = 90, MEOW = 95, PLAY = 100 };
+    public enum AdoptionDifficulty { Easy, Medium, Hard};
 
 
     //MENU RELATED

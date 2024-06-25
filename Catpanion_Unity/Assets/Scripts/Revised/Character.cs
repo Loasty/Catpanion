@@ -7,14 +7,21 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     public string speakerName;
     public Enums.CatType cat = Enums.CatType.NONE;
+    public Enums.CatPersonality catPersonality = Enums.CatPersonality.Average;
+    public Enums.AdoptionDifficulty difficulty = Enums.AdoptionDifficulty.Easy;
     public Animator animator;
     public GameObject characterObj;
     public Emote emote;
     public float affectionLevel = 0;
     public Color colorTextbox = Color.white;
     public Color colorSpeakerbox = Color.white;
-    
-    
+
+
+
+
+
+
+
     void Start()
     {
         

@@ -1131,8 +1131,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.3}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 8.05011}
+  m_SizeDelta: {x: 0, y: 16.1002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &379312399
 MonoBehaviour:
@@ -1154,9 +1154,35 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You were the babiest of boys and not only made such an impact on us, but
-    brought us so much joy and love during your stay. We are glad you let us give
-    you a home and became part of our family.
+  m_text: 'My little baby boy, gone far too soon. He was once a stray who we had
+    no idea where he''d had come from and where he''d go when he was a stray. It
+    turns out he didn''t have a home, was most likely abandoned, and he was treated
+    poorly by others for being a stray cat, to our horror, from humans and other
+    animals alike. My mom and I thus gave him a deeply loving home, and made him
+    an indoor cat, saving his life, as the coming winter that year was predicted
+    to be extremely cold.
+
+
+    His hard-earned rough exterior from his years of
+    being a stray, melted to reveal an affectionate, adorable, loving, and at times,
+    silly little boy, who wanted nothing more than to be loved, and loved he was.
+    If only that love could have saved you from cancer, but, maybe it did, in the
+    end-- He passed away in my loving arms, peacefully, surronded by his loved ones,
+    before he could suffer anymore from rapidly progressing cance than he already
+    had when it proved that he could not be saved otherwise. A painless death, surronded
+    by love, that not many strays could have hope to achieve in their lifetime. I
+    protected you from a world that would cause you suffering, one last, final time.
+
+
+    They
+    say that we are only truly dead when no one can remember our name and thus, I
+    cast your name lovingly out into the internet, where you may be immortalized
+    forever. I miss you so very much. I''ll never forget your undying love, your
+    warmth, your cuddles, your purr as you''d give me adorably intense headbuts and
+    more, my dearly beloved, littlest most babiest boy ever. My love and then grief
+    powers a lot of (at least of my portion) Catpanion and may you too reader, find
+    comfort in Catpanion, in either your own losses, or that Catpanion is ultimately
+    a product of love towards cats, and/or love towards those we''ve lost.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1183,15 +1209,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.2
-  m_fontSizeBase: 36
+  m_fontSize: 6.1
+  m_fontSizeBase: 6.36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 2.04
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 4096
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2863,7 +2889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 506.99313
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2899,7 +2925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1566.6666
+      value: 1567.4829
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3228,9 +3254,37 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You were the babiest of boys and not only made such an impact on us, but
-    brought us so much joy and love during your stay. We are glad you let us give
-    you a home and became part of our family.
+  m_text: 'My mom and I adopted Liam around 2012, and he was just a little kitten
+    then, approximately just a few months old. I had the honor of watching you grow
+    up, as you watched me grow up. You were never much of a lap cat, but you loved
+    hugs, and had a very loud purr, of which was often heard when his meals was being
+    plated! Unfortunately, Liam got very sick suddenly, rapidly loosing weight, lacking
+    an appetite for a cat that usually got super excited at mealtime. Liam unfortunately
+    was undergoing liver failure, of which could not be stopped. With this diagnosis,
+    he was quickly and kindly put of this suffering. I was just a little kid when
+    we got you, and you were a constant presence in my life, that you had become
+    a part of me, cultimative forming who I am today, much like how I was apart of
+    you. I hold onto this part of you, forever embedded in my consciousness, and
+    think of you. I didn''t know it at the time, but it was like you held out until
+    my 21st birthday, passing away just three days after it. It would be lonely to
+    say that now I must continue to grow without you as I''m now a young adult, and
+    you are no longer with us, and so, I''d like to believe that I''ll hold onto
+    this part of you, carrying it forward through my life. It''s like carrying the
+    baton of your memory, and your love.
+
+
+    They say that we are only truly dead
+    when no one can remember our name and thus, I cast your name lovingly out into
+    the internet, where you may be immortalized forever. I miss you dearly. I''ll
+    never forget your loud purr, the way you''d have a tendency to place your paw
+    on walls like you were helping hold the house up, your excitement towards food,
+    the sound of your footsteps, your cuddles with your feline companions, and more.
+    My love and then grief powers a lot of (at least of my portion) Catpanion and
+    may you too reader, find comfort in Catpanion, in either your own losses, and/or
+    that Catpanion is ultimately a product of love towards cats, and love towards
+    those we''ve lost.
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3257,11 +3311,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.2
-  m_fontSizeBase: 36
+  m_fontSize: 5.65
+  m_fontSizeBase: 14.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 0.1
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -4590,7 +4644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 506.99313
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_SizeDelta.y
@@ -4626,7 +4680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 959.99994
+      value: 960.48975
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4804,7 +4858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.3}
   m_AnchorMax: {x: 1, y: 0.35}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 12.8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2025503547
@@ -5547,7 +5601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 506.99313
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_SizeDelta.y
@@ -5583,7 +5637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 353.49658
       objectReference: {fileID: 0}
     - target: {fileID: 4201106483307410312, guid: 8306420da8ae74f439ff2f293b904d30, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -2,6 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+class CharacterCat
+{
+    public string speakerName;
+    public Enums.CatType catColor = Enums.CatType.NONE;
+    public Enums.CatPersonality catPersonality = Enums.CatPersonality.Average;
+    public Animator animator;
+    public GameObject characterObj;
+    public Emote emote;
+    public float affectionLevel = 0;
+    public Color colorTextbox = Color.white;
+    public Color colorSpeakerbox = Color.white;
+}
+
+
 public class CharacterManager : MonoBehaviour
 {
     [SerializeField]

@@ -43,6 +43,8 @@ public class MassDialogueManager : MonoBehaviour
     [SerializeField]
     DialogueManagerRevised wonAffectionsBlack;
 
+
+
     [Header("Game Loops")]
     [SerializeField]
     RevisedGameLoopManager revisedGameLoopManagerTabby;
@@ -67,9 +69,8 @@ public class MassDialogueManager : MonoBehaviour
         dialogueSpeeds.Add(Enums.DialogueSpeed.VERYSLOW, verySlowSpeed);
         dialogueSpeeds.Add(Enums.DialogueSpeed.FAST, fastSpeed);
         dialogueSpeeds.Add(Enums.DialogueSpeed.VERYFAST, veryFastSpeed);
-
-
     }
+
     private void OnDisable()
     {
         instance = null;
@@ -102,9 +103,6 @@ public class MassDialogueManager : MonoBehaviour
 
             //Add To Screen
             buttonsOnScreen.Add(btn);
-
-
-
 
         }
     }
