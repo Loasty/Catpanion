@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -13,16 +14,44 @@ public class RandomizedCatHandler
     public int limitPerRun;
     public int count;
 
+    public RandomizedCatHandler(Enums.CatType catType, GameObject prefab, int limitPerRun, int count)
+    {
+        this.catType = catType;
+        this.prefab = prefab;
+        this.limitPerRun = limitPerRun;
+        this.count = count;
+    }
+
+    public RandomizedCatHandler() { }
 }
+[System.Serializable]
 public class RandomizedPersonalityPool
 {
     //We're trying to be as generic as possible
     public Enums.AdoptionDifficulty adoptionDifficulty;
-    public List<RandomizedPersonality> personalityList;
+    public List<RandomizedPersonality> personalityList = new List<RandomizedPersonality>();
     public int limitPerRun;
     public int count;
 
+
+    public RandomizedPersonalityPool(Enums.AdoptionDifficulty adoptionDifficulty, List<RandomizedPersonality> personalityList, int limitPerRun, int count)
+    {
+        this.adoptionDifficulty = adoptionDifficulty;
+        foreach(RandomizedPersonality p in personalityList)
+        {
+            RandomizedPersonality randomizedPersonality = new RandomizedPersonality(p.catPersonality, p.personalityLimitPerRun, p.count);
+            this.personalityList.Add(randomizedPersonality);
+        }
+        //this.personalityList = personalityList;
+        this.limitPerRun = limitPerRun;
+        this.count = count;
+    }
+    public RandomizedPersonalityPool()
+    {
+
+    }
 }
+[System.Serializable]
 public class RandomizedPersonality
 {
     //Again, generic as possible.
@@ -30,6 +59,13 @@ public class RandomizedPersonality
     public int personalityLimitPerRun = 0; //No limit
     public int count;
 
+    public RandomizedPersonality(Enums.CatPersonality catPersonality, int personalityLimitPerRun, int count)
+    {
+        this.catPersonality = catPersonality;
+        this.personalityLimitPerRun = personalityLimitPerRun;
+        this.count = count;
+    }
+    public RandomizedPersonality() { }
 }
 
 
@@ -40,206 +76,177 @@ public class RandomizedHandler : MonoBehaviour
     int MaxCatCount = 4;
     [SerializeField]
     Transform spawnPos;
- 
-  
+
+
 
     public List<Character> catsList = new List<Character>();
     public List<RandomizedCatHandler> catTypes = new List<RandomizedCatHandler>();
     public List<RandomizedPersonalityPool> personalityPools = new List<RandomizedPersonalityPool>();
- 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public bool debugMode = false;
     // Start is called before the first frame update
     void Start()
     {
 
-        
-        //easy.Add(Enums.CatPersonality.Average);
-        //easy.Add(Enums.CatPersonality.Energetic);
-        //easy.Add(Enums.CatPersonality.Gentle);
-        //easy.Add(Enums.CatPersonality.Goofy);
-        //difficultyDict.Add(Enums.AdoptionDifficulty.Easy, easy);
-        
 
-        //medium.Add(Enums.CatPersonality.Grumpy);
-        //medium.Add(Enums.CatPersonality.Lazy);
-        //medium.Add(Enums.CatPersonality.Confident);
-        //difficultyDict.Add(Enums.AdoptionDifficulty.Medium, medium);
-
-        //hard.Add(Enums.CatPersonality.Timid);
-        //hard.Add(Enums.CatPersonality.Anxious); 
-        //hard.Add(Enums.CatPersonality.Wizard);
-        //difficultyDict.Add(Enums.AdoptionDifficulty.Hard, hard);
-
-
-
-
+        RandomizeCat();
+        StartCoroutine(test());
 
         //maxEnums = System.Enum.GetValues(typeof(Enums.CatPersonality)).Cast<Enums.CatPersonality>().ToList<Enums.CatPersonality>().Count - 1;
 
     }
 
+    public void Wipe()
+    {
+        
+        for (int i = 0; i < catsList.Count; i++)
+        {
+            Destroy(catsList[i].characterObj);
+            Destroy(catsList[i]);
+        }
+        catsList.Clear();
+    }
+    public void DisplayNames()
+    {
+        string message = "Cats: ";
+        foreach (Character c in catsList)
+        {
+            message += c.speakerName + ", ";
+        }
+        Debug.Log(message);
+
+    }
+    IEnumerator test()
+    {
+        DisplayNames();
+        while (true)
+        {
+
+            yield return new WaitForSeconds(2f);
+            Wipe();
+            RandomizeCat();
+            DisplayNames();
+        }
+        
+
+    }
+
     public void RandomizeCat()
     {
-        List<Character> list = new List<Character>();
-
-
         ////Made to be as generic as possible to allow for more cats to be added in the future as easily as possible
+        List<Character> list = new List<Character>();
+      
+
 
         List<Enums.CatType> validCatTypes = System.Enum.GetValues(typeof(Enums.CatType)).Cast<Enums.CatType>().ToList();
         validCatTypes.Remove(Enums.CatType.NONE);
-        //List<Enums.CatType> validCatTypes = System.Enum.GetValues(typeof(Enums.CatType)).Cast<Enums.CatType>().ToList();
-
-        Dictionary<Enums.CatType, RandomizedCatHandler> catHandler = new Dictionary<Enums.CatType, RandomizedCatHandler>();
-        foreach (RandomizedCatHandler c in catTypes) { if (catHandler[c.catType] == null) { catHandler.Add(c.catType, c); } }
-
+        Dictionary<Enums.CatType, RandomizedCatHandler> catHandler = new Dictionary<Enums.CatType, RandomizedCatHandler>(); foreach (RandomizedCatHandler c in catTypes) { catHandler.Add(c.catType, c); }
         
+
         Dictionary<Enums.AdoptionDifficulty, RandomizedPersonalityPool> personalityHandler = new Dictionary<Enums.AdoptionDifficulty, RandomizedPersonalityPool>();
-        foreach (RandomizedPersonalityPool p in personalityPools) { if (personalityHandler[p.adoptionDifficulty] == null) { personalityHandler.Add(p.adoptionDifficulty, p); } }
+        List<RandomizedPersonalityPool> personalityPoolsLocal = new List<RandomizedPersonalityPool>(); foreach (RandomizedPersonalityPool p in personalityPools) { personalityPoolsLocal.Add(new RandomizedPersonalityPool(p.adoptionDifficulty, p.personalityList, p.limitPerRun, p.count)); }
+        foreach (RandomizedPersonalityPool p in personalityPoolsLocal) { personalityHandler.Add(p.adoptionDifficulty, p);}
         List<Enums.AdoptionDifficulty> validDifficulties = System.Enum.GetValues(typeof(Enums.AdoptionDifficulty)).Cast<Enums.AdoptionDifficulty>().ToList<Enums.AdoptionDifficulty>();
-
-
-
-
+  
         for (int i = 0; i < MaxCatCount; i++)
         {
+            Character cat = this.AddComponent<Character>();
+
             //Cat Type
             int rand = Random.Range(0, validCatTypes.Count);
-            catHandler[(Enums.CatType)rand].count++;
-            if (catHandler[(Enums.CatType)rand].limitPerRun > 0) { if (catHandler[(Enums.CatType)rand].count > catHandler[(Enums.CatType)rand].limitPerRun) { validCatTypes.Remove((Enums.CatType)rand); } }
+            Debug.Log("Rand: " + rand + validCatTypes[rand]);
+            catHandler[validCatTypes[rand]].count++;
+            cat.cat = validCatTypes[rand];
+            cat.characterObj = GameObject.Instantiate(catHandler[validCatTypes[rand]].prefab, spawnPos);
+
+             if (catHandler[validCatTypes[rand]].limitPerRun > 0 && catHandler[validCatTypes[rand]].count >= catHandler[validCatTypes[rand]].limitPerRun) { validCatTypes.RemoveAt(rand); } 
 
             //Cat difficulty
             int randDifficulty = Random.Range(0, validDifficulties.Count);
-            personalityHandler[(Enums.AdoptionDifficulty)randDifficulty].count++;
-            if (personalityHandler[(Enums.AdoptionDifficulty)randDifficulty].limitPerRun > 0) { if (personalityHandler[(Enums.AdoptionDifficulty)randDifficulty].count > personalityHandler[(Enums.AdoptionDifficulty)randDifficulty].limitPerRun) { validDifficulties.Remove((Enums.AdoptionDifficulty)randDifficulty); } };
+            Debug.Log("randDifficulty: " + randDifficulty);
+            Debug.Log("difficulty = " + validDifficulties[randDifficulty]);
+            personalityHandler[validDifficulties[randDifficulty]].count++;
+            cat.difficulty = validDifficulties[randDifficulty];
+             if (personalityHandler[validDifficulties[randDifficulty]].limitPerRun >= 0 && personalityHandler[validDifficulties[randDifficulty]].count == personalityHandler[validDifficulties[randDifficulty]].limitPerRun) { validDifficulties.RemoveAt(randDifficulty); };
+            
+            //Cat personality
+            RandomizedPersonalityPool pool = new RandomizedPersonalityPool(cat.difficulty, personalityHandler[cat.difficulty].personalityList, personalityHandler[cat.difficulty].limitPerRun, personalityHandler[cat.difficulty].count);
 
-            RandomizedPersonalityPool pool = new RandomizedPersonalityPool();
-            personalityHandler.TryGetValue((Enums.AdoptionDifficulty)randDifficulty, out pool);
-            // filter out
-            foreach(Character c in list)
+            //filter out
+            foreach (Character c in list)
             {
-                if (c.cat == catHandler[(Enums.CatType)rand].catType)
+                if (c.cat == cat.cat && c.difficulty == cat.difficulty)
                 {
-                    foreach (RandomizedPersonality p in pool.personalityList)
+                    for (int j = 0; j < pool.personalityList.Count; j++)
                     {
-                        if (c.catPersonality == p.catPersonality)
+                        if (pool.personalityList[j].catPersonality == c.catPersonality)
                         {
-                            pool.personalityList.Remove(p);
+                            Debug.Log("Found existing");
+                            pool.personalityList.RemoveAt(j);
+                            break;
+
                         }
                     }
                 }
+            }
+            
+            
+            for (int j = 0; j < pool.personalityList.Count; j++)
+            {
+                if (pool.personalityList[j].personalityLimitPerRun > 0 && pool.personalityList[j].count >= pool.personalityList[j].personalityLimitPerRun)
+                {
+                    pool.personalityList.RemoveAt(j);
+                }
+            }
+
+
+            int randPersonality = Random.Range(0, pool.personalityList.Count);
+
+            Debug.Log("Rand Personality: " + randPersonality);
+            cat.catPersonality = pool.personalityList[randPersonality].catPersonality;
+            foreach(RandomizedPersonality c in personalityHandler[cat.difficulty].personalityList)
+            {
+                if (c.catPersonality == cat.catPersonality)
+                {
+                    c.count++;
+                    Debug.Log(c.count);
+                }
+            }
+
+            cat.speakerName = cat.catPersonality.ToString().ToLower().FirstCharacterToUpper() + " " + cat.cat.ToString().ToLower().FirstCharacterToUpper() + " Cat";
+            cat.characterObj.transform.localScale = new Vector3(3, 3, 3);
+            if (debugMode)
+            {
+                cat.characterObj.GetComponent<CatController>().nameDisplay.text = cat.speakerName;
 
             }
-            int randPersonality = Random.Range(0, pool.personalityList.Count);
-          
-
-            Character cat = new Character();
-            cat.cat = (Enums.CatType)rand;
-            cat.difficulty = (Enums.AdoptionDifficulty)randDifficulty;
-            cat.catPersonality = pool.personalityList[randPersonality].catPersonality;
-            cat.characterObj = GameObject.Instantiate(catHandler[(Enums.CatType)rand].prefab, spawnPos);
-            cat.speakerName = cat.catPersonality.ToString().ToLower().FirstCharacterToUpper() + " " + cat.cat.ToString().ToLower().FirstCharacterToUpper() + " Cat";
-
-
-
-
-
-            //    cat.catPersonality = (Enums.CatPersonality)catPersonality;
-            //    cat.speakerName = catPersonality.ToString().ToLower().FirstCharacterToUpper() + " " + cat.cat.ToString().ToLower().FirstCharacterToUpper() + " Cat";
-            //    cat.characterObj = 
-
-            //    list.Add(cat);
-
-
-
-
-
-
-
-
-
-
+            else
+            {
+                cat.characterObj.GetComponent<CatController>().nameDisplay.gameObject.SetActive(false);
+            }
+            cat.characterObj.GetComponent<CatController>().enabled = false;
+            list.Add(cat);
         }
 
-        ////Made to be as generic as possible, for more difficulties to be added as easily as possible.
-        //List<Enums.AdoptionDifficulty> validDifficulties = System.Enum.GetValues(typeof(Enums.AdoptionDifficulty)).Cast<Enums.AdoptionDifficulty>().ToList();
-        //List<int> difficultyCount = new List<int>(validDifficulties.Count);
-        //List<int> difficultyLimit = new List<int>(validDifficulties.Count);
-        //difficultyLimit[0] = 1;
-        //difficultyLimit[0] = 1;
-        //difficultyLimit[0] = 2;
+        
+        foreach (RandomizedCatHandler c in catTypes)
+        {
+            c.count = 0;
+        }
 
+        foreach(Enums.AdoptionDifficulty e in System.Enum.GetValues(typeof(Enums.AdoptionDifficulty)).Cast<Enums.AdoptionDifficulty>().ToList<Enums.AdoptionDifficulty>())
+        {
+            foreach (RandomizedPersonality c in personalityHandler[e].personalityList)
+            {
+                c.count = 0;
+              
+            }
+        }
+      
 
-
-        //for (int i = 0; i < MaxCatCount; i++)
-        //{
-        //    int rand = Random.Range(0, validCatTypes.Count);
-        //    catCount[rand]++;
-        //    if (catCount[rand] > typelimit) { validCatTypes.Remove((Enums.CatType)rand); }
-
-        //    int randDifficulties = Random.Range(0, catCount.Count);
-        //    difficultyCount[randDifficulties]++;
-        //    if (difficultyCount[randDifficulties] > difficultyLimit[randDifficulties])
-        //    {
-        //        difficultyCount.RemoveAt(randDifficulties);
-        //        difficultyLimit.RemoveAt(randDifficulties);
-        //    }
-
-        //    List<Enums.CatPersonality> catPersonalities = new List<Enums.CatPersonality>();
-        //    difficultyDict.TryGetValue((Enums.AdoptionDifficulty)randDifficulties, out catPersonalities);
-
-        //    //Filters out on the local version
-        //    if (list.Count > 0)
-        //    {
-        //        foreach(Character c in list)
-        //        {
-        //            //If it's the same cat type
-        //            if (c.cat == (Enums.CatType)rand)
-        //            {
-        //                catPersonalities.Remove(c.catPersonality);   
-        //            }
-        //        }
-        //    }
-        //    //Now only the valid versions can be given.
-        //    int catPersonality = Random.Range(0, catPersonalities.Count);
-
-
-        //    Character cat = new Character();
-        //    cat.cat = (Enums.CatType)rand;
-        //    cat.difficulty = (Enums.AdoptionDifficulty)randDifficulties;
-        //    cat.catPersonality = (Enums.CatPersonality)catPersonality;
-        //    cat.speakerName = catPersonality.ToString().ToLower().FirstCharacterToUpper() + " " + cat.cat.ToString().ToLower().FirstCharacterToUpper() + " Cat";
-        //    cat.characterObj = 
-
-        //    list.Add(cat);
-
-
-
-        //}
-
-
-
-
-
-
-
-
-
+   
+        catsList = list;
 
 
 

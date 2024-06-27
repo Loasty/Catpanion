@@ -12,7 +12,7 @@ public class CatController : MonoBehaviour
     [SerializeField] AudioSource catMeowSource;
     [SerializeField] AudioSource catAttentionSource;
 
-    [SerializeField] TextMeshProUGUI nameDisplay;
+    public TextMeshProUGUI nameDisplay;
 
     [Header("Cat Behavior Valeus")]
     [SerializeField] int idleDelay = 15;

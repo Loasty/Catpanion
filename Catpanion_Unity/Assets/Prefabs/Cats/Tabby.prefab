@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 6192012168622414593}
   - component: {fileID: 4145451161379252936}
   - component: {fileID: -3459580173671914517}
+  - component: {fileID: 5154876002143916500}
   m_Layer: 5
   m_Name: Tabby
   m_TagString: Cat
@@ -497,7 +498,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6019286157639801497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8186b4ab938af2c4db25647dab4e15b0, type: 2}
   m_CullingMode: 0
@@ -754,6 +755,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5154876002143916500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019286157639801497}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1963109b6a417e24f933b38377d34fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameDisplay: {fileID: 2927852088749071367}
 --- !u!1001 &3139651424020464148
 PrefabInstance:
   m_ObjectHideFlags: 0

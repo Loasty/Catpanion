@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6192012168622414593}
   - component: {fileID: -5099902629504029200}
   - component: {fileID: 4142110007966480398}
+  - component: {fileID: 1880447539866563494}
   m_Layer: 5
   m_Name: Calico
   m_TagString: Cat
@@ -356,6 +357,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1880447539866563494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019286157639801497}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1963109b6a417e24f933b38377d34fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameDisplay: {fileID: 5760779707468181509}
 --- !u!1 &7688411054971962660
 GameObject:
   m_ObjectHideFlags: 0
