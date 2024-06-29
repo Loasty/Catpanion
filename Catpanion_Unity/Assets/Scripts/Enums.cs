@@ -8,7 +8,7 @@ public class Enums : MonoBehaviour
     
     //NOVEL RELATED
     public enum DialogueSpeed { NORMAL, SLOW, VERYSLOW, FAST, VERYFAST };
-    public enum Locations { NONE, FIELD, BARN };
+    public enum Locations { NONE, FIELD, BARN, ROAD};
     public enum Emotes { NONE, HEART, SIGH, ANNOYED };
     public enum EmoteEffect { NONE, WIGGLE, RESIZE, GO_UP, GO_DOWN };
 

@@ -77,12 +77,10 @@ public class RandomizedHandler : MonoBehaviour
     [SerializeField]
     Transform spawnPos;
 
-
-
     public List<Character> catsList = new List<Character>();
+    public Dictionary<string, Character> catsDict = new Dictionary<string, Character>();
     public List<RandomizedCatHandler> catTypes = new List<RandomizedCatHandler>();
     public List<RandomizedPersonalityPool> personalityPools = new List<RandomizedPersonalityPool>();
-
 
     public bool debugMode = false;
     // Start is called before the first frame update
@@ -91,9 +89,12 @@ public class RandomizedHandler : MonoBehaviour
 
 
         RandomizeCat();
-        StartCoroutine(test());
+        if (debugMode)
+        {
+            StartCoroutine(test());
+        }
 
-        //maxEnums = System.Enum.GetValues(typeof(Enums.CatPersonality)).Cast<Enums.CatPersonality>().ToList<Enums.CatPersonality>().Count - 1;
+   
 
     }
 
@@ -120,9 +121,8 @@ public class RandomizedHandler : MonoBehaviour
     IEnumerator test()
     {
         DisplayNames();
-        while (true)
+        while (true && debugMode)
         {
-
             yield return new WaitForSeconds(2f);
             Wipe();
             RandomizeCat();
@@ -137,8 +137,6 @@ public class RandomizedHandler : MonoBehaviour
         ////Made to be as generic as possible to allow for more cats to be added in the future as easily as possible
         List<Character> list = new List<Character>();
       
-
-
         List<Enums.CatType> validCatTypes = System.Enum.GetValues(typeof(Enums.CatType)).Cast<Enums.CatType>().ToList();
         validCatTypes.Remove(Enums.CatType.NONE);
         Dictionary<Enums.CatType, RandomizedCatHandler> catHandler = new Dictionary<Enums.CatType, RandomizedCatHandler>(); foreach (RandomizedCatHandler c in catTypes) { catHandler.Add(c.catType, c); }
@@ -216,6 +214,7 @@ public class RandomizedHandler : MonoBehaviour
 
             cat.speakerName = cat.catPersonality.ToString().ToLower().FirstCharacterToUpper() + " " + cat.cat.ToString().ToLower().FirstCharacterToUpper() + " Cat";
             cat.characterObj.transform.localScale = new Vector3(3, 3, 3);
+            cat.animator = cat.characterObj.GetComponent<Animator>(); 
             if (debugMode)
             {
                 cat.characterObj.GetComponent<CatController>().nameDisplay.text = cat.speakerName;
@@ -225,8 +224,13 @@ public class RandomizedHandler : MonoBehaviour
             {
                 cat.characterObj.GetComponent<CatController>().nameDisplay.gameObject.SetActive(false);
             }
+            cat.emote = cat.characterObj.GetComponent<CatController>().emote;
+
             cat.characterObj.GetComponent<CatController>().enabled = false;
+            cat.accessKey = "{Cat" + (i + 1) + "}";
+            catsDict.Add(cat.accessKey, cat);
             list.Add(cat);
+ 
         }
 
         

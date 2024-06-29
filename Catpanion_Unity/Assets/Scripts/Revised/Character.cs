@@ -9,6 +9,8 @@ public class Character : MonoBehaviour
     public Enums.CatType cat = Enums.CatType.NONE;
     public Enums.CatPersonality catPersonality = Enums.CatPersonality.Average;
     public Enums.AdoptionDifficulty difficulty = Enums.AdoptionDifficulty.Easy;
+    public bool chosenCat;
+    public string accessKey = "{}";
     public Animator animator;
     public GameObject characterObj;
     public Emote emote;

@@ -13,6 +13,7 @@ public class CatController : MonoBehaviour
     [SerializeField] AudioSource catAttentionSource;
 
     public TextMeshProUGUI nameDisplay;
+    public Emote emote;
 
     [Header("Cat Behavior Valeus")]
     [SerializeField] int idleDelay = 15;
@@ -26,6 +27,7 @@ public class CatController : MonoBehaviour
 
         //LoadCatData();
     }
+
 
     public void ToggleCat(bool onOff)
     {
