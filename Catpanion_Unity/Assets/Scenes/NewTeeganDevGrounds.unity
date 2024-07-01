@@ -734,13 +734,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 238074866}
+  - component: {fileID: 238074867}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &238074866
 Transform:
   m_ObjectHideFlags: 0
@@ -756,6 +757,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &238074867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238074865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951fa6ec8d2d8c94db9af71527f178f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - speakerName: 
+    dialogueText: 
+    onScreen: []
+    speed: 0
+    canContinueAfter: 1
+    changeLocation: 0
+    newLocation: 0
+    bgmAudioClip: {fileID: 0}
+    sfxAudioClip: {fileID: 0}
+    showAfterReadIn: 1
+    options: []
+    startEvents:
+      m_PersistentCalls:
+        m_Calls: []
+    endEvents:
+      m_PersistentCalls:
+        m_Calls: []
+  speaker: {fileID: 2028661876}
+  speakerBox: {fileID: 2133768879}
+  dialogue: {fileID: 604526874}
+  bgmAudioSource: {fileID: 140027905}
+  sfxAudioSource: {fileID: 1346677011}
 --- !u!1001 &367381163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2360,7 +2396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1457932654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2374,10 +2410,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptsToLoad:
-  - {fileID: 0}
-  - {fileID: 1106662917}
   - {fileID: 1653165185}
-  - {fileID: 0}
+  - {fileID: 1532816284}
+  - {fileID: 238074867}
 --- !u!4 &1457932655
 Transform:
   m_ObjectHideFlags: 0
@@ -2409,7 +2444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1532816283
 Transform:
   m_ObjectHideFlags: 0
@@ -2437,8 +2472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37562e875cf2eb4ba85cb7d2f0cd266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxCatCount: 4
-  spawnPos: {fileID: 1958403939}
   catsList: []
   catTypes:
   - catType: 1
@@ -2500,7 +2533,26 @@ MonoBehaviour:
       count: 0
     limitPerRun: 2
     count: 0
+  catAnimations:
+  - actions: 75
+    animationName: Greet
+  - actions: 80
+    animationName: Swipe
+  - actions: 85
+    animationName: Affection
+  - actions: 90
+    animationName: Attention
+  - actions: 95
+    animationName: Meow
+  - actions: 100
+    animationName: Play
+  - actions: 102
+    animationName: WalkLeft
+  - actions: 101
+    animationName: WalkRight
   debugMode: 0
+  MaxCatCount: 4
+  spawnPos: {fileID: 1958403939}
 --- !u!1 &1607626091
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,13 +2773,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1653165186}
   - component: {fileID: 1653165185}
+  - component: {fileID: 1653165187}
   m_Layer: 0
   m_Name: MassDialogueManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1653165185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2735,7 +2788,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653165184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6095a05b3e08c744d9ff4bedccda7553, type: 3}
   m_Name: 
@@ -2773,6 +2826,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1147209215}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1653165187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653165184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790c48694019b4d47bc19120f1d987b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parsingHandler: 1
+  visibleHandler: 1
+  locationHandler: 4
+  buttonLocation: {fileID: 494123578}
+  optionsPrefab: {fileID: 1658442571398302951, guid: c8edee6c728e8c54c9a3541b80690613, type: 3}
+  normalSpeed: 0.01
+  slowSpeed: 0.3
+  verySlowSpeed: 0.5
+  fastSpeed: 0.001
+  veryFastSpeed: 0.001
 --- !u!1 &1735684424
 GameObject:
   m_ObjectHideFlags: 0
@@ -3283,7 +3358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1973083913
 RectTransform:
   m_ObjectHideFlags: 0

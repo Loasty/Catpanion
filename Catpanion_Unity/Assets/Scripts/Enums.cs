@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enums : MonoBehaviour
-{ 
-    
+{
+
     //NOVEL RELATED
     public enum DialogueSpeed { NORMAL, SLOW, VERYSLOW, FAST, VERYFAST };
-    public enum Locations { NONE, FIELD, BARN, ROAD};
+    public enum Locations { NONE, FIELD, BARN, ROAD };
     public enum Emotes { NONE, HEART, SIGH, ANNOYED };
     public enum EmoteEffect { NONE, WIGGLE, RESIZE, GO_UP, GO_DOWN };
 
@@ -16,7 +16,7 @@ public class Enums : MonoBehaviour
     //CAT RELATED
     public enum CatType { NONE, WHITE, TABBY, CALICO, BLACK };
     public enum MeowType { Normal, Long, Loud, Quiet, Soft, Raspy };
-    public enum CatPersonality { Average, Anxious, Confident, Energetic, Goofy, Gentle, Grumpy, Lazy, Timid, Wizard};
+    public enum CatPersonality { Average, Anxious, Confident, Energetic, Goofy, Gentle, Grumpy, Lazy, Timid, Wizard };
     //Average - Normal behaviours, no special traits
     //Anxious - More likely to be attention seeking and affectionate -- but requires more care at higher affection levels
     //Confident - Likes to walk around more often, almost like strutting behaviour
@@ -31,8 +31,8 @@ public class Enums : MonoBehaviour
     //Average, 
     public enum CatMood { Normal };
     public enum CatGender { Unknown, Boy, Girl };
-    public enum Actions { SIT = 30, WALK = 60, GREET = 75, SWIPE = 80, AFFECTION = 85, ATTENTION = 90, MEOW = 95, PLAY = 100 };
-    public enum AdoptionDifficulty { Easy, Medium, Hard};
+    public enum Actions { SIT = 30, WALK = 60, GREET = 75, SWIPE = 80, AFFECTION = 85, ATTENTION = 90, MEOW = 95, PLAY = 100, WALK_RIGHT = 101, WALK_LEFT = 102 };
+    public enum AdoptionDifficulty { Easy, Medium, Hard };
 
 
     //MENU RELATED
@@ -45,4 +45,9 @@ public class Enums : MonoBehaviour
 
     //DESKTOP GAMEPLAY RELATED
     public enum PlayAreaBorders { TOP, BOTTOM, LEFT, RIGHT };
+
+    //HANDLING RELATED
+    public enum HANDLER { NONE, RANDOMIZEDHANDLER, ITEMHANDLER, SHOPKEEPER, LOCATIONMANAGER}
+    
+
 }

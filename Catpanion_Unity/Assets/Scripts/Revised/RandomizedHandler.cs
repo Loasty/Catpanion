@@ -69,34 +69,44 @@ public class RandomizedPersonality
 }
 
 
-
 public class RandomizedHandler : MonoBehaviour
 {
+
+    private static RandomizedHandler instance;
+    public static RandomizedHandler Instance { get { return instance; } }
+
+    [Header("Cats")]
+    public List<Character> catsList = new List<Character>();
+    public Dictionary<string, Character> catsDict = new Dictionary<string, Character>();
+    public List<RandomizedCatHandler> catTypes = new List<RandomizedCatHandler>();
+    public List<RandomizedPersonalityPool> personalityPools = new List<RandomizedPersonalityPool>();
+    public List<Animations> catAnimations = new List<Animations>();
+    [SerializeField]
+    bool debugMode = false;
     [SerializeField]
     int MaxCatCount = 4;
     [SerializeField]
     Transform spawnPos;
 
-    public List<Character> catsList = new List<Character>();
-    public Dictionary<string, Character> catsDict = new Dictionary<string, Character>();
-    public List<RandomizedCatHandler> catTypes = new List<RandomizedCatHandler>();
-    public List<RandomizedPersonalityPool> personalityPools = new List<RandomizedPersonalityPool>();
+    
 
-    public bool debugMode = false;
+    
     // Start is called before the first frame update
     void Start()
     {
-
-
+        instance = this;
         RandomizeCat();
         if (debugMode)
         {
-            StartCoroutine(test());
+            StartCoroutine(Test());
         }
 
-   
-
     }
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+    #region Debug
 
     public void Wipe()
     {
@@ -118,7 +128,7 @@ public class RandomizedHandler : MonoBehaviour
         Debug.Log(message);
 
     }
-    IEnumerator test()
+    IEnumerator Test()
     {
         DisplayNames();
         while (true && debugMode)
@@ -131,6 +141,7 @@ public class RandomizedHandler : MonoBehaviour
         
 
     }
+    #endregion
 
     public void RandomizeCat()
     {
@@ -228,6 +239,8 @@ public class RandomizedHandler : MonoBehaviour
 
             cat.characterObj.GetComponent<CatController>().enabled = false;
             cat.accessKey = "{Cat" + (i + 1) + "}";
+            cat.SetUpAnimationDict(catAnimations);
+
             catsDict.Add(cat.accessKey, cat);
             list.Add(cat);
  
@@ -247,28 +260,7 @@ public class RandomizedHandler : MonoBehaviour
               
             }
         }
-      
-
-   
         catsList = list;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     // Update is called once per frame
@@ -276,5 +268,44 @@ public class RandomizedHandler : MonoBehaviour
     {
         
     }
+
+   
+
+   
+
+    public string GetCharacterName(string inString)
+    {
+        Character cat;
+        catsDict.TryGetValue(inString, out cat);
+        if (cat != null)
+        {
+            return cat.speakerName;
+        }
+        return "NOT_FOUND";
+    }
+    public Character GetCharacter(string inString)
+    {
+        Character cat;
+        catsDict.TryGetValue(inString, out cat);
+        if (cat != null)
+        {
+            return cat;
+        }
+        return null;
+    }
     
+    public void ManageVisible(List<OnScreen> inOnScreen)
+    {
+        foreach(Character character in catsList)
+        {
+            character.gameObject.SetActive(false);
+        }
+        
+        foreach (OnScreen c in inOnScreen)
+        {
+            Character character = RandomizedHandler.Instance.GetCharacter(c.accessKey);
+            if (character != null) { character.gameObject.SetActive(true); }
+            character.animator.SetTrigger(character.GetAnimation(c.actions));
+        }
+    }
 }
